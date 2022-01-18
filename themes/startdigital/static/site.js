@@ -1,5 +1,6 @@
-jQuery( document ).ready( function( $ ) {
-
-  // Your JavaScript goes here
-
-});
+(() => {
+  // js/index.js
+  document.addEventListener("DOMContentLoaded", () => {
+    console.log("hey jake");
+  });
+})();

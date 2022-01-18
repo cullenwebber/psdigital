@@ -1,0 +1,62 @@
+.container {
+    width: 100%
+}
+@media (min-width: 640px) {
+    .container {
+        max-width: 640px
+    }
+}
+@media (min-width: 768px) {
+    .container {
+        max-width: 768px
+    }
+}
+@media (min-width: 1024px) {
+    .container {
+        max-width: 1024px
+    }
+}
+@media (min-width: 1280px) {
+    .container {
+        max-width: 1280px
+    }
+}
+@media (min-width: 1536px) {
+    .container {
+        max-width: 1536px
+    }
+}
+.block {
+    display: block
+}
+.hidden {
+    display: none
+}
+.text-5xl {
+    font-size: 3rem;
+    line-height: 1
+}
+.text-indigo-800 {
+    --tw-text-opacity: 1;
+    color: rgb(55 48 163 / var(--tw-text-opacity))
+}
+.text-blue-500 {
+    --tw-text-opacity: 1;
+    color: rgb(59 130 246 / var(--tw-text-opacity))
+}
+.text-red-500 {
+    --tw-text-opacity: 1;
+    color: rgb(239 68 68 / var(--tw-text-opacity))
+}
+body {
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+}
+.wp-block {
+    max-width: 1280px
+}
+.wp-block[data-align="wide"] {
+    max-width: 1280px
+}
+.wp-block[data-align="full"] {
+    max-width: 100%
+}

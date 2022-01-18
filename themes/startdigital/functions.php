@@ -65,7 +65,6 @@ class StartDigital extends Timber\Site
 	{
 		add_action('after_setup_theme', array($this, 'theme_supports'));
 		add_filter('timber/context', array($this, 'add_to_context'));
-		add_filter('timber/twig', array($this, 'add_to_twig'));
 		add_action('init', array($this, 'register_post_types'));
 		add_action('init', array($this, 'register_taxonomies'));
 		parent::__construct();
@@ -85,9 +84,6 @@ class StartDigital extends Timber\Site
 	 */
 	public function add_to_context($context)
 	{
-		$context['foo']   = 'bar';
-		$context['stuff'] = 'I am a value set in your functions.php file';
-		$context['notes'] = 'These values are available everytime you call Timber::context();';
 		$context['menu']  = new Timber\Menu();
 		$context['site']  = $this;
 		return $context;
@@ -146,27 +142,20 @@ class StartDigital extends Timber\Site
 		);
 
 		add_theme_support('menus');
-	}
 
-	/** This Would return 'foo bar!'.
-	 *
-	 * @param string $text being 'foo', then returned 'foo bar!'.
-	 */
-	public function myfoo($text)
-	{
-		$text .= ' bar!';
-		return $text;
-	}
+		/**
+		 * Register our first menu
+		 */
+		register_nav_menus(
+			array(
+				'primary' => __('Primary Menu', 'startdigital'),
+			)
+		);
 
-	/** This is where you can add your own functions to twig.
-	 *
-	 * @param string $twig get extension.
-	 */
-	public function add_to_twig($twig)
-	{
-		$twig->addExtension(new Twig\Extension\StringLoaderExtension());
-		$twig->addFilter(new Twig\TwigFilter('myfoo', array($this, 'myfoo')));
-		return $twig;
+		add_theme_support('align-wide');
+		add_theme_support('wp-block-styles');
+		add_theme_support('editor-styles');
+		add_editor_style('static/editor.css');
 	}
 }
 

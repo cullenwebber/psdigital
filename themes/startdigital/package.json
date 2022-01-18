@@ -1,0 +1,26 @@
+{
+  "scripts": {
+    "build": "npm run build-css && npm run build-js",
+    "dev": "cross-env NODE_ENV=development concurrently \"npm run watch:css-app\" \"npm run watch:css-editor\" \"npm run watch:js\" \"npm run browser-sync\"",
+    "watch:js": "esbuild js/index.js --bundle --watch --outfile=static/site.js",
+    "build:js": "esbuild js/index.js --bundle --minify --outfile=static/site.js",
+    "watch:css-app": "postcss ./css/main.css -o ./style.css --watch",
+    "watch:css-editor": "postcss ./css/editor.css -o ./static/editor.css --watch",
+    "browser-sync": "cross-env NODE_ENV=development browser-sync start --proxy \"wp-boilerplate.test\" --host=\"wp-boilerplate.test\" --no-inject-changes --files=\"./\""
+  },
+  "dependencies": {
+    "browser-sync": "^2.27.7",
+    "concurrently": "^7.0.0",
+    "cross-env": "^7.0.3",
+    "esbuild": "^0.14.11",
+    "postcss": "^8.4.5",
+    "postcss-cli": "^9.1.0",
+    "postcss-import": "^14.0.2",
+    "postcss-nested": "^5.0.6"
+  },
+  "devDependencies": {
+    "esbuild-serve": "^1.0.1",
+    "tailwindcss": "^3.0.15"
+  },
+  "type": "module"
+}
