@@ -5,17 +5,22 @@ All styling is done using TailwindCSS.
 
 ## Getting started
 
-1. Setup a local WordPress install locally. [See here for the command to get the latest WordPress version locally](https://code.tutsplus.com/articles/download-and-install-wordpress-via-the-shell-over-ssh--wp-24403#:~:text=wget%20http%3A//wordpress.org/latest.tar.gz%0A%24tar%20xfz%20latest.tar.gz)
-2. Create a database for your local WordPress setup. [TablePlus is a great, free tool for this.](https://tableplus.com/)
-3. Change `wp-config-sample.php` to `wp-config.php` and update the following fields:
-   - `define('DB_NAME', 'YOUR_DB_NAME');`
-   - `define('DB_USER', 'YOUR_DB_USERNAME (usually root)');`
-   - `define('DB_PASSWORD', 'YOUR_DB_PASSWORD (usually an empty string');`
-4. Download this repository and replace your `wp-content` folder with the contents of this repository.
-5. In your terminal, navigate to `wp-content/themes/startdigital` and run `composer install` followed by `npm install`.
-6. Load up your WordPress local install in the browser and run through the install process
-7. Make sure the StartDigital theme is activated from within `Appearance->Themes`.
-8. Activate your plugins and start having fun!
+1. Go the directory you keep you sites and run `mkdir yourprojectname`.
+2. Enter `cd yourprojectname` and run `wget http://wordpress.org/latest.tar.gz` and then `tar -xf latest.tar.gz`.
+3. Run `mv wordpress/* .` to move the files into the root of the folder, followed by `rm -rf wordpress latest.tar.gz` to delete the no longer requires files.
+4. Enter `rm -rf wp-content` to delete the directory, as we will replace this with our own.
+5. Create a database for your local WordPress setup. [TablePlus is a great, free tool for this.](https://tableplus.com/) Create a new database and name it whatever you named your project. Eg. `yourprojectname`
+6. Change `wp-config-sample.php` to `wp-config.php` and update the following fields:
+   - `define('DB_NAME', 'yourprojectname');`
+   - `define('DB_USER', 'root');`
+   - `define('DB_PASSWORD', '');`
+7. Clone this repository and name it `wp-content` by running `git clone git@github.com:StartDigitalAU/wp-boilerplate.git wp-content`
+8. In your terminal, navigate to `wp-content/themes/startdigital` and run `composer install` followed by `npm install`.
+9. Load up your WordPress local install in the browser and run through the install process
+10. Make sure the StartDigital theme is activated from within `Appearance->Themes`.
+11. Update your permalinks to use the post name in `Settings->Permalinks`.
+12. Activate any plugins in `Plugins`.
+13. Back in your terminal, make sure you're in the `wp-content/themes/startdigital` directory and run `npm run dev` for everything to fire up.
 
 ## What's here?
 
