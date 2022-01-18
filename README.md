@@ -16,11 +16,12 @@ All styling is done using TailwindCSS.
    - `define('DB_PASSWORD', '');`
 7. Clone this repository and name it `wp-content` by running `git clone git@github.com:StartDigitalAU/wp-boilerplate.git wp-content`
 8. In your terminal, navigate to `wp-content/themes/startdigital` and run `composer install` followed by `npm install`.
-9. Load up your WordPress local install in the browser and run through the install process
-10. Make sure the StartDigital theme is activated from within `Appearance->Themes`.
-11. Update your permalinks to use the post name in `Settings->Permalinks`.
-12. Activate any plugins in `Plugins`.
-13. Back in your terminal, make sure you're in the `wp-content/themes/startdigital` directory and run `npm run dev` for everything to fire up.
+9. In the `package.json` file, update all references to `wp-boilerplate.test` with whatever local WordPress install is. Most likely `yourprojectname.test`.
+10. Load up your WordPress local install in the browser and run through the install process
+11. Make sure the StartDigital theme is activated from within `Appearance->Themes`.
+12. Update your permalinks to use the post name in `Settings->Permalinks`.
+13. Activate any plugins in `Plugins`.
+14. Back in your terminal, make sure you're in the `wp-content/themes/startdigital` directory and run `npm run dev` for everything to fire up.
 
 ## What's here?
 
