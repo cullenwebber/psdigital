@@ -20,6 +20,24 @@ if (file_exists($composer_autoload)) {
 	$timber = new Timber\Timber();
 }
 
+$acf_register_block = __DIR__ . '/acf/setup.php';
+if (file_exists($acf_register_block)) {
+	require_once $acf_register_block;
+}
+
+/**
+ * Setup our custom options page
+ */
+if( function_exists('acf_add_options_page') ) {	
+	acf_add_options_page(array(
+		'page_title' 	=> 'Site Settings',
+		'menu_title'	=> 'Site Settings',
+		'menu_slug' 	=> 'site-settings',
+		'capability'	=> 'edit_posts',
+		'redirect'		=> false
+	));
+}
+
 /**
  * This ensures that Timber is loaded and available as a PHP class.
  * If not, it gives an error message to help direct developers on where to activate
@@ -86,6 +104,7 @@ class StartDigital extends Timber\Site
 	{
 		$context['menu']  = new Timber\Menu();
 		$context['site']  = $this;
+		$context['options'] = get_fields('options');
 		return $context;
 	}
 
