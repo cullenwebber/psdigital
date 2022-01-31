@@ -20,9 +20,12 @@ if (file_exists($composer_autoload)) {
 	$timber = new Timber\Timber();
 }
 
-$acf_register_block = __DIR__ . '/acf/setup.php';
-if (file_exists($acf_register_block)) {
-	require_once $acf_register_block;
+/**
+ * Register all our ACF files
+ */
+$acf_dir = __DIR__ . '/acf/*';
+foreach(glob($acf_dir) as $acf_file) {
+	require_once($acf_file);
 }
 
 /**
