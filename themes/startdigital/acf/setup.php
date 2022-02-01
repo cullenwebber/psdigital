@@ -10,9 +10,9 @@ function sd_allow_only_acf_blocks($allowed_block_types, $editor_context) {
         // Put any core block we want to allow here
         $allowed_block_types = ["core/spacer"];
 
-        foreach(get_acf_blocks() as $block) {
-            $block_slug = strtolower(str_replace(" ", "-", $block["name"]));
-            $allowed_block_types[] = "acf/$block_slug";
+        $acf_dir = __DIR__ . '/acf/*';
+        foreach(glob($acf_dir) as $acf_file) {
+            $allowed_block_types[] = "acf/$acf_file";
         }
 
         return $allowed_block_types;
