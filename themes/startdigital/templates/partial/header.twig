@@ -1,0 +1,15 @@
+{% block header %}
+	<header class="container absolute top-0 left-0 right-0 p-6 rounded-b-lg shadow-lg z-20 bg-white w-full flex items-center justify-between lg:py-0 lg:px-12">
+		<a href="{{site.url}}" rel="home">
+			{% if options.logo.url != blank %}
+				<img class="w-32" src="{{ options.logo.url }}" alt="{{ options.logo.alt }}">
+			{% else %}
+				<span class="text-xl font-display">{{ site.name }}</span>
+			{% endif %}
+		</a>
+		<nav id="nav-main" class="nav-main" role="navigation">
+			{% include "menu.twig" with {'items': menu.get_items} %}
+		</nav>
+		<!-- #nav -->
+	</header>
+{% endblock %}

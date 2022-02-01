@@ -8,6 +8,7 @@
 		"nav,endnav",
 		"switch,case,default,endswitch",
 		"ifchildren,endifchildren",
+		"if,endif",
 		"cache,endcache",
 		"js,endjs"
 	],
