@@ -8,11 +8,16 @@
 function sd_allow_only_acf_blocks($allowed_block_types, $editor_context) {
     if ( ! empty( $editor_context->post ) ) { 
         // Put any core block we want to allow here
-        $allowed_block_types = ["core/spacer"];
+        $allowed_block_types = [];
 
-        $acf_dir = __DIR__ . '/acf/*';
+        $acf_dir = __DIR__ . "/*";
         foreach(glob($acf_dir) as $acf_file) {
-            $allowed_block_types[] = "acf/$acf_file";
+            if (str_ends_with($acf_file, 'setup.php')) {
+                continue;
+            }
+
+            $filename = basename($acf_file, ".php");
+            $allowed_block_types[] = "acf/" . str_replace('_', '-', $filename);
         }
 
         return $allowed_block_types;
