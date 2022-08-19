@@ -39,4 +39,4 @@ jobs:
           server: ${{ secrets.DEV_FTP_HOST }}
           username: ${{ secrets.DEV_FTP_USER }}
           password: ${{ secrets.DEV_FTP_PASS }}
-          server-dir: ${{ secrets.DEV_SERVER_DIRECTORY }} # Eg: techvisa/wp-content
+          # server-dir: techvisa/wp-content/themes - swap out 'techvisa' for the site name on the server
