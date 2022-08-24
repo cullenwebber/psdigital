@@ -31,7 +31,7 @@ foreach(glob($acf_dir) as $acf_file) {
 /**
  * Setup our custom options page
  */
-if( function_exists('acf_add_options_page') ) {	
+if( function_exists('acf_add_options_page') ) {
 	acf_add_options_page(array(
 		'page_title' 	=> 'Site Settings',
 		'menu_title'	=> 'Site Settings',
@@ -88,6 +88,7 @@ class StartDigital extends Timber\Site
 		add_filter('timber/context', array($this, 'add_to_context'));
 		add_action('init', array($this, 'register_post_types'));
 		add_action('init', array($this, 'register_taxonomies'));
+        add_action('wp_enqueue_scripts', array($this, 'register_assets'));
 		parent::__construct();
 	}
 	/** This is where you can register custom post types. */
@@ -98,6 +99,13 @@ class StartDigital extends Timber\Site
 	public function register_taxonomies()
 	{
 	}
+
+    /** This is where you can register custom CSS & JS files. */
+    public function register_assets()
+    {
+        wp_enqueue_style('startdigital', get_stylesheet_directory_uri() . '/static/style.css', false, filemtime(get_stylesheet_directory() . '/static/style.css'));
+        wp_enqueue_script('startdigital', get_stylesheet_directory_uri() . '/static/site.js', false, filemtime(get_stylesheet_directory() . '/static/site.js') );
+    }
 
 	/** This is where you add some context
 	 *
@@ -113,9 +121,6 @@ class StartDigital extends Timber\Site
 
 	public function theme_supports()
 	{
-		// Add default posts and comments RSS feed links to head.
-		add_theme_support('automatic-feed-links');
-
 		/*
 		 * Let WordPress manage the document title.
 		 * By adding theme support, we declare that this theme does not use a
@@ -131,40 +136,7 @@ class StartDigital extends Timber\Site
 		 */
 		add_theme_support('post-thumbnails');
 
-		/*
-		 * Switch default core markup for search form, comment form, and comments
-		 * to output valid HTML5.
-		 */
-		add_theme_support(
-			'html5',
-			array(
-				'comment-form',
-				'comment-list',
-				'gallery',
-				'caption',
-			)
-		);
-
-		/*
-		 * Enable support for Post Formats.
-		 *
-		 * See: https://codex.wordpress.org/Post_Formats
-		 */
-		add_theme_support(
-			'post-formats',
-			array(
-				'aside',
-				'image',
-				'video',
-				'quote',
-				'link',
-				'gallery',
-				'audio',
-			)
-		);
-
 		add_theme_support('menus');
-
 		/**
 		 * Register our first menu
 		 */
