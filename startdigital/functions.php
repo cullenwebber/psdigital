@@ -113,9 +113,12 @@ class StartDigital extends Timber\Site
 	 */
 	public function add_to_context($context)
 	{
+		if (function_exists('get_fields')) {
+        	    $context['options'] = get_fields('options');
+	        }
 		$context['menu']  = new Timber\Menu();
 		$context['site']  = $this;
-		$context['options'] = get_fields('options');
+
 		return $context;
 	}
 
