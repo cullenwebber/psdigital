@@ -105,6 +105,8 @@ class StartDigital extends Timber\Site
     {
         wp_enqueue_style('startdigital', get_stylesheet_directory_uri() . '/static/style.css', false, filemtime(get_stylesheet_directory() . '/static/style.css'));
         wp_enqueue_script('startdigital', get_stylesheet_directory_uri() . '/static/site.js', false, filemtime(get_stylesheet_directory() . '/static/site.js') );
+
+        wp_enqueue_style('adobe-fonts', 'https://use.typekit.net/fpi4nol.css');
     }
 
 	/** This is where you add some context
@@ -114,8 +116,8 @@ class StartDigital extends Timber\Site
 	public function add_to_context($context)
 	{
 		if (function_exists('get_fields')) {
-        	    $context['options'] = get_fields('options');
-	        }
+            $context['options'] = get_fields('options');
+        }
 		$context['menu']  = new Timber\Menu();
 		$context['site']  = $this;
 

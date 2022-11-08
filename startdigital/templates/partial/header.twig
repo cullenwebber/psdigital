@@ -1,15 +1,17 @@
-{% block header %}
-	<header class="container absolute top-0 left-0 right-0 p-6 rounded-b-lg shadow-lg z-20 bg-white w-full flex items-center justify-between lg:py-0 lg:px-12">
-		<a href="{{site.url}}" rel="home">
-			{% if options.logo.url != blank %}
-				<img class="w-32" src="{{ options.logo.url }}" alt="{{ options.logo.alt }}">
-			{% else %}
-				<span class="text-xl font-display">{{ site.name }}</span>
-			{% endif %}
-		</a>
-		<nav id="nav-main" class="nav-main" role="navigation">
-			{% include "menu.twig" with {'items': menu.get_items} %}
+{% set is_front_page = fn('is_front_page') %}
+
+{% if is_front_page %}
+	{% include 'partial/scrolling-text.twig' %}
+{% endif %}
+<header class="transition-all duration-300 sticky top-0 bg-white z-10">
+	<div data-navigation
+		class="container z-20 w-full flex max-sm:items-center justify-between transition-all duration-300">
+		<a href="{{ site.url }}" rel="home" class="py-4">{% include 'icons/logo.twig' %}</a>
+		<nav id="nav-main" class="pt-4" role="navigation">
+			{% include 'menu.twig' with {
+				items: menu.get_items
+			} %}
 		</nav>
 		<!-- #nav -->
-	</header>
-{% endblock %}
+	</div>
+</header>

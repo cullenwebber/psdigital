@@ -8,9 +8,10 @@
 		"build:css-editor": "postcss ./css/editor.css -o ./static/editor.css",
 		"watch:css-app": "postcss ./css/main.css -o ./static/style.css --watch",
 		"watch:css-editor": "postcss ./css/editor.css -o ./static/editor.css --watch",
-		"browser-sync": "cross-env NODE_ENV=development browser-sync start --proxy \"wp-boilerplate.test\" --host=\"wp-boilerplate.test\" --no-inject-changes --files=\"./\""
+		"browser-sync": "cross-env NODE_ENV=development browser-sync start --proxy \"h2ex.test\" --host=\"h2ex.test\" --no-inject-changes --files=\"./\""
 	},
 	"dependencies": {
+		"autoprefixer": "^10.4.13",
 		"browser-sync": "^2.27.7",
 		"concurrently": "^7.0.0",
 		"cross-env": "^7.0.3",

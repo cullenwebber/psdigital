@@ -1,0 +1,41 @@
+html,
+body {
+	@apply font-body;
+}
+
+body {
+	@apply leading-relaxed xl:text-lg 2xl:text-2xl 2xl:leading-normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	@apply font-display;
+}
+
+h1,
+.is-h1 {
+	@apply uppercase font-medium text-5xl leading-tight xl:text-8xl 2xl:text-9xl xl:leading-none;
+}
+
+h2,
+.is-h2 {
+	@apply text-3xl md:text-4xl xl:text-5xl xl:leading-none;
+}
+
+h3,
+.is-h3 {
+	@apply leading-tight text-2xl md:text-3xl xl:text-4xl xl:leading-tight 2xl:text-6xl;
+}
+
+h4,
+.is-h4,
+h5,
+.is-h5,
+h6,
+.is-h6 {
+	@apply leading-tight text-xl md:text-2xl xl:text-3xl 2xl:text-4xl;
+}

@@ -1,0 +1,28 @@
+{% extends 'base.twig' %}
+
+{% block content %}
+	<div class="relative pb-12">
+		{% include 'icons/pattern.twig' with {
+			class: 'absolute left-0 top-0 rotate-45 -translate-x-1/2'
+		} %}
+
+		<section class="text-amber container h-full flex flex-col gap-6 xl:flex-row xl:gap-0">
+			<div data-animate class="flex flex-col gap-6 xl:mt-48 xl:gap-12">
+				<h1 class="xl:translate-x-64">
+					Reimagining<br />energy
+				</h1>
+				<p class="text-xl xl:text-3xl xl:pl-16 xl:ml-16 xl:max-w-3xl">
+					H2EX is a world leader in exploring for naturally occurring hydrogen, manufactured by Mother Nature.
+				</p>
+			</div>
+			<div class="relative -z-10 flex flex-col gap-4">
+				<img class="max-sm:w-2/3 max-sm:mx-auto"
+					src="http://h2ex.test/wp-content/uploads/2022/11/h2ex-homepage-hero.png"
+					alt="" />
+				{% include 'icons/small-dots.twig' with {
+					class: 'xl:w-[125%] xl:-translate-x-[20%]'
+				} %}
+			</div>
+		</section>
+	</div>
+{% endblock %}
