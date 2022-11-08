@@ -61,6 +61,9 @@
 .right-0 {
     right: 0px
 }
+.top-\[84px\] {
+    top: 84px
+}
 .-z-10 {
     z-index: -10
 }
@@ -195,6 +198,10 @@
     --tw-bg-opacity: 1;
     background-color: rgb(247 254 231 / var(--tw-bg-opacity))
 }
+.bg-red-200 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(254 202 202 / var(--tw-bg-opacity))
+}
 .p-6 {
     padding: 1.5rem
 }
@@ -229,6 +236,9 @@
 .pr-2 {
     padding-right: 0.5rem
 }
+.pb-6 {
+    padding-bottom: 1.5rem
+}
 .pt-4 {
     padding-top: 1rem
 }
@@ -254,6 +264,11 @@
 .text-gray-600 {
     --tw-text-opacity: 1;
     color: rgb(75 85 99 / var(--tw-text-opacity))
+}
+.shadow-sm {
+    --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
 }
 .transition-all {
     transition-property: all;
@@ -336,6 +351,18 @@ body {
     .xl\:w-\[125\%\] {
         width: 125%
     }
+    .xl\:w-64 {
+        width: 16rem
+    }
+    .xl\:w-48 {
+        width: 12rem
+    }
+    .xl\:w-32 {
+        width: 8rem
+    }
+    .xl\:w-40 {
+        width: 10rem
+    }
     .xl\:w-36 {
         width: 9rem
     }
@@ -373,6 +400,14 @@ body {
         padding-top: 6rem;
         padding-bottom: 6rem
     }
+    .xl\:py-10 {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem
+    }
+    .xl\:py-4 {
+        padding-top: 1rem;
+        padding-bottom: 1rem
+    }
     .xl\:pt-2 {
         padding-top: 0.5rem
     }
@@ -385,6 +420,9 @@ body {
     }
 }
 @media (min-width: 1640px) {
+    .\32xl\:w-80 {
+        width: 20rem
+    }
     .\32xl\:w-64 {
         width: 16rem
     }

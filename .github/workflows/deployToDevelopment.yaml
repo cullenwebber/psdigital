@@ -6,9 +6,9 @@ name: Publish Website
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [develop]
+    # branches: [develop]
   pull_request:
-    branches: [develop]
+    # branches: [develop]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -28,13 +28,13 @@ jobs:
 
       - name: 🔨 Build Project
         run: |
-          cd themes/startdigital
+          cd startdigital
           npm install
           npm run build
           composer install
 
       - name: 📂 Sync files
-        uses: SamKirkland/FTP-Deploy-Action@4.2.0
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
           server: ${{ secrets.DEV_FTP_HOST }}
           username: ${{ secrets.DEV_FTP_USER }}
