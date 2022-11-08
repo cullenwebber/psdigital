@@ -6343,7 +6343,8 @@
           trigger: element,
           start: "top bottom-=5%"
         },
-        y: -16
+        y: -16,
+        opacity: 0
       };
       gsapWithCSS.from(element, settings);
     });

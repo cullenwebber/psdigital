@@ -1,6 +1,6 @@
 html,
 body {
-	@apply font-body;
+	@apply font-body text-dark-brown;
 }
 
 body {
@@ -23,7 +23,7 @@ h1,
 
 h2,
 .is-h2 {
-	@apply text-3xl md:text-4xl xl:text-5xl xl:leading-none;
+	@apply text-3xl md:text-4xl xl:text-5xl xl:leading-none 2xl:text-6xl 2xl:leading-tight;
 }
 
 h3,

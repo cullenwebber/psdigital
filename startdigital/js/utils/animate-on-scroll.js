@@ -16,6 +16,7 @@ export default function initAnimateOnScroll() {
 				start: 'top bottom-=5%',
 			},
 			y: -16,
+			opacity: 0,
 		}
 
 		// Animation time
