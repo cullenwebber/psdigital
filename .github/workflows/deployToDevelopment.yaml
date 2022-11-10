@@ -6,9 +6,9 @@ name: Publish Website
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    # branches: [develop]
+    branches: [develop]
   pull_request:
-    # branches: [develop]
+    branches: [develop]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -39,4 +39,4 @@ jobs:
           server: ${{ secrets.DEV_FTP_HOST }}
           username: ${{ secrets.DEV_FTP_USER }}
           password: ${{ secrets.DEV_FTP_PASS }}
-          # server-dir: techvisa/wp-content/themes - swap out 'techvisa' for the site name on the server
+          server-dir: h2ex/wp-content/themes
