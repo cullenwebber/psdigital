@@ -13,6 +13,10 @@
 	@apply translate-x-0;
 }
 
-.menu-button > a {
-	@apply text-white bg-amber inline-block px-4 py-2 rounded-md transition-colors duration-150 hover:bg-mocha;
+[data-block] {
+	@apply relative py-12 lg:py-24 2xl:py-36;
+}
+
+[data-block]:first-of-type {
+	@apply pt-0 lg:pt-0 xl:pt-0 2xl:pt-0;
 }

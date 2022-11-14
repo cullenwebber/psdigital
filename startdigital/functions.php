@@ -21,14 +21,6 @@ if (file_exists($composer_autoload)) {
 }
 
 /**
- * Register all our ACF files
- */
-$acf_dir = __DIR__ . '/acf/*';
-foreach(glob($acf_dir) as $acf_file) {
-	require_once($acf_file);
-}
-
-/**
  * Setup our custom options page
  */
 if( function_exists('acf_add_options_page') ) {
@@ -106,7 +98,7 @@ class StartDigital extends Timber\Site
         wp_enqueue_style('startdigital', get_stylesheet_directory_uri() . '/static/style.css', false, filemtime(get_stylesheet_directory() . '/static/style.css'));
         wp_enqueue_script('startdigital', get_stylesheet_directory_uri() . '/static/site.js', false, filemtime(get_stylesheet_directory() . '/static/site.js') );
 
-        wp_enqueue_style('adobe-fonts', 'https://use.typekit.net/fpi4nol.css');
+        // wp_enqueue_style('adobe-fonts', 'https://use.typekit.net/PASTE_PROJECT_ID_HERE.css');
     }
 
 	/** This is where you add some context
@@ -118,7 +110,12 @@ class StartDigital extends Timber\Site
 		if (function_exists('get_fields')) {
             $context['options'] = get_fields('options');
         }
+        // Default menu
 		$context['menu']  = new Timber\Menu();
+
+        // Other menu's - pass the slug to the Menu(). Eg.
+        // $context['footer_menu'] = new Timber\Menu('footer_menu');
+
 		$context['site']  = $this;
 
 		return $context;

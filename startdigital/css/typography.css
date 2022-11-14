@@ -1,6 +1,8 @@
+/* Default typography, change this to match the design */
+
 html,
 body {
-	@apply font-body text-dark-brown;
+	@apply font-body;
 }
 
 body {
