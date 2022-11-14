@@ -1,0 +1,4 @@
+<picture {{ attributes }} class="{{ class }}">
+    <source loading="{{ dont_lazy_load ?? "lazy" }}" width="100%" class="{{ class }}" srcset="{{ image | towebp }}" />
+    <img loading="{{ dont_lazy_load ?? "lazy" }}" width="100%" class="{{ class }}" src="{{ image }}" alt="{{ alt ?? "" }}">
+</picture>
