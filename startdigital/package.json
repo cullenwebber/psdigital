@@ -1,6 +1,6 @@
 {
 	"scripts": {
-		"build": "npm run build:css-app && npm run build:css-editor && npm run build:js",
+		"build": "cross-env NODE_ENV=production concurrently \"npm run build:css-app\" \"npm run build:css-editor\" \"npm run build:js\"",
 		"dev": "cross-env NODE_ENV=development concurrently \"npm run watch:css-app\" \"npm run watch:css-editor\" \"npm run watch:js\" \"npm run browser-sync\"",
 		"watch:js": "esbuild js/index.js --bundle --watch --outfile=static/site.js",
 		"build:js": "esbuild js/index.js --bundle --minify --outfile=static/site.js",
@@ -8,7 +8,7 @@
 		"build:css-editor": "postcss ./css/editor.css -o ./static/editor.css",
 		"watch:css-app": "postcss ./css/main.css -o ./static/style.css --watch",
 		"watch:css-editor": "postcss ./css/editor.css -o ./static/editor.css --watch",
-		"browser-sync": "cross-env NODE_ENV=development browser-sync start --proxy \"h2ex.test\" --host=\"h2ex.test\" --no-inject-changes --files=\"./\""
+		"browser-sync": "cross-env NODE_ENV=development browser-sync start --proxy \"wp-boilerplate.test\" --host=\"wp-boilerplate.test\" --no-inject-changes --files=\"./\""
 	},
 	"dependencies": {
 		"autoprefixer": "^10.4.13",
@@ -23,6 +23,8 @@
 		"postcss-nested": "^6.0.0"
 	},
 	"devDependencies": {
+		"@tailwindcss/typography": "^0.5.8",
+		"cssnano": "^5.1.14",
 		"esbuild-serve": "^1.0.1",
 		"prettier": "^2.5.1",
 		"prettier-plugin-twig-melody": "^0.4.6",
