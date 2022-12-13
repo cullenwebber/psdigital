@@ -23,8 +23,8 @@ module.exports = {
 				// white: '#FFFFFF',
 			},
 			fontFamily: {
-				// display: ['Inter', 'sans-serif'],
-				// body: ['Inter', 'sans-serif'],
+				display: ['Inter', 'sans-serif'],
+				body: ['Inter', 'sans-serif'],
 			},
 			screens: {
 				sm: '640px',

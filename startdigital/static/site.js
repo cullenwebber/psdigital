@@ -1,15 +1,4 @@
 (() => {
-  // js/utils/debounce.js
-  function debounce(callback, wait) {
-    let timeoutId = null;
-    return (...args) => {
-      window.clearTimeout(timeoutId);
-      timeoutId = window.setTimeout(() => {
-        callback.apply(null, args);
-      }, wait);
-    };
-  }
-
   // node_modules/gsap/gsap-core.js
   function _assertThisInitialized(self) {
     if (self === void 0) {
@@ -6422,7 +6411,6 @@
   document.addEventListener("DOMContentLoaded", () => {
     toggleMenu();
     toggleMobileSubMenu();
-    shrinkLogoOnScroll();
     initAnimateOnScroll();
     if (document.querySelector(".scrolling-text")) {
       scrollingText();
@@ -6450,32 +6438,12 @@
       });
     });
   };
-  function shrinkLogoOnScroll() {
-    const logo = document.querySelector("[data-logo]");
-    const scrollingText2 = document.querySelector("header [data-scrolling-text]");
-    const header = document.querySelector("header");
-    window.addEventListener(
-      "scroll",
-      debounce(() => {
-        if (scrollingText2 && window.scrollY < scrollingText2?.scrollHeight) {
-          logo.style.transform = "scale(1.5)";
-          header.classList.remove("shadow-sm");
-        } else if (!scrollingText2 && window.scrollY < 50) {
-          logo.style.transform = "scale(1.5)";
-          header.classList.remove("shadow-sm");
-        } else {
-          logo.style.transform = "scale(1)";
-          header.classList.add("shadow-sm");
-        }
-      }),
-      50
-    );
-  }
   function scrollingText() {
     const textElements = gsapWithCSS.utils.toArray(".scrolling-text");
     const loop = horizontalLoop(textElements, {
       repeat: -1,
-      duration: 10
+      duration: 10,
+      speed: 0.5
     });
     loop.play();
   }
