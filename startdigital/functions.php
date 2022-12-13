@@ -20,6 +20,8 @@ if (file_exists($composer_autoload)) {
 	$timber = new Timber\Timber();
 }
 
+include 'php/tiny-mce-extend.php';
+
 /**
  * Setup our custom options page
  */
