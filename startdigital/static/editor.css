@@ -94,6 +94,9 @@
 .mt-6 {
     margin-top: 1.5rem
 }
+.mb-12 {
+    margin-bottom: 3rem
+}
 .block {
     display: block
 }
@@ -156,6 +159,9 @@
 }
 .resize {
     resize: both
+}
+.grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr))
 }
 .flex-col {
     flex-direction: column

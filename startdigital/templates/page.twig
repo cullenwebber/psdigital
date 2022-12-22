@@ -1,7 +1,13 @@
 {% extends 'base.twig' %}
 
 {% block content %}
+
+
 	<div class="grid gap-12">
+		<div class="flex items-center gap-4 mb-12">
+			<button data-category="test">Test</button>
+			<button data-category="business-category">Business Category</button>
+		</div>
 		{% include "ajax/container.twig" %}
 		{% include "ajax/container.twig" with { container: 'data-page-container' } %}
 	</div>

@@ -15,13 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			post_type: 'post',
 			post_status: 'publish',
 			posts_per_page: 5,
-			tax_query: {
-				0: {
-					taxonomy: 'category',
-					field: 'slug',
-					terms: 'test',
-				},
-			},
 		},
 	})
 
@@ -32,6 +25,21 @@ document.addEventListener('DOMContentLoaded', () => {
 			post_status: 'publish',
 			posts_per_page: 5,
 		},
+	})
+
+	document.querySelectorAll('[data-category]').forEach((button) => {
+		const category = button.getAttribute('data-category')
+		button.addEventListener('click', () => {
+			posts.update({
+				tax_query: {
+					0: {
+						taxonomy: 'category',
+						field: 'slug',
+						terms: category,
+					},
+				},
+			})
+		})
 	})
 
 	if (document.querySelector('.scrolling-text')) {

@@ -46,7 +46,7 @@ export default class AjaxContent {
 
 				// // Add the new posts to the container
 				// const container = document.querySelector('[data-products-container]')
-				this.container.innerHTML += data.content
+				this.container.innerHTML = data.content
 
 				// Either up the page number or hide the button if no more posts to show
 				// if (currentlyShowing < data.total) {
@@ -84,5 +84,22 @@ export default class AjaxContent {
 		isLoading
 			? this.loader.classList.remove('hidden')
 			: this.loader.classList.add('hidden')
+	}
+
+	/**
+	 * Allow us to update the object
+	 */
+	update(queryObject = {}) {
+		const oldQuery = JSON.parse(this.query)
+		const newQuery = Object.assign(oldQuery, queryObject)
+		this.updateQuery = newQuery
+	}
+
+	/**
+	 * Set the query
+	 */
+	set updateQuery(query) {
+		this.query = this.createQueryObject(query)
+		this.fetch()
 	}
 }
