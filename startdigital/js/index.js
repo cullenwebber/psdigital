@@ -1,4 +1,4 @@
-import debounce from './utils/debounce'
+import AjaxContent from '../ajax/ajax'
 import animateOnScroll from './utils/animate-on-scroll'
 import horizontalLoop from './utils/horizontal-loop'
 import gsap from 'gsap'
@@ -7,6 +7,24 @@ document.addEventListener('DOMContentLoaded', () => {
 	toggleMenu()
 	toggleMobileSubMenu()
 	animateOnScroll()
+
+	const posts = new AjaxContent({
+		container: '[data-posts-container]',
+		query: {
+			post_type: 'post',
+			post_status: 'publish',
+			posts_per_page: 5,
+		},
+	})
+
+	const pages = new AjaxContent({
+		container: '[data-page-container]',
+		query: {
+			post_type: 'page',
+			post_status: 'publish',
+			posts_per_page: 5,
+		},
+	})
 
 	if (document.querySelector('.scrolling-text')) {
 		scrollingText()

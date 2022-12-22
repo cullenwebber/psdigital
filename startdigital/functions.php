@@ -21,6 +21,9 @@ if (file_exists($composer_autoload)) {
 }
 
 include 'php/tiny-mce-extend.php';
+if (file_exists(__DIR__ . '/ajax/ajax.php')) {
+    include 'ajax/ajax.php';
+}
 
 /**
  * Setup our custom options page

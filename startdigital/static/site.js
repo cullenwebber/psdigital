@@ -1,4 +1,38 @@
 (() => {
+  // ajax/ajax.js
+  var AjaxContent = class {
+    constructor({ container = "[data-posts-container]", query = {} } = {}) {
+      this.container = document.querySelector(container);
+      this.page = parseInt(this.container.getAttribute("data-page"));
+      this.query = this.createQueryObject(query);
+      this.fetch();
+    }
+    fetch() {
+      jQuery.ajax({
+        type: "get",
+        dataType: "json",
+        url: sd_ajax.ajax_url,
+        data: {
+          action: "sd_ajax_fetch",
+          page: this.page,
+          query: this.query
+        },
+        success: ({ success, data }) => {
+          if (!success) {
+            return "Failed";
+          }
+          this.container.innerHTML += data.content;
+        }
+      });
+    }
+    incrementPage() {
+      this.page += 1;
+    }
+    createQueryObject(query) {
+      return JSON.stringify(query);
+    }
+  };
+
   // node_modules/gsap/gsap-core.js
   function _assertThisInitialized(self) {
     if (self === void 0) {
@@ -4339,7 +4373,7 @@
     _proto.init = function init4(vars) {
       _coreInitted2 || _initCore3(gsap2) || console.warn("Please gsap.registerPlugin(Observer)");
       ScrollTrigger || _setScrollTrigger();
-      var tolerance = vars.tolerance, dragMinimum = vars.dragMinimum, type = vars.type, target = vars.target, lineHeight = vars.lineHeight, debounce2 = vars.debounce, preventDefault = vars.preventDefault, onStop = vars.onStop, onStopDelay = vars.onStopDelay, ignore = vars.ignore, wheelSpeed = vars.wheelSpeed, event = vars.event, onDragStart = vars.onDragStart, onDragEnd = vars.onDragEnd, onDrag = vars.onDrag, onPress = vars.onPress, onRelease = vars.onRelease, onRight = vars.onRight, onLeft = vars.onLeft, onUp = vars.onUp, onDown = vars.onDown, onChangeX = vars.onChangeX, onChangeY = vars.onChangeY, onChange = vars.onChange, onToggleX = vars.onToggleX, onToggleY = vars.onToggleY, onHover = vars.onHover, onHoverEnd = vars.onHoverEnd, onMove = vars.onMove, ignoreCheck = vars.ignoreCheck, isNormalizer = vars.isNormalizer, onGestureStart = vars.onGestureStart, onGestureEnd = vars.onGestureEnd, onWheel = vars.onWheel, onEnable = vars.onEnable, onDisable = vars.onDisable, onClick = vars.onClick, scrollSpeed = vars.scrollSpeed, capture = vars.capture, allowClicks = vars.allowClicks, lockAxis = vars.lockAxis, onLockAxis = vars.onLockAxis;
+      var tolerance = vars.tolerance, dragMinimum = vars.dragMinimum, type = vars.type, target = vars.target, lineHeight = vars.lineHeight, debounce = vars.debounce, preventDefault = vars.preventDefault, onStop = vars.onStop, onStopDelay = vars.onStopDelay, ignore = vars.ignore, wheelSpeed = vars.wheelSpeed, event = vars.event, onDragStart = vars.onDragStart, onDragEnd = vars.onDragEnd, onDrag = vars.onDrag, onPress = vars.onPress, onRelease = vars.onRelease, onRight = vars.onRight, onLeft = vars.onLeft, onUp = vars.onUp, onDown = vars.onDown, onChangeX = vars.onChangeX, onChangeY = vars.onChangeY, onChange = vars.onChange, onToggleX = vars.onToggleX, onToggleY = vars.onToggleY, onHover = vars.onHover, onHoverEnd = vars.onHoverEnd, onMove = vars.onMove, ignoreCheck = vars.ignoreCheck, isNormalizer = vars.isNormalizer, onGestureStart = vars.onGestureStart, onGestureEnd = vars.onGestureEnd, onWheel = vars.onWheel, onEnable = vars.onEnable, onDisable = vars.onDisable, onClick = vars.onClick, scrollSpeed = vars.scrollSpeed, capture = vars.capture, allowClicks = vars.allowClicks, lockAxis = vars.lockAxis, onLockAxis = vars.onLockAxis;
       this.target = target = _getTarget(target) || _docEl;
       this.vars = vars;
       ignore && (ignore = gsap2.utils.toArray(ignore));
@@ -4348,7 +4382,7 @@
       wheelSpeed = wheelSpeed || 1;
       scrollSpeed = scrollSpeed || 1;
       type = type || "wheel,touch,pointer";
-      debounce2 = debounce2 !== false;
+      debounce = debounce !== false;
       lineHeight || (lineHeight = parseFloat(_win3.getComputedStyle(_body).lineHeight) || 22);
       var id, onStopDelayedCall, dragged, moved, wheeled, locked, axis, self = this, prevDeltaX = 0, prevDeltaY = 0, scrollFuncX = _getScrollFunc(target, _horizontal), scrollFuncY = _getScrollFunc(target, _vertical), scrollX = scrollFuncX(), scrollY = scrollFuncY(), limitToTouch = ~type.indexOf("touch") && !~type.indexOf("pointer") && _eventTypes[0] === "pointerdown", isViewport = _isViewport(target), ownerDoc = target.ownerDocument || _doc3, deltaX = [0, 0, 0], deltaY = [0, 0, 0], onClickTime = 0, clickCapture = function clickCapture2() {
         return onClickTime = _getTime();
@@ -4397,7 +4431,7 @@
         deltaY[index] += y;
         self._vx.update(x);
         self._vy.update(y);
-        debounce2 ? id || (id = requestAnimationFrame(update)) : update();
+        debounce ? id || (id = requestAnimationFrame(update)) : update();
       }, onTouchOrPointerDelta = function onTouchOrPointerDelta2(x, y) {
         if (lockAxis && !axis) {
           self.axis = axis = Math.abs(x) > Math.abs(y) ? "x" : "y";
@@ -4411,7 +4445,7 @@
           deltaY[2] += y;
           self._vy.update(y, true);
         }
-        debounce2 ? id || (id = requestAnimationFrame(update)) : update();
+        debounce ? id || (id = requestAnimationFrame(update)) : update();
       }, _onDrag = function _onDrag2(e) {
         if (_ignoreCheck(e, 1)) {
           return;
@@ -6412,6 +6446,22 @@
     toggleMenu();
     toggleMobileSubMenu();
     initAnimateOnScroll();
+    const posts = new AjaxContent({
+      container: "[data-posts-container]",
+      query: {
+        post_type: "post",
+        post_status: "publish",
+        posts_per_page: 5
+      }
+    });
+    const pages = new AjaxContent({
+      container: "[data-page-container]",
+      query: {
+        post_type: "page",
+        post_status: "publish",
+        posts_per_page: 5
+      }
+    });
     if (document.querySelector(".scrolling-text")) {
       scrollingText();
     }

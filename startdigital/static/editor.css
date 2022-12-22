@@ -169,6 +169,9 @@
 .gap-1 {
     gap: 0.25rem
 }
+.gap-12 {
+    gap: 3rem
+}
 .space-y-1 > :not([hidden]) ~ :not([hidden]) {
     --tw-space-y-reverse: 0;
     margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
@@ -271,6 +274,10 @@
 .text-black {
     --tw-text-opacity: 1;
     color: rgb(0 0 0 / var(--tw-text-opacity))
+}
+.text-red-600 {
+    --tw-text-opacity: 1;
+    color: rgb(220 38 38 / var(--tw-text-opacity))
 }
 .no-underline {
     text-decoration-line: none

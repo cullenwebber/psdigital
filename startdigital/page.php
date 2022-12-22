@@ -25,7 +25,9 @@ $context = Timber::context();
 
 $timber_post     = new Timber\Post();
 $context['post'] = $timber_post;
-$context['fields'] = get_fields();
+if (function_exists('get_fields')) {
+    $context['fields'] = get_fields();
+}
 $templates = array( 'page-' . $timber_post->post_name . '.twig', 'page.twig' );
 
 if (is_front_page()) {
