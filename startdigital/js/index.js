@@ -10,10 +10,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	const posts = new AjaxContent({
 		container: '[data-posts-container]',
+		item_template: 'ajax/post.twig',
 		query: {
 			post_type: 'post',
 			post_status: 'publish',
 			posts_per_page: 5,
+			tax_query: {
+				0: {
+					taxonomy: 'category',
+					field: 'slug',
+					terms: 'test',
+				},
+			},
 		},
 	})
 

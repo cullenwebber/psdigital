@@ -27,7 +27,7 @@ function sd_ajax_fetch() {
     $context = Timber::context();
     $page = $_GET['page'];
     $args = json_decode(str_replace("\\", "", $_GET['query']), true);
-    $context['item_template'] = 'ajax/item.twig';
+    $context['item_template'] = $_GET['item_template'];
 
     // $args to be dynamically generated from JS call
     $data = Timber::get_posts($args);

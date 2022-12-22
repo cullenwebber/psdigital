@@ -1,11 +1,23 @@
 (() => {
   // ajax/ajax.js
   var AjaxContent = class {
-    constructor({ container = "[data-posts-container]", query = {} } = {}) {
+    constructor({
+      container = "[data-posts-container]",
+      query = {},
+      item_template = "ajax/item.twig"
+    } = {}) {
+      if (!document.querySelector(container)) {
+        return;
+      }
       this.container = document.querySelector(container);
       this.page = parseInt(this.container.getAttribute("data-page"));
       this.query = this.createQueryObject(query);
-      this.fetch();
+      this.item_template = item_template;
+      this.loader = this.container.parentElement.querySelector("[data-loader]");
+      this.setLoading(true);
+      setTimeout(() => {
+        this.fetch();
+      }, 1e3);
     }
     fetch() {
       jQuery.ajax({
@@ -15,9 +27,11 @@
         data: {
           action: "sd_ajax_fetch",
           page: this.page,
-          query: this.query
+          query: this.query,
+          item_template: this.item_template
         },
         success: ({ success, data }) => {
+          this.setLoading(false);
           if (!success) {
             return "Failed";
           }
@@ -30,6 +44,12 @@
     }
     createQueryObject(query) {
       return JSON.stringify(query);
+    }
+    setLoading(isLoading) {
+      if (!this.loader) {
+        return;
+      }
+      isLoading ? this.loader.classList.remove("hidden") : this.loader.classList.add("hidden");
     }
   };
 
@@ -6448,10 +6468,18 @@
     initAnimateOnScroll();
     const posts = new AjaxContent({
       container: "[data-posts-container]",
+      item_template: "ajax/post.twig",
       query: {
         post_type: "post",
         post_status: "publish",
-        posts_per_page: 5
+        posts_per_page: 5,
+        tax_query: {
+          0: {
+            taxonomy: "category",
+            field: "slug",
+            terms: "test"
+          }
+        }
       }
     });
     const pages = new AjaxContent({

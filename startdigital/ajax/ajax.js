@@ -1,10 +1,26 @@
 export default class AjaxContent {
-	constructor({ container = '[data-posts-container]', query = {} } = {}) {
+	constructor({
+		container = '[data-posts-container]',
+		query = {},
+		item_template = 'ajax/item.twig',
+	} = {}) {
+		if (!document.querySelector(container)) {
+			return
+		}
+
+		// Setters
 		this.container = document.querySelector(container)
 		this.page = parseInt(this.container.getAttribute('data-page'))
 		this.query = this.createQueryObject(query)
+		this.item_template = item_template
+		this.loader = this.container.parentElement.querySelector('[data-loader]')
 
-		this.fetch()
+		this.setLoading(true)
+
+		// Emulate slow fetch
+		setTimeout(() => {
+			this.fetch()
+		}, 1000)
 	}
 
 	/**
@@ -19,8 +35,11 @@ export default class AjaxContent {
 				action: 'sd_ajax_fetch',
 				page: this.page,
 				query: this.query,
+				item_template: this.item_template,
 			},
 			success: ({ success, data }) => {
+				this.setLoading(false)
+
 				if (!success) {
 					return 'Failed'
 				}
@@ -52,5 +71,18 @@ export default class AjaxContent {
 	 */
 	createQueryObject(query) {
 		return JSON.stringify(query)
+	}
+
+	/**
+	 * Sets the loader state
+	 */
+	setLoading(isLoading) {
+		if (!this.loader) {
+			return
+		}
+
+		isLoading
+			? this.loader.classList.remove('hidden')
+			: this.loader.classList.add('hidden')
 	}
 }
