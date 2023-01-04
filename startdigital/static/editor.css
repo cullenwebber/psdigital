@@ -55,12 +55,6 @@
 .sticky {
     position: sticky
 }
-.inset-0 {
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px
-}
 .top-0 {
     top: 0px
 }
@@ -159,9 +153,6 @@
 }
 .resize {
     resize: both
-}
-.grid-cols-3 {
-    grid-template-columns: repeat(3, minmax(0, 1fr))
 }
 .flex-col {
     flex-direction: column
@@ -283,10 +274,6 @@
     --tw-text-opacity: 1;
     color: rgb(75 85 99 / var(--tw-text-opacity))
 }
-.text-black {
-    --tw-text-opacity: 1;
-    color: rgb(0 0 0 / var(--tw-text-opacity))
-}
 .text-red-600 {
     --tw-text-opacity: 1;
     color: rgb(220 38 38 / var(--tw-text-opacity))
@@ -294,6 +281,10 @@
 .text-blue-500 {
     --tw-text-opacity: 1;
     color: rgb(59 130 246 / var(--tw-text-opacity))
+}
+.text-black {
+    --tw-text-opacity: 1;
+    color: rgb(0 0 0 / var(--tw-text-opacity))
 }
 .no-underline {
     text-decoration-line: none

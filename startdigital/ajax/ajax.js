@@ -27,6 +27,8 @@ export default class AjaxContent {
 	 * Fetch the data using the provided query
 	 */
 	fetch() {
+		this.setLoading(true)
+
 		jQuery.ajax({
 			type: 'get',
 			dataType: 'json',

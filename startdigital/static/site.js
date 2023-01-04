@@ -20,6 +20,7 @@
       }, 1e3);
     }
     fetch() {
+      this.setLoading(true);
       jQuery.ajax({
         type: "get",
         dataType: "json",
