@@ -48,6 +48,10 @@ h6,
 }
 
 /* List styles inside WYSIWYG editors */
+.block-content {
+	@apply flex flex-col gap-4 md:gap-6;
+}
+
 .block-content :is(ol, ul) {
 	@apply ml-4;
 }
