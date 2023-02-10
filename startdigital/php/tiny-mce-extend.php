@@ -25,6 +25,13 @@ function sd_allow_custom_classes_to_be_applied_to_headings($init_array) {
         );
     }
 
+    // Also add one for buttons
+    $style_formats[] = array(
+        'title' => "Looks like a button",
+        'selector' => 'a',
+        'classes' => "is-button"
+    );
+
     // Insert the array, JSON ENCODED, into 'style_formats'
     $init_array['style_formats'] = json_encode( $style_formats );
 
