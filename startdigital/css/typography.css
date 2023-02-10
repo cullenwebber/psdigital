@@ -46,3 +46,16 @@ h6,
 .is-button {
 	@apply text-base border border-amber rounded-full py-2 px-6 text-amber flex items-center gap-4;
 }
+
+/* List styles inside WYSIWYG editors */
+.block-content :is(ol, ul) {
+	@apply ml-4;
+}
+
+.block-content ul li {
+	@apply list-disc;
+}
+
+.block-content ol li {
+	@apply list-decimal;
+}
