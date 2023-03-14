@@ -2,8 +2,14 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-/* Add your imports heres */
+
 @import './typography.css';
+@import './forms.css';
+
+
+.container {
+	@apply w-full max-w-[1366px] mx-auto px-6;
+}
 
 [data-menu] {
 	@apply translate-x-full;

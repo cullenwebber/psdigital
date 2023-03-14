@@ -1,26 +1,21 @@
 module.exports = {
 	content: ['./*/*.php', './*.php', './templates/**/*.twig'],
 	theme: {
-		container: {
-			center: true,
-			padding: {
-				DEFAULT: '1.5rem',
-				sm: '2rem',
-				md: '2rem',
-				lg: '4rem',
-				xl: '2rem',
-				'2xl': '0rem',
-			},
-		},
 		extend: {
 			aspectRatio: {
-				// '16/9': '16/9',
-				// '3/2': '3/2',
-				// '4/3': '4/3',
-				// '3/4': '3/4',
+				'16/9': '16/9',
+				'3/2': '3/2',
+				'4/3': '4/3',
+				'3/4': '3/4',
+				'5/7': '5/7',
+				'1/1': '1/1',
 			},
 			colors: {
-				// white: '#FFFFFF',
+				white: '#FFFFFF',
+				black: '#000000',
+				// brand: 
+				// brandLight: 
+				// brandDark:
 			},
 			fontFamily: {
 				display: ['Inter', 'sans-serif'],
