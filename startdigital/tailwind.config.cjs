@@ -13,8 +13,8 @@ module.exports = {
 			colors: {
 				white: '#FFFFFF',
 				black: '#000000',
-				// brand: 
-				// brandLight: 
+				// brand:
+				// brandLight:
 				// brandDark:
 			},
 			fontFamily: {
@@ -30,5 +30,8 @@ module.exports = {
 			},
 		},
 	},
-	plugins: [require('@tailwindcss/typography')],
+	plugins: [
+		require('@tailwindcss/typography'),
+		require('@tailwindcss/line-clamp'),
+	],
 }
