@@ -11,6 +11,7 @@
 		"browser-sync": "cross-env NODE_ENV=development browser-sync start --proxy \"wp-boilerplate.test\" --host=\"wp-boilerplate.test\" --no-inject-changes --files=\"./\""
 	},
 	"dependencies": {
+		"@tailwindcss/line-clamp": "^0.4.2",
 		"autoprefixer": "^10.4.13",
 		"browser-sync": "^2.27.7",
 		"concurrently": "^7.0.0",

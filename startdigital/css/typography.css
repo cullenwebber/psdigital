@@ -44,7 +44,7 @@ h6,
 
 .button,
 .is-button {
-	@apply text-base border border-amber rounded-full py-2 px-6 text-amber flex items-center gap-4;
+	@apply text-base border rounded-full py-2 px-6 flex items-center gap-4;
 }
 
 /* List styles inside WYSIWYG editors */

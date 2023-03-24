@@ -2,21 +2,10 @@
 
 {% block content %}
 
-
-	<div class="grid gap-12">
-		<div class="flex items-center gap-4 mb-12">
-			<button data-category="test">Test</button>
-			<button data-category="business-category">Business Category</button>
-		</div>
-		{% include "ajax/container.twig" %}
-		{% include "ajax/container.twig" with { container: 'data-page-container' } %}
-	</div>
-
 	{# Page Builder #}
 	{# Loop through the blocks and load their associated file #}
-	{% for block in page_builder %}
-		<div data-block="{{ block.acf_fc_layout }}">
-			{{ include("blocks/" ~ block.acf_fc_layout ~ ".twig", ignore_missing = true) }}
+		{% for block in page_builder %}
+			<div data-block="{{ block.acf_fc_layout }}"> {{ include("blocks/" ~ block.acf_fc_layout ~ ".twig", ignore_missing = true) }}
 		</div>
 	{% endfor %}
 {% endblock %}
