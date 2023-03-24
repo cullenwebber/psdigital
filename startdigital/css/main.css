@@ -5,6 +5,13 @@
 /* Add your imports heres */
 @import './typography.css';
 
+@layer components {
+	.container {
+		@apply mx-auto;
+		width: min(calc(100% - 4rem), 1440px);
+	}
+}
+
 [data-menu] {
 	@apply translate-x-full;
 }

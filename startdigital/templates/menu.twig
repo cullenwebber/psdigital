@@ -2,10 +2,8 @@
 	{# Desktop #}
 	<ul class="relative z-10 items-center hidden lg:flex">
 		{% for item in items %}
-			<li class="{{ item.classes|join(' ') }} text-amber relative flex items-center gap-1 group p-6">
-				<a target="{{ item.target }}"
-					href="{{ item.link }}"
-					class="border-b-2 border-transparent transition-all duration-200 ease group-hover:border-daisy-yellow">
+			<li class="{{ item.classes|join(' ') }} relative flex items-center gap-1 group p-6">
+				<a target="{{ item.target }}" href="{{ item.link }}" class="border-b-2 border-transparent transition-all duration-200 ease">
 					{{ item.title }}
 				</a>
 				{% if item.children %}
@@ -24,8 +22,7 @@
 	</ul>
 	{# Mobile #}
 	<button data-toggle-menu class="lg:hidden">{{ include('templates/icons/hamburger.twig') }}</button>
-	<ul data-menu
-		class="bg-white flex flex-col gap-6 p-12 z-30 fixed top-0 right-0 w-full h-screen max-w-lg transform transition duration-300 ease lg:hidden">
+	<ul data-menu class="bg-white flex flex-col gap-6 p-12 z-30 fixed top-0 right-0 w-full h-screen max-w-lg transform transition duration-300 ease lg:hidden">
 		<button data-toggle-menu class="lg:hidden">{{ include('templates/icons/cross.twig') }}</button>
 		<div class="mt-5 flex-grow flex flex-col">
 			{% for item in items %}
@@ -41,8 +38,7 @@
 						<ul data-mobile-sub-menu class="space-y-1 hidden mt-6">
 							{% for item in item.children %}
 								<li>
-									<a href="{{ item.url }}"
-										class="group w-full flex items-center pl-6 pr-2 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50">
+									<a href="{{ item.url }}" class="group w-full flex items-center pl-6 pr-2 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50">
 										{{ item }}
 									</a>
 								</li>

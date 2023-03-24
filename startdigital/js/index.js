@@ -1,46 +1,11 @@
-import AjaxContent from '../ajax/ajax'
+// import AjaxContent from '../ajax/ajax'
 import animateOnScroll from './utils/animate-on-scroll'
-import horizontalLoop from './utils/horizontal-loop'
-import gsap from 'gsap'
 
 document.addEventListener('DOMContentLoaded', () => {
 	toggleMenu()
 	toggleMobileSubMenu()
 	animateOnScroll()
-
-	const posts = new AjaxContent({
-		container: '[data-posts-container]',
-		item_template: 'ajax/post.twig',
-		query: {
-			post_type: 'post',
-			post_status: 'publish',
-			posts_per_page: 5,
-		},
-	})
-
-	const pages = new AjaxContent({
-		container: '[data-page-container]',
-		query: {
-			post_type: 'page',
-			post_status: 'publish',
-			posts_per_page: 5,
-		},
-	})
-
-	document.querySelectorAll('[data-category]').forEach((button) => {
-		const category = button.getAttribute('data-category')
-		button.addEventListener('click', () => {
-			posts.update({
-				tax_query: {
-					0: {
-						taxonomy: 'category',
-						field: 'slug',
-						terms: category,
-					},
-				},
-			})
-		})
-	})
+	loadAjaxPosts()
 
 	if (document.querySelector('.scrolling-text')) {
 		scrollingText()
@@ -86,17 +51,35 @@ const toggleMobileSubMenu = () => {
 }
 
 /**
- * Make the scrolling tepxt component do its thing
+ * Load posts via ajax into a container
  */
-function scrollingText() {
-	const textElements = gsap.utils.toArray('.scrolling-text')
+function loadAjaxPosts() {
+	if (!document.querySelector('[data-posts-container]')) {
+		return
+	}
 
-	// Setup the tween
-	const loop = horizontalLoop(textElements, {
-		repeat: -1, // Makes sure the tween runs infinitely
-		duration: 10,
-		speed: 0.5,
+	const posts = new AjaxContent({
+		container: '[data-posts-container]',
+		item_template: 'ajax/post.twig',
+		query: {
+			post_type: 'post',
+			post_status: 'publish',
+			posts_per_page: 5,
+		},
 	})
 
-	loop.play()
+	document.querySelectorAll('[data-category]').forEach((button) => {
+		const category = button.getAttribute('data-category')
+		button.addEventListener('click', () => {
+			posts.update({
+				tax_query: {
+					0: {
+						taxonomy: 'category',
+						field: 'slug',
+						terms: category,
+					},
+				},
+			})
+		})
+	})
 }
