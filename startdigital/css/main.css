@@ -2,8 +2,14 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-/* Add your imports heres */
+
 @import './typography.css';
+@import './forms.css';
+
+
+.container {
+	@apply max-w-[1366px] 2xl:max-w-[1600px] w-full mx-auto px-6 md:px-10;
+}
 
 @layer components {
 	.container {

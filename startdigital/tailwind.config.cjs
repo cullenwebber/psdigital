@@ -3,13 +3,19 @@ module.exports = {
 	theme: {
 		extend: {
 			aspectRatio: {
-				// '16/9': '16/9',
-				// '3/2': '3/2',
-				// '4/3': '4/3',
-				// '3/4': '3/4',
+				'16/9': '16/9',
+				'3/2': '3/2',
+				'4/3': '4/3',
+				'3/4': '3/4',
+				'5/7': '5/7',
+				'1/1': '1/1',
 			},
 			colors: {
-				// white: '#FFFFFF',
+				white: '#FFFFFF',
+				black: '#000000',
+				// brand:
+				// brandLight:
+				// brandDark:
 			},
 			fontFamily: {
 				display: ['Inter', 'sans-serif'],
@@ -24,5 +30,8 @@ module.exports = {
 			},
 		},
 	},
-	plugins: [require('@tailwindcss/typography')],
+	plugins: [
+		require('@tailwindcss/typography'),
+		require('@tailwindcss/line-clamp'),
+	],
 }
