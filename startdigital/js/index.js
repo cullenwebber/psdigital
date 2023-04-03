@@ -1,5 +1,6 @@
 // import AjaxContent from '../ajax/ajax'
 import animateOnScroll from './utils/animate-on-scroll'
+import initAccordions from './components/initAccordions'
 
 document.addEventListener('DOMContentLoaded', () => {
 	toggleMenu()
@@ -10,6 +11,11 @@ document.addEventListener('DOMContentLoaded', () => {
 	if (document.querySelector('.scrolling-text')) {
 		scrollingText()
 	}
+
+	if (document.querySelector('.accordion')) {
+		initAccordions()
+	}
+	
 })
 
 /**
