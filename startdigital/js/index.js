@@ -15,6 +15,20 @@ document.addEventListener('DOMContentLoaded', () => {
 	if (document.querySelector('.accordion')) {
 		initAccordions()
 	}
+
+	// REMOVE DEFAULT ACTION AND LINK FROM PARENT NAVIGATION ITEMS
+
+	if (document.querySelector('.no-link')) {
+		const noLink = document.querySelectorAll('.no-link > a')
+
+		noLink.forEach((link) => {
+			link.removeAttribute('href')
+
+			link.addEventListener('click', (e) => {
+				e.preventDefault()
+			})
+		})
+	}
 	
 })
 
