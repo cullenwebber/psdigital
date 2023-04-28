@@ -1,4 +1,10 @@
-{% set image_id = fn('get_attachment_id', image) %}
+{# Use our custom function if possible, otherwise use the internal WP one #}
+{% if fn('function_exists', 'get_attachment_id') %}
+	{% set image_id = fn('get_attachment_id', image) %}
+{% else %}
+	{% set image_id = fn('attachment_url_to_postid', image) %}
+{% endif %}
+
 {% set image_size = "full" %}
 {% set lazy = lazy_load ?? true %}
 
