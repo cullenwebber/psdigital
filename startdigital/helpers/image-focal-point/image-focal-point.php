@@ -1,0 +1,101 @@
+<?php
+
+// Custom media field
+function custom_media_add_media_custom_field($form_fields, $post) {
+    $screen_sizes = array('desktop', 'mobile');
+
+    $html = "";
+    foreach ($screen_sizes as $size) {
+        $field_value = get_post_meta($post->ID, "bg_pos_{$size}", true);
+        $disabled = ($field_value && $field_value != '50% 50%') ? '' : 'style="display:none"';
+        $label = ($field_value && $field_value != '50% 50%') ? 'Change' : 'Set';
+        $size_text = ($field_value && $field_value != '50% 50%') ? "<b>{$size}</b>: {$field_value}" : "<b>{$size}</b>: Centered (default)";
+        $field_value = ($field_value) ? $field_value : '50% 50%';
+
+        $html .= "
+            <input type='hidden' value='{$field_value}' id='bg_pos_{$size}_id' name='attachments[{$post->ID}][bg_pos_{$size}]'>
+            <div class='focusp_label_holder'>
+                <div id='{$size}_value'>{$size_text}</div>
+                <input type='button' class='button button-small' value='{$label}' id='label_{$size}' onclick='setFocus(\"{$size}\")'>
+                <span class='close button button-small' id='reset_{$size}' {$disabled} onclick='resetFocus(\"{$size}\")'>Reset</span>
+            </div>
+        ";
+    }
+
+    $html .= "
+        <div class='overlay image_focus_point'>
+            <div class='img-container'>
+                <div class='header'>
+                    <div class='wrapper'>
+                        <h3>Click on the image to set the focus point</h3>
+                        <div class='controls'>
+                            <span class='button button-secondary' onclick='cancelFocus()'>Cancel</span>
+                            <span class='button button-primary' onclick='closeOverlay()'>Save</span>
+                        </div>
+                    </div>
+                </div>
+                <div class='container'>
+                    <div class='pin'></div>
+                    <img src='" . wp_get_attachment_url($post->ID) . "'>
+                </div>
+            </div>
+        </div>
+    ";
+
+    $form_fields['background_position'] = array(
+        'value' => '',
+        'label' => __('Focus Point'),
+        'helps' => __(''),
+        'input' => 'html',
+        'html' => $html
+    );
+
+    return $form_fields;
+}
+add_filter('attachment_fields_to_edit', 'custom_media_add_media_custom_field', null, 2);
+
+
+// Save custom media field
+function custom_media_save_attachment($attachment_id) {
+    $screen_sizes = array('desktop', 'mobile');
+
+    foreach ($screen_sizes as $size) {
+        if (isset($_REQUEST['attachments'][$attachment_id]["bg_pos_{$size}"])) {
+            $bg_pos = $_REQUEST['attachments'][$attachment_id]["bg_pos_{$size}"];
+            update_post_meta($attachment_id, "bg_pos_{$size}", $bg_pos);
+        }
+    }
+}
+add_action('edit_attachment', 'custom_media_save_attachment');
+
+// Apply filter in frontend to object-position
+function filter_gallery_img_atts($atts, $attachment) {
+    $screen_sizes = array('desktop', 'mobile');
+    $bg_pos_styles = array();
+
+    foreach ($screen_sizes as $size) {
+        $bg_pos = get_post_meta($attachment->ID, "bg_pos_{$size}", true);
+
+        if ($bg_pos != "") {
+            $bg_pos_styles[] = "@media ({$size}) {object-position: {$bg_pos};}";
+        }
+    }
+
+    if (!empty($bg_pos_styles)) {
+        $atts['style'] = implode(' ', $bg_pos_styles);
+    }
+
+    return $atts;
+}
+add_filter('wp_get_attachment_image_attributes', 'filter_gallery_img_atts', 10, 2);
+
+
+//enqueue script in admin
+function image_bg_admin_scripts() {
+    $file_path = __DIR__;
+    $url_path = str_replace($_SERVER['DOCUMENT_ROOT'], '', $file_path);
+    wp_enqueue_style( 'image-bg-css', $url_path . '/image-focal-point.css' );
+    wp_enqueue_script( 'image-bg-js', $url_path . '/image-focal-point.js' );
+}
+
+add_action( 'admin_enqueue_scripts', 'image_bg_admin_scripts' );

@@ -26,6 +26,18 @@ if (file_exists(__DIR__ . '/ajax/ajax.php')) {
 }
 
 /**
+ * Include helpers
+ */
+$helpers = glob(__DIR__ . '/helpers/*/*.php');
+foreach ($helpers as $helper) {
+    // $filename = end(explode('/', $helper)) . ".php";
+    if (file_exists($helper)) {
+        // var_dump($helper);die;
+        include_once $helper;
+    }
+}
+
+/**
  * Setup our custom options page
  */
 if( function_exists('acf_add_options_page') ) {
