@@ -1,5 +1,6 @@
 // import AjaxContent from '../ajax/ajax'
 import animateOnScroll from './utils/animate-on-scroll'
+import initAccordions from './components/initAccordions'
 
 document.addEventListener('DOMContentLoaded', () => {
 	toggleMenu()
@@ -10,6 +11,25 @@ document.addEventListener('DOMContentLoaded', () => {
 	if (document.querySelector('.scrolling-text')) {
 		scrollingText()
 	}
+
+	if (document.querySelector('.accordion')) {
+		initAccordions()
+	}
+
+	// REMOVE DEFAULT ACTION AND LINK FROM PARENT NAVIGATION ITEMS
+
+	if (document.querySelector('.no-link')) {
+		const noLink = document.querySelectorAll('.no-link > a')
+
+		noLink.forEach((link) => {
+			link.removeAttribute('href')
+
+			link.addEventListener('click', (e) => {
+				e.preventDefault()
+			})
+		})
+	}
+	
 })
 
 /**
