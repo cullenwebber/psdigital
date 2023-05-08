@@ -30,9 +30,7 @@ if (file_exists(__DIR__ . '/ajax/ajax.php')) {
  */
 $helpers = glob(__DIR__ . '/helpers/*/*.php');
 foreach ($helpers as $helper) {
-    // $filename = end(explode('/', $helper)) . ".php";
     if (file_exists($helper)) {
-        // var_dump($helper);die;
         include_once $helper;
     }
 }
@@ -112,8 +110,11 @@ class StartDigital extends Timber\Site
     /** This is where you can register custom CSS & JS files. */
     public function register_assets()
     {
-        wp_enqueue_style('startdigital', get_stylesheet_directory_uri() . '/static/style.css', false, filemtime(get_stylesheet_directory() . '/static/style.css'));
-        wp_enqueue_script('startdigital', get_stylesheet_directory_uri() . '/static/site.js', false, filemtime(get_stylesheet_directory() . '/static/site.js') );
+	$style_version = filemtime(get_stylesheet_directory() . '/static/style.css') ?: '';
+        $script_version = filemtime(get_stylesheet_directory() . '/static/site.js') ?: '';
+
+        wp_enqueue_style('startdigital', get_stylesheet_directory_uri() . '/static/style.css', false, $style_version);
+        wp_enqueue_script('startdigital', get_stylesheet_directory_uri() . '/static/site.js', false, $script_version);
 
         // wp_enqueue_style('adobe-fonts', 'https://use.typekit.net/PASTE_PROJECT_ID_HERE.css');
     }
