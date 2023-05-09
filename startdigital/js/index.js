@@ -1,6 +1,6 @@
 // import AjaxContent from '../ajax/ajax'
 import animateOnScroll from './utils/animate-on-scroll'
-import initAccordions from './components/initAccordions'
+import initAccordions from './components/accordions'
 
 document.addEventListener('DOMContentLoaded', () => {
 	toggleMenu()
