@@ -14,12 +14,13 @@ add_filter('mce_buttons_2', 'sd_add_custom_dropdown_to_mce');
  * the corresponding class (e.g. is-h1, is-h2, etc.) is applied to the selected heading.
  */
 function sd_allow_custom_classes_to_be_applied_to_headings($init_array) {
-    $headings = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+    $titles = ['Heading 1', 'Heading 2', 'Heading 3', 'Heading 4', 'Heading 5', 'Heading 6','Supertitle'];
+    $headings = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6','supertitle'];
     $style_formats = array();
 
-    foreach ($headings as $heading) {
+    foreach ($headings as $index => $heading) {
         $style_formats[] = array(
-            'title' => "Looks like $heading",
+            'title' => "$titles[$index]",
             'selector' => 'h1,h2,h3,h4,h5,h6,span',
             'classes' => "is-$heading"
         );
@@ -27,7 +28,7 @@ function sd_allow_custom_classes_to_be_applied_to_headings($init_array) {
 
     // Also add one for buttons
     $style_formats[] = array(
-        'title' => "Looks like a button",
+        'title' => "Button",
         'selector' => 'a',
         'classes' => "is-button"
     );

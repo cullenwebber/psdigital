@@ -1,18 +1,22 @@
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import './typography.css';
 
 body {
-  @apply font-sans;
+	@apply font-sans;
 }
 
-.wp-block {
-  @apply max-w-screen-xl;
-}
-
-.wp-block[data-align="wide"] {
-  @apply max-w-screen-xl;
-}
-
-.wp-block[data-align="full"] {
-  @apply max-w-full;
+h1,
+.is-h1,
+h2,
+.is-h2,
+h3,
+.is-h3,
+h4,
+.is-h4,
+h5,
+.is-h5,
+h6,
+.is-h6 {
+	@apply !leading-[0.4];
 }
