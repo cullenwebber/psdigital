@@ -17,7 +17,7 @@ $context          = Timber::context();
 $context['posts'] = new Timber\PostQuery();
 $context['fields'] = get_fields(get_option('page_for_posts'));
 $templates        = array( 'index.twig' );
-if ( is_home() ) {
+if ( is_front_page() ) {
 	array_unshift( $templates, 'front-page.twig', 'home.twig' );
 }
 
