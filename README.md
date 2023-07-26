@@ -6,22 +6,22 @@ All styling is done using TailwindCSS.
 ## Getting started
 
 1. Go the directory you keep you sites and run `mkdir yourprojectname`.
-2. Enter `cd yourprojectname` and run `wget http://wordpress.org/latest.tar.gz` and then `tar -xf latest.tar.gz`.
+2. Enter `cd yourprojectname` and run `wget http://wordpress.org/latest.tar.gz` and then `tar -xf latest.tar.gz`. You can optionally just visit `http://wordpress.org/latest.tar.gz` in the browser to download it and extract it manually.
 3. Run `mv wordpress/* .` to move the files into the root of the folder, followed by `rm -rf wordpress latest.tar.gz` to delete the no longer requires files.
-4. Enter `rm -rf wp-content` to delete the directory, as we will replace this with our own.
+4. Enter `rm -rf themes` to delete the directory, as we will replace this with our own.
 5. Create a database for your local WordPress setup. [TablePlus is a great, free tool for this.](https://tableplus.com/) Create a new database and name it whatever you named your project. Eg. `yourprojectname`
 6. Change `wp-config-sample.php` to `wp-config.php` and update the following fields:
    - `define('DB_NAME', 'yourprojectname');`
    - `define('DB_USER', 'root');`
    - `define('DB_PASSWORD', '');`
-7. Clone this repository and name it `wp-content` by running `git clone git@github.com:StartDigitalAU/wp-boilerplate.git wp-content`
+7. Clone this repository and name it `themes` by running `git clone git@github.com:StartDigitalAU/wp-boilerplate.git themes`
 8. In your terminal, navigate to `wp-content/themes/startdigital` and run `composer install` followed by `npm install`.
 9. In the `package.json` file, update all references to `wp-boilerplate.test` with whatever local WordPress install is. Most likely `yourprojectname.test`.
 10. Load up your WordPress local install in the browser and run through the install process
 11. Make sure the StartDigital theme is activated from within `Appearance->Themes`.
 12. Update your permalinks to use the post name in `Settings->Permalinks`.
 13. Activate any plugins in `Plugins`.
-14. Back in your terminal, make sure you're in the `wp-content/themes/startdigital` directory and run `npm run dev` for everything to fire up.
+14. Back in your terminal, make sure you're in the `themes/startdigital` directory and run `npm run dev` for everything to fire up.
 
 ## What's here?
 
