@@ -22,7 +22,7 @@ function sd_allow_custom_classes_to_be_applied_to_headings($init_array) {
         $style_formats[] = array(
             'title' => "$titles[$index]",
             'selector' => 'h1,h2,h3,h4,h5,h6,span,p',
-            'classes' => "is-$heading"
+            'attributes' => array('class' => "is-$heading")
         );
     }
 
@@ -30,7 +30,7 @@ function sd_allow_custom_classes_to_be_applied_to_headings($init_array) {
     $style_formats[] = array(
         'title' => "Button",
         'selector' => 'a',
-        'classes' => "is-button"
+        'attributes' => array('class' => 'is-button')
     );
 
     // Insert the array, JSON ENCODED, into 'style_formats'
