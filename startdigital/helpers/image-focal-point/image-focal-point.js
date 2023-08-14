@@ -4,9 +4,9 @@ let positions = {
 	mobile: { left: null, right: null },
 }
 let currentScreen = 'desktop'
+let centeredText = 'Centered (default)'
 let bgX = null
 let bgY = null
-let centeredText = 'Centered (default)'
 let imageWt = 0
 let imageHt = 0
 let containerHt = 0
@@ -46,7 +46,7 @@ function cancelFocus() {
  * Closes the overlay and updates the background position values for the current screen.
  * If the position is not centered, it updates the displayed position values and button labels.
  */
-function closeOverlay() {
+function closeOverlay(e) {
 	document
 		.querySelectorAll('.media-frame-content,.media-sidebar')
 		.forEach((element) => {
@@ -57,7 +57,27 @@ function closeOverlay() {
 	positions[currentScreen].right = bgY
 	let inputElement = document.querySelector(`#bg_pos_${currentScreen}_id`)
 	inputElement.value = `${bgX}% ${bgY}%`
-	inputElement.dispatchEvent(new Event('change'))
+	const attachmentId = e.target
+		.closest('.field')
+		.querySelector('[data-attachment-id]')
+		.getAttribute('data-attachment-id')
+
+	// Send an AJAX request to the server
+	jQuery.ajax({
+		url: ajaxurl, // this is a global variable available in WordPress, pointing to admin-ajax.php
+		type: 'POST',
+		data: {
+			action: 'update_attachment_bg_position', // the name of your PHP function
+			attachment_id: attachmentId, // the ID of the attachment to update
+			bg_pos_desktop:
+				positions['desktop'].left + '% ' + positions['desktop'].right + '%',
+			bg_pos_mobile:
+				positions['mobile'].left + '% ' + positions['mobile'].right + '%',
+		},
+		success: function (response) {
+			console.log(response)
+		},
+	})
 
 	let screenValueElement = document.querySelector(`#${currentScreen}_value`)
 	let labelElement = document.querySelector(`#label_${currentScreen}`)
@@ -136,14 +156,25 @@ document.addEventListener('click', (e) => {
 	let target = e.target.closest('.overlay .container img')
 	let offset = target.getBoundingClientRect()
 
-	let relX = e.pageX - offset.left
-	let relY = e.pageY - offset.top
-	bgX = Math.round((relX / imageWt) * 100)
-	bgY = Math.round((relY / imageHt) * 100)
+	let relX = e.clientX - offset.left
+	let relY = e.clientY - offset.top
 
-	let left = imageWt * (bgX / 100) + (containerWt - imageWt) / 2
-	let top = imageHt * (bgY / 100) + (containerHt - imageHt) / 2
+	let pin = document.querySelector('.overlay .pin')
+	let pinWidth = pin.offsetWidth
+	let pinHeight = pin.offsetHeight
 
-	document.querySelector('.pin').style.left = `${left}px`
-	document.querySelector('.pin').style.top = `${top}px`
+	let left = relX - pinWidth / 2
+	let top = relY - pinHeight / 2
+
+	// Clamp the values so the pin does not go outside the image
+	left = Math.max(0, Math.min(left, imageWt - pinWidth))
+	top = Math.max(0, Math.min(top, imageHt - pinHeight))
+
+	// update the pin position
+	pin.style.left = `${left}px`
+	pin.style.top = `${top}px`
+
+	// Calculate and update the bgX and bgY values in percentage
+	bgX = Math.round((left / imageWt) * 100)
+	bgY = Math.round((top / imageHt) * 100)
 })
