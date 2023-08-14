@@ -75,7 +75,8 @@
 
 .overlay .img-container .container {
 	background-color: #f7f7f7;
-	width: 100%;
+	width: fit-content;
+	margin: 0 auto;
 	height: calc(100% - 50px);
 	display: flex;
 	align-items: center;
@@ -96,8 +97,6 @@
 	left: 50%;
 	width: 36px;
 	height: 36px;
-	margin-left: -18px;
-	margin-top: -18px;
 	background-image: url(eye.svg);
 	background-size: cover;
 }
