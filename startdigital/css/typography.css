@@ -1,12 +1,10 @@
-/* Default typography, change this to match the design */
-
 html,
 body {
 	@apply font-body;
 }
 
 body {
-	@apply leading-relaxed xl:text-lg 2xl:text-2xl 2xl:leading-normal;
+	@apply leading-relaxed 2xl:text-lg 2xl:leading-normal;
 }
 
 h1,
@@ -15,36 +13,37 @@ h3,
 h4,
 h5,
 h6 {
-	@apply font-display;
+	@apply font-heading;
 }
 
 h1,
 .is-h1 {
-	@apply uppercase font-medium text-5xl leading-tight xl:text-8xl 2xl:text-9xl xl:leading-none;
+	@apply font-bold text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl xl:leading-none;
 }
 
 h2,
 .is-h2 {
-	@apply text-3xl md:text-4xl xl:text-5xl xl:leading-none 2xl:text-6xl 2xl:leading-tight;
+	@apply font-bold text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl xl:leading-tight;
 }
 
 h3,
 .is-h3 {
-	@apply leading-tight text-2xl md:text-3xl xl:text-4xl xl:leading-tight 2xl:text-6xl;
+	@apply leading-tight text-4xl md:text-5xl xl:text-6xl 2xl:text-7xl;
 }
 
 h4,
-.is-h4,
-h5,
-.is-h5,
-h6,
-.is-h6 {
-	@apply leading-tight text-xl md:text-2xl xl:text-3xl 2xl:text-4xl;
+.is-h4 {
+	@apply leading-tight text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl;
 }
 
-.button,
-.is-button {
-	@apply text-base border rounded-full py-2 px-6 flex items-center gap-4;
+h5,
+.is-h5 {
+	@apply leading-tight text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl;
+}
+
+h6,
+.is-h6 {
+	@apply leading-tight text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl;
 }
 
 /* List styles inside WYSIWYG editors */

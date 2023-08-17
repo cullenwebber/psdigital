@@ -18,7 +18,7 @@ module.exports = {
 				// brandDark:
 			},
 			fontFamily: {
-				display: ['Inter', 'sans-serif'],
+				heading: ['Inter', 'sans-serif'],
 				body: ['Inter', 'sans-serif'],
 			},
 			screens: {

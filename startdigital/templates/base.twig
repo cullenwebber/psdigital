@@ -12,14 +12,13 @@
 		{% block header %}
 			{% include 'partial/header.twig' %}
 		{% endblock %}
-
-		<section id="content" role="main" class="mt-12">
-			<div class="wrapper {{ sidebar_class }}">
-				{% block content %}
+		<main id="content" role="main">
+			{% block content %}
+				<div class="container">
 					Sorry, no content
-				{% endblock %}
-			</div>
-		</section>
+				</div>
+			{% endblock %}
+		</main>
 		{% block footer %}
 			{% include 'footer.twig' %}
 
