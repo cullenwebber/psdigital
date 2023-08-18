@@ -12,42 +12,43 @@
  *
  * @return Array $posts Recent posts
  */
-function get_related_posts(int $current_post_id, string|array $post_type = 'post', int $posts_per_page = 4, ?array $args = array()): array {
-    if (!isset($current_post_id)) {
-        throw new Error('Post ID is required.');
+function get_related_posts(int $current_post_id, string|array $post_type = 'post', int $posts_per_page = 4, ?array $args = array()): array
+{
+  if (!isset($current_post_id)) {
+    throw new Error('Post ID is required.');
+  }
+
+  // Default, required args
+  $arguments = array(
+    'post_type' => $post_type,
+    'post_status' => 'publish',
+    'posts_per_page' => $posts_per_page,
+  );
+
+  // Add new args if specified
+  if (!empty($args) && is_associative($args)) {
+    foreach ($args as $key => $value) {
+      $arguments[$key] = $value;
+    }
+  }
+
+  $posts = Timber\Timber::get_posts($arguments);
+
+  $recent_posts = array();
+  foreach ($posts as $index => $post) {
+    if ($index >= $posts_per_page) {
+      break;
     }
 
-    // Default, required args
-    $arguments = array(
-        'post_type' => $post_type,
-        'post_status' => 'publish',
-        'posts_per_page' => $posts_per_page,
-    );
-
-    // Add new args if specified
-    if (!empty($args) && is_associative($args)) {
-        foreach ($args as $key => $value) {
-            $arguments[$key] = $value;
-        }
+    // And not the page we're on
+    if ($current_post_id && $post->ID == $current_post_id) {
+      continue;
     }
 
-    $posts = Timber::get_posts($args);
+    $recent_posts[] = $post;
+  }
 
-    $recent_posts = array();
-    foreach ($posts as $index => $post) {
-        if ($index >= $posts_per_page) {
-            break;
-        }
-
-        // And not the page we're on
-        if ($current_post_id && $post->ID == $current_post_id) {
-            continue;
-        }
-
-        $recent_posts[] = $post;
-    }
-
-    return $recent_posts;
+  return $recent_posts;
 }
 
 /**
@@ -64,7 +65,7 @@ function is_associative(array $inpt_arr): bool
   }
   $n = count($inpt_arr);
   for ($i = 0; $i < $n; $i++) {
-    if(!array_key_exists($i, $inpt_arr)) {
+    if (!array_key_exists($i, $inpt_arr)) {
       return true;
     }
   }
