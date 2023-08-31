@@ -12,7 +12,7 @@ export default function animateOnScroll() {
 	const elementsFadeUp = document.querySelectorAll('[data-fade-up]')
 	const elementsFadeLeft = document.querySelectorAll('[data-fade-left]')
 	const elementsFadeRight = document.querySelectorAll('[data-fade-right]')
-	const elementsFade = document.querySelectorAll('[data-fade-right]')
+	const elementsFade = document.querySelectorAll('[data-fade]')
 
 	/**
 	 * MULTIPLE ELEMENT SELECTORS
@@ -36,13 +36,13 @@ export default function animateOnScroll() {
 
 	const START = 'top bottom-=10%'
 	const fadeProperties = {
-		opacity: 0,
+		autoAlpha: 0,
 		delay: 0.2,
 		duration: 0.6,
 	}
 
 	const staggerProperties = {
-		opacity: 0,
+		autoAlpha: 0,
 		delay: 0.2,
 		stagger: 0.15,
 	}
