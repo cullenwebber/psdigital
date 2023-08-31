@@ -3,23 +3,186 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-/**
- * Apply animations to elements
- */
 export default function initAnimateOnScroll() {
-	const elements = document.querySelectorAll('[data-animate]')
+	/**
+	 * SINGLE ELEMENT SELECTORS
+	 * Apply these data attributes DIRECTLY to desired elements :~)
+	 */
 
-	elements.forEach((element) => {
+	const elementsFadeDown = document.querySelectorAll('[data-fade-down]')
+	const elementsFadeUp = document.querySelectorAll('[data-fade-up]')
+	const elementsFadeLeft = document.querySelectorAll('[data-fade-left]')
+	const elementsFadeRight = document.querySelectorAll('[data-fade-right]')
+	const elementsFade = document.querySelectorAll('[data-fade-right]')
+
+	/**
+	 * MULTIPLE ELEMENT SELECTORS
+	 * Apply these data attributes to CONTAINER of desired elements :~)
+	 */
+
+	const elementsStaggerFade = document.querySelectorAll(
+		'[data-animate-stagger-fade]'
+	)
+	const elementsStaggerRight = document.querySelectorAll(
+		'[data-animate-stagger-right]'
+	)
+	const elementsStaggerLeft = document.querySelectorAll(
+		'[data-animate-stagger-left]'
+	)
+	const elementsStaggerUp = document.querySelectorAll(
+		'[data-animate-stagger-up]'
+	)
+	const elementsStaggerDown = document.querySelectorAll(
+		'[data-animate-stagger-down]'
+	)
+
+	const fadeTrigger = {
+		trigger: element,
+		start: 'top bottom-=10%',
+	}
+
+	const fadeProperties = {
+		opacity: 0,
+		delay: 0.2,
+		duration: 0.6,
+	}
+
+	const staggerTrigger = {
+		trigger: stagger,
+		start: 'top bottom-=10%',
+	}
+
+	const staggerProperties = {
+		opacity: 0,
+		delay: 0.2,
+		stagger: 0.15,
+	}
+
+	/**
+	 * SINGLE FINS (Single Fade Ins)
+	 */
+
+	// FADE -------------------------------
+	elementsFade.forEach((element) => {
 		const settings = {
 			scrollTrigger: {
-				trigger: element,
-				start: 'top bottom-=5%',
+				...fadeTrigger,
 			},
-			y: -16,
-			opacity: 0,
+			...fadeProperties,
 		}
 
-		// Animation time
 		gsap.from(element, settings)
+	})
+
+	// FADE DOWN --------------------------
+	elementsFadeDown.forEach((element) => {
+		const settings = {
+			scrollTrigger: {
+				...fadeTrigger,
+			},
+			...fadeProperties,
+			y: -16,
+		}
+
+		gsap.from(element, settings)
+	})
+
+	// FADE UP ----------------------------
+	elementsFadeUp.forEach((element) => {
+		const settings = {
+			scrollTrigger: {
+				...fadeTrigger,
+			},
+			...fadeProperties,
+			y: 16,
+		}
+
+		gsap.from(element, settings)
+	})
+
+	// FADE LEFT --------------------------
+	elementsFadeLeft.forEach((element) => {
+		const settings = {
+			scrollTrigger: {
+				...fadeTrigger,
+			},
+			...fadeProperties,
+			x: 40,
+		}
+
+		gsap.from(element, settings)
+	})
+
+	// FADE RIGHT -------------------------
+	elementsFadeRight.forEach((element) => {
+		const settings = {
+			scrollTrigger: {
+				...fadeTrigger,
+			},
+			...fadeProperties,
+			x: -40,
+		}
+
+		gsap.from(element, settings)
+	})
+
+	/**
+	 * STAG DOS (Do Staggers)
+	 */
+	elementsStaggerFade.forEach((stagger) => {
+		const elementsStagger = gsap.utils.toArray(stagger.children)
+
+		gsap.from(elementsStagger, {
+			scrollTrigger: {
+				...staggerTrigger,
+			},
+			...staggerProperties,
+		})
+	})
+
+	elementsStaggerLeft.forEach((stagger) => {
+		const elementsStagger = gsap.utils.toArray(stagger.children)
+
+		gsap.from(elementsStagger, {
+			scrollTrigger: {
+				...staggerTrigger,
+			},
+			...staggerProperties,
+			x: 20,
+		})
+	})
+
+	elementsStaggerRight.forEach((stagger) => {
+		const elementsStagger = gsap.utils.toArray(stagger.children)
+
+		gsap.from(elementsStagger, {
+			scrollTrigger: {
+				...staggerTrigger,
+			},
+			...staggerProperties,
+			x: -20,
+		})
+	})
+	elementsStaggerUp.forEach((stagger) => {
+		const elementsStagger = gsap.utils.toArray(stagger.children)
+
+		gsap.from(elementsStagger, {
+			scrollTrigger: {
+				...staggerTrigger,
+			},
+			...staggerProperties,
+			y: 20,
+		})
+	})
+	elementsStaggerDown.forEach((stagger) => {
+		const elementsStagger = gsap.utils.toArray(stagger.children)
+
+		gsap.from(elementsStagger, {
+			scrollTrigger: {
+				...staggerTrigger,
+			},
+			...staggerProperties,
+			y: -20,
+		})
 	})
 }

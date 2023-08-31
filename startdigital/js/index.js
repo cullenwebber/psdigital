@@ -29,7 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			})
 		})
 	}
-	
 })
 
 /**
@@ -39,11 +38,46 @@ document.addEventListener('DOMContentLoaded', () => {
  */
 const toggleMenu = () => {
 	const menuButtons = document.querySelectorAll('[data-toggle-menu]')
+	const mainElement = document.querySelector('main')
+	const staggerContainers = document.querySelectorAll(
+		'[data-animate-stagger-menu]'
+	)
 
 	menuButtons.forEach((btn) => {
-		btn.addEventListener('click', () =>
+		btn.addEventListener('click', () => {
 			document.body.classList.toggle('menuIsOpen')
-		)
+			document.documentElement.classList.toggle('overflow-hidden')
+
+			if (document.body.classList.contains('menuIsOpen')) {
+				staggerContainers.forEach((stagger) => {
+					const elementsStagger = gsap.utils.toArray(stagger.children)
+
+					gsap.from(elementsStagger, {
+						y: 20,
+						opacity: 0,
+						delay: 0.5,
+						stagger: 0.1,
+					})
+				})
+			}
+		})
+	})
+
+	const closeMenu = () => {
+		document.body.classList.remove('menuIsOpen')
+		document.documentElement.classList.remove('overflow-hidden')
+	}
+
+	mainElement.addEventListener('click', () => {
+		if (document.body.classList.contains('menuIsOpen')) {
+			closeMenu()
+		}
+	})
+
+	document.addEventListener('keydown', (e) => {
+		if (e.key === 'Escape' && document.body.classList.contains('menuIsOpen')) {
+			closeMenu()
+		}
 	})
 }
 
