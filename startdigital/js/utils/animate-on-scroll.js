@@ -3,7 +3,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-export default function initAnimateOnScroll() {
+export default function animateOnScroll() {
 	/**
 	 * SINGLE ELEMENT SELECTORS
 	 * Apply these data attributes DIRECTLY to desired elements :~)
