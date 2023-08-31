@@ -8,7 +8,6 @@ export default function animateOnScroll() {
 	 * SINGLE ELEMENT SELECTORS
 	 * Apply these data attributes DIRECTLY to desired elements :~)
 	 */
-
 	const elementsFadeDown = document.querySelectorAll('[data-fade-down]')
 	const elementsFadeUp = document.querySelectorAll('[data-fade-up]')
 	const elementsFadeLeft = document.querySelectorAll('[data-fade-left]')
@@ -19,7 +18,6 @@ export default function animateOnScroll() {
 	 * MULTIPLE ELEMENT SELECTORS
 	 * Apply these data attributes to CONTAINER of desired elements :~)
 	 */
-
 	const elementsStaggerFade = document.querySelectorAll(
 		'[data-animate-stagger-fade]'
 	)
@@ -36,20 +34,11 @@ export default function animateOnScroll() {
 		'[data-animate-stagger-down]'
 	)
 
-	const fadeTrigger = {
-		trigger: element,
-		start: 'top bottom-=10%',
-	}
-
+	const START = 'top bottom-=10%'
 	const fadeProperties = {
 		opacity: 0,
 		delay: 0.2,
 		duration: 0.6,
-	}
-
-	const staggerTrigger = {
-		trigger: stagger,
-		start: 'top bottom-=10%',
 	}
 
 	const staggerProperties = {
@@ -66,7 +55,8 @@ export default function animateOnScroll() {
 	elementsFade.forEach((element) => {
 		const settings = {
 			scrollTrigger: {
-				...fadeTrigger,
+				trigger: element,
+				start: START,
 			},
 			...fadeProperties,
 		}
@@ -78,7 +68,8 @@ export default function animateOnScroll() {
 	elementsFadeDown.forEach((element) => {
 		const settings = {
 			scrollTrigger: {
-				...fadeTrigger,
+				trigger: element,
+				start: START,
 			},
 			...fadeProperties,
 			y: -16,
@@ -91,7 +82,8 @@ export default function animateOnScroll() {
 	elementsFadeUp.forEach((element) => {
 		const settings = {
 			scrollTrigger: {
-				...fadeTrigger,
+				trigger: element,
+				start: START,
 			},
 			...fadeProperties,
 			y: 16,
@@ -104,7 +96,8 @@ export default function animateOnScroll() {
 	elementsFadeLeft.forEach((element) => {
 		const settings = {
 			scrollTrigger: {
-				...fadeTrigger,
+				trigger: element,
+				start: START,
 			},
 			...fadeProperties,
 			x: 40,
@@ -117,7 +110,8 @@ export default function animateOnScroll() {
 	elementsFadeRight.forEach((element) => {
 		const settings = {
 			scrollTrigger: {
-				...fadeTrigger,
+				trigger: element,
+				start: START,
 			},
 			...fadeProperties,
 			x: -40,
@@ -134,7 +128,8 @@ export default function animateOnScroll() {
 
 		gsap.from(elementsStagger, {
 			scrollTrigger: {
-				...staggerTrigger,
+				trigger: stagger,
+				start: START,
 			},
 			...staggerProperties,
 		})
@@ -145,7 +140,8 @@ export default function animateOnScroll() {
 
 		gsap.from(elementsStagger, {
 			scrollTrigger: {
-				...staggerTrigger,
+				trigger: stagger,
+				start: START,
 			},
 			...staggerProperties,
 			x: 20,
@@ -157,7 +153,8 @@ export default function animateOnScroll() {
 
 		gsap.from(elementsStagger, {
 			scrollTrigger: {
-				...staggerTrigger,
+				trigger: stagger,
+				start: START,
 			},
 			...staggerProperties,
 			x: -20,
@@ -168,7 +165,8 @@ export default function animateOnScroll() {
 
 		gsap.from(elementsStagger, {
 			scrollTrigger: {
-				...staggerTrigger,
+				trigger: stagger,
+				start: START,
 			},
 			...staggerProperties,
 			y: 20,
@@ -179,7 +177,8 @@ export default function animateOnScroll() {
 
 		gsap.from(elementsStagger, {
 			scrollTrigger: {
-				...staggerTrigger,
+				trigger: stagger,
+				start: START,
 			},
 			...staggerProperties,
 			y: -20,
