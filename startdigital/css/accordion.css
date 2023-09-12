@@ -11,13 +11,13 @@
 }
 
 .accordion-header.active svg {
-    @apply rotate-45;
+    @apply rotate-180;
 }
 
 .accordion-content {
     transition: max-height 0.4s ease;
     @apply overflow-hidden max-h-0 border-b;
-    
+
 }
 
 .accordion-content > .accordion-inner {

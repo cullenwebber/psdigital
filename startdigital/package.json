@@ -8,7 +8,7 @@
 		"build:css-editor": "postcss ./css/editor.css -o ./static/editor.css",
 		"watch:css-app": "postcss ./css/main.css -o ./static/style.css --watch",
 		"watch:css-editor": "postcss ./css/editor.css -o ./static/editor.css --watch",
-		"browser-sync": "cross-env NODE_ENV=development browser-sync start --proxy \"wp-boilerplate.test\" --host=\"wp-boilerplate.test\" --no-inject-changes --files=\"./\""
+		"browser-sync": "cross-env NODE_ENV=development browser-sync start --proxy \"boilerroom.test\" --host=\"boilerroom.test\" --no-inject-changes --files=\"./\""
 	},
 	"dependencies": {
 		"@tailwindcss/line-clamp": "^0.4.2",
@@ -21,7 +21,8 @@
 		"postcss": "^8.4.5",
 		"postcss-cli": "^10.0.0",
 		"postcss-import": "^15.0.0",
-		"postcss-nested": "^6.0.0"
+		"postcss-nested": "^6.0.0",
+		"swiper": "^10.2.0"
 	},
 	"devDependencies": {
 		"@tailwindcss/typography": "^0.5.8",

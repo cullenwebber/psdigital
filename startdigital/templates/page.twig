@@ -1,11 +1,9 @@
 {% extends 'base.twig' %}
 
 {% block content %}
-
-	{# Page Builder #}
-	{# Loop through the blocks and load their associated file #}
-		{% for block in page_builder %}
-			<div data-block="{{ block.acf_fc_layout }}"> {{ include("blocks/" ~ block.acf_fc_layout ~ ".twig", ignore_missing = true) }}
+	{% for block in page_builder %}
+		<div data-block="{{ block.acf_fc_layout }}">
+			{{ include("blocks/" ~ block.acf_fc_layout ~ ".twig", ignore_missing = true) }}
 		</div>
 	{% endfor %}
 {% endblock %}

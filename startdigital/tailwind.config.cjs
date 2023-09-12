@@ -18,7 +18,7 @@ module.exports = {
 				// brandDark:
 			},
 			fontFamily: {
-				heading: ['Inter', 'sans-serif'],
+				heading: ['Roboto', 'sans-serif'],
 				body: ['Inter', 'sans-serif'],
 			},
 			screens: {

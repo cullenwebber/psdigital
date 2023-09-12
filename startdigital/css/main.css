@@ -5,15 +5,11 @@
 @import './typography.css';
 @import './forms.css';
 @import './buttons.css';
-
-.container {
-	@apply max-w-[1366px] 2xl:max-w-[1600px] w-full mx-auto px-6 md:px-10;
-}
+@import 'swiper/swiper-bundle.css';
 
 @layer components {
 	.container {
-		@apply mx-auto;
-		width: min(calc(100% - 4rem), 1440px);
+		@apply max-w-[1366px] 2xl:max-w-[1600px] w-full mx-auto px-6 md:px-10;
 	}
 }
 
@@ -25,10 +21,26 @@
 	@apply translate-x-0;
 }
 
-[data-block] {
-	@apply relative py-12 lg:py-24 2xl:py-36;
+main section {
+	@apply relative py-10 lg:py-20 2xl:py-32;
 }
 
-[data-block]:first-of-type {
-	@apply pt-0 lg:pt-0 xl:pt-0 2xl:pt-0;
+.rounded-top {
+	@apply rounded-t-3xl lg:rounded-t-[100px] 2xl:rounded-t-[200px];
 }
+
+.rounded-bottom {
+	@apply rounded-b-3xl lg:rounded-b-[100px] 2xl:rounded-b-[200px];
+}
+
+.section-padding {
+	@apply relative py-10 lg:py-20 2xl:py-32;
+}
+
+.remove-section-padding {
+	@apply !py-0;
+}
+
+/* main > section:first-of-type {
+	@apply pt-0 lg:pt-0 xl:pt-0 2xl:pt-0;
+} */
