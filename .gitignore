@@ -4,6 +4,9 @@
 # Don't ignore the .gitignore file itself
 !.gitignore
 !README.md
+!composer.json
+!composer.lock
+!setup.sh
 
 # Directories and files required for WordPress
 !wp-content/
