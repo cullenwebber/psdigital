@@ -4,7 +4,7 @@ site_name=$(basename "$(pwd)")
 
 # Download WordPress
 echo "Downloading WordPress..."
-wp core download
+wp core download > /dev/null 2>&1
 
 # Backup the current themes and plugins directories
 echo "Backing up themes and plugins directories..."
@@ -14,7 +14,7 @@ echo "Backing up themes and plugins directories..."
 # Check if wp-config.php exists
 if [ ! -f wp-config.php ]; then
     echo "Setting up WordPress configuration..."
-    wp config create --dbname=$site_name --dbuser=root --dbpass='' --dbhost='localhost' --skip-check
+    wp config create --dbname=$site_name --dbuser=root --dbpass='' --dbhost='localhost' --skip-check > /dev/null 2>&1
 else
     echo "wp-config.php already exists. Skipping configuration..."
 fi
@@ -22,7 +22,7 @@ fi
 # Check if database exists
 if ! wp db check --quiet; then
     echo "Creating our database..."
-    wp db create
+    wp db create > /dev/null 2>&1
 else
     echo "Database '$site_name' already exists. Skipping creation..."
 fi
@@ -47,10 +47,10 @@ if [ -d wp-content/themes/startdigital ]; then
     cd wp-content/themes/startdigital
 
     echo "Running composer install in startdigital theme directory..."
-    composer install
+    composer install > /dev/null 2>&1
 
     echo "Running npm install in startdigital theme directory..."
-    npm install
+    npm install > /dev/null 2>&1
 
     # Navigate back to the root directory
     cd ../../../
@@ -69,7 +69,7 @@ SALTS=$(curl -s https://api.wordpress.org/secret-key/1.1/salt/)
 echo "$SALTS" | while IFS= read -r line; do
     KEY=$(echo $line | grep -o "'.*'" | head -1 | sed "s/'//g")
     VALUE=$(echo $line | grep -o "'.*'" | tail -1 | sed "s/'//g")
-    sed -i "s/put_your_$KEY/$VALUE/g" .env
+    sed -i '' "s/put_your_$KEY/$VALUE/g" .env
 done
 
 echo "Setup completed successfully!"
