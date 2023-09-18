@@ -2,12 +2,21 @@
 
 site_name=$(basename "$(pwd)")
 
-# WordPress CLI Commands
-echo "Setting up WordPress configuration..."
-wp config create --dbname=$site_name --dbuser=root --dbpass='' --dbhost='localhost' --skip-check
+# Check if wp-config.php exists
+if [ ! -f wp-config.php ]; then
+    echo "Setting up WordPress configuration..."
+    wp config create --dbname=$site_name --dbuser=root --dbpass='' --dbhost='localhost' --skip-check
+else
+    echo "wp-config.php already exists. Skipping configuration..."
+fi
 
-echo "Creating our database..."
-wp db create
+# Check if database exists
+if ! wp db check --quiet; then
+    echo "Creating our database..."
+    wp db create
+else
+    echo "Database '$site_name' already exists. Skipping creation..."
+fi
 
 # Download WordPress
 echo "Downloading WordPress..."
@@ -38,18 +47,22 @@ rmdir wp-content/plugins_bk
 echo "Removing default plugins..."
 find wp-content/plugins/ ! -name 'plugins.zip' -type f -exec rm -f {} +
 
-# Navigate to the startdigital theme directory and run composer install & npm install
-echo "Navigating to the startdigital theme directory..."
-cd wp-content/themes/startdigital
+# Check if startdigital theme directory exists
+if [ -d wp-content/themes/startdigital ]; then
+    echo "Navigating to the startdigital theme directory..."
+    cd wp-content/themes/startdigital
 
-echo "Running composer install in startdigital theme directory..."
-composer install
+    echo "Running composer install in startdigital theme directory..."
+    composer install
 
-echo "Running npm install in startdigital theme directory..."
-npm install
+    echo "Running npm install in startdigital theme directory..."
+    npm install
 
-# Navigate back to the root directory
-cd ../../../
+    # Navigate back to the root directory
+    cd ../../../
+else
+    echo "startdigital theme directory not found. Skipping..."
+fi
 
 # Copy .env.sample to .env
 echo "Copying .env.sample to .env..."
