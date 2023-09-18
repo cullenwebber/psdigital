@@ -1,5 +1,14 @@
 {
+    "name": "startdigital/boilerroom",
     "require": {
         "vlucas/phpdotenv": "^5.5"
+    },
+    "scripts": {
+        "pre-install-cmd": [
+            "chmod +x setup.sh"
+        ],
+        "post-install-cmd": [
+            "./setup.sh"
+        ]
     }
 }

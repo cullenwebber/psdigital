@@ -38,10 +38,6 @@ rmdir wp-content/plugins_bk
 echo "Removing default plugins..."
 find wp-content/plugins/ ! -name 'plugins.zip' -type f -exec rm -f {} +
 
-# Run composer install in the root directory
-echo "Running composer install in root directory..."
-composer install
-
 # Navigate to the startdigital theme directory and run composer install & npm install
 echo "Navigating to the startdigital theme directory..."
 cd wp-content/themes/startdigital
