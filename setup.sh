@@ -2,6 +2,15 @@
 
 site_name=$(basename "$(pwd)")
 
+# Download WordPress
+echo "Downloading WordPress..."
+wp core download
+
+# Backup the current themes and plugins directories
+echo "Backing up themes and plugins directories..."
+[ -d wp-content/themes ] && mv wp-content/themes wp-content/themes_bk
+[ -d wp-content/plugins ] && mv wp-content/plugins wp-content/plugins_bk
+
 # Check if wp-config.php exists
 if [ ! -f wp-config.php ]; then
     echo "Setting up WordPress configuration..."
@@ -18,33 +27,18 @@ else
     echo "Database '$site_name' already exists. Skipping creation..."
 fi
 
-# Download WordPress
-echo "Downloading WordPress..."
-curl -O https://wordpress.org/latest.tar.gz
-
-# Extract WordPress files
-echo "Extracting WordPress files..."
-tar -xzf latest.tar.gz
-rm latest.tar.gz
-mv wordpress/* ./
-rm -r wordpress/
-
-# Backup the current themes and plugins directories
-echo "Backing up themes and plugins directories..."
-mv wp-content/themes wp-content/themes_bk
-mv wp-content/plugins wp-content/plugins_bk
-
-# Remove wp-content from fresh install (we'll restore our backup later)
-rm -rf wp-content
+# Remove default themes and plugins
+echo "Removing default themes and plugins..."
+rm -rf wp-content/themes
+rm -rf wp-content/plugins
 
 # Restore themes and plugins directories
 echo "Restoring themes and plugins directories..."
-mv wp-content/themes_bk wp-content/themes
-mv wp-content/plugins_bk/* wp-content/plugins/
-rmdir wp-content/plugins_bk
+[ -d wp-content/themes_bk ] && mv wp-content/themes_bk wp-content/themes
+[ -d wp-content/plugins_bk ] && mv wp-content/plugins_bk/* wp-content/plugins/ && rmdir wp-content/plugins_bk
 
 # Remove all default plugins (excluding plugins.zip)
-echo "Removing default plugins..."
+echo "Cleaning up default plugins..."
 find wp-content/plugins/ ! -name 'plugins.zip' -type f -exec rm -f {} +
 
 # Check if startdigital theme directory exists
