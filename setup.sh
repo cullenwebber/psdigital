@@ -1,75 +1,80 @@
 #!/bin/bash
 
+GREEN="\033[1;32m"
+NORMAL="\033[0m"
+CYAN="\033[1;36m"
+YELLOW="\033[1;33m"
+
 site_name=$(basename "$(pwd)")
 
 # Download WordPress
-WP_CLI::line("Downloading WordPress...")
+echo -e "${CYAN}Downloading WordPress...${NORMAL}"
 wp core download > /dev/null 2>&1
-WP_CLI::success("Finished downloading WordPress...")
+echo -e "${GREEN}Finished downloading WordPress...${NORMAL}"
 
 # Backup the current themes and plugins directories
-WP_CLI::line("Backing up themes and plugins directories...")
+echo -e "${CYAN}Backing up themes and plugins directories...${NORMAL}"
 [ -d wp-content/themes ] && mv wp-content/themes wp-content/themes_bk
 [ -d wp-content/plugins ] && mv wp-content/plugins wp-content/plugins_bk
 
 # Check if wp-config.php exists
 if [ ! -f wp-config.php ]; then
-    WP_CLI::line("Setting up WordPress configuration...")
+    echo -e "${CYAN}Setting up WordPress configuration...${NORMAL}"
     wp config create --dbname=$site_name --dbuser=root --dbpass='' --dbhost='localhost' --skip-check > /dev/null 2>&1
-    WP_CLI::success("WordPress configured")
+    echo -e "${GREEN}WordPress configured${NORMAL}"
 else
-    WP_CLI::line("wp-config.php already exists. Skipping configuration...")
+    echo -e "${CYAN}wp-config.php already exists. Skipping configuration...${NORMAL}"
 fi
 
 # Check if database exists
 if ! wp db check --quiet; then
-    WP_CLI::line("Creating our database...")
+    echo -e "${CYAN}Creating our database...${NORMAL}"
     wp db create > /dev/null 2>&1
-    WP_CLI::success("Database created")
+    echo -e "${GREEN}Database created${NORMAL}"
 else
-    WP_CLI::warning("Database '$site_name' already exists. Skipping creation...")
+    echo -e "${YELLOW}Database '$site_name' already exists. Skipping creation...${NORMAL}"
 fi
 
 # Remove default themes and plugins
-WP_CLI::line("Removing default themes and plugins...")
+echo -e "${CYAN}Removing default themes and plugins...${NORMAL}"
 rm -rf wp-content/themes
 rm -rf wp-content/plugins
 
 # Restore themes and plugins directories
-WP_CLI::line("Restoring themes and plugins directories...")
+echo -e "${CYAN}Restoring themes and plugins directories...${NORMAL}"
 [ -d wp-content/themes_bk ] && mv wp-content/themes_bk wp-content/themes
 [ -d wp-content/plugins_bk ] && mv wp-content/plugins_bk/* wp-content/plugins/ && rmdir wp-content/plugins_bk
-WP_CLI::success("Themes and plugins restored")
+echo -e "${GREEN}Themes and plugins restored${NORMAL}"
 
 # Remove all default plugins (excluding plugins.zip)
-WP_CLI::line("Cleaning up default plugins...")
+echo -e "${CYAN}Cleaning up default plugins...${NORMAL}"
 find wp-content/plugins/ ! -name 'plugins.zip' -type f -exec rm -f {} +
 
 # Check if startdigital theme directory exists
 if [ -d wp-content/themes/startdigital ]; then
-    WP_CLI::line("Navigating to the startdigital theme directory...")
+    echo -e "${CYAN}Navigating to the startdigital theme directory...${NORMAL}"
     cd wp-content/themes/startdigital
 
-    WP_CLI::line("Running composer install in startdigital theme directory...")
+    echo -e "${CYAN}Running composer install in startdigital theme directory...${NORMAL}"
     composer install > /dev/null 2>&1
-    WP_CLI::success("Composer installed")
+    echo -e "${GREEN}Composer installed${NORMAL}"
 
-    WP_CLI::line("Running npm install in startdigital theme directory...")
+    echo -e "${CYAN}Running npm install in startdigital theme directory...${NORMAL}"
     npm install > /dev/null 2>&1
-    WP_CLI::success("Npm installed")
+    echo -e "${GREEN}Npm installed${NORMAL}"
 
     # Navigate back to the root directory
     cd ../../../
 else
-    WP_CLI::warning("startdigital theme directory not found. Skipping...")
+    echo -e "${YELLOW}startdigital theme directory not found. Skipping...${NORMAL}"
 fi
 
 # Copy .env.sample to .env
-WP_CLI::line("Copying .env.sample to .env...")
+echo -e "${CYAN}Copying .env.sample to .env...${NORMAL}"
 cp .env.sample .env
 
 # Fetch and populate WordPress salts in the .env file
-WP_CLI::line("Fetching and populating WordPress salts in .env file...")
+echo -e "${CYAN}Fetching and populating WordPress salts in .env file...${NORMAL}"
 
 SALTS=$(curl -s https://api.wordpress.org/secret-key/1.1/salt/)
 echo "$SALTS" | while IFS= read -r line; do
@@ -78,4 +83,4 @@ echo "$SALTS" | while IFS= read -r line; do
     sed -i '' "s|put_your_$KEY|$VALUE|g" .env
 done
 
-WP_CLI::success("Setup completed successfully!")
+echo -e "${GREEN}Setup completed successfully!${NORMAL}"
