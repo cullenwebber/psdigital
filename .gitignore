@@ -24,7 +24,6 @@ wp-content/*
 
 wp-content/plugins/*
 !wp-content/plugins/plugins.zip
-!wp-content/plugins/index.php
 
 # ENV
 !.env.sample
