@@ -1,6 +1,5 @@
 <?php
 
-use Timber\Timber;
 
 /**
  * The main template file
@@ -16,12 +15,10 @@ use Timber\Timber;
  * @since   Timber 0.1
  */
 
-$context          = Timber::context();
-$context['posts'] = Timber::get_posts();
-$context['fields'] = get_fields(get_option('page_for_posts'));
-$templates        = array('index.twig');
-if (is_front_page()) {
-	array_unshift($templates, 'front-page.twig', 'home.twig');
-}
+use Timber\Timber;
 
-Timber::render($templates, $context);
+$context = Timber::context();
+$context['post'] = Timber::get_post();
+$context['posts'] = Timber::get_posts();
+
+Timber::render('index.twig', $context);
