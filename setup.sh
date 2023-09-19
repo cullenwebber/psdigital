@@ -43,6 +43,7 @@ rm -rf wp-content/plugins
 # Restore themes and plugins directories
 echo -e "${CYAN}Restoring themes and plugins directories...${NORMAL}"
 [ -d wp-content/themes_bk ] && mv wp-content/themes_bk wp-content/themes
+mkdir wp-content/plugins
 [ -d wp-content/plugins_bk ] && mv wp-content/plugins_bk/* wp-content/plugins/ && rmdir wp-content/plugins_bk
 echo -e "${GREEN}Themes and plugins restored${NORMAL}"
 
@@ -79,11 +80,16 @@ echo -e "${CYAN}Fetching and populating WordPress salts in .env file...${NORMAL}
 # Fetch and populate WordPress salts in the .env file
 echo -e "${CYAN}Fetching and populating WordPress salts in .env file...${NORMAL}"
 
+TEMP_FILE=$(mktemp)
 SALTS=$(curl -s https://api.wordpress.org/secret-key/1.1/salt/)
-echo "$SALTS" | while IFS= read -r line; do
-    KEY=$(echo $line | grep -o "'.*'" | head -1 | sed "s/'//g")
-    VALUE=$(echo $line | grep -o "'.*'" | tail -1 | sed "s/'//g" | sed -e 's|[&]|\\&|g' -e 's|/|\\/|g' -e 's|\[|\\[|g' -e 's|\]|\\]|g' -e 's|\*|\\*|g' -e 's|\.|\\.|g')
-    sed -i '' "s|put_your_$KEY|$VALUE|g" .env
-done
+
+awk -v salts="$SALTS" '
+BEGIN { print_s = 1 }
+/# BEGIN WordPress Salts/ { print_s = 0; print; print salts }
+/# END WordPress Salts/ { print_s = 1 }
+print_s { print }
+' .env > "$TEMP_FILE"
+
+mv "$TEMP_FILE" .env
 
 echo -e "${GREEN}Setup completed successfully!${NORMAL}"
