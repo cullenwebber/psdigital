@@ -74,13 +74,8 @@ fi
 echo -e "${CYAN}Copying .env.sample to .env...${NORMAL}"
 cp .env.sample .env
 
-# Fetch and populate WordPress salts in the .env file
-echo -e "${CYAN}Fetching and populating WordPress salts in .env file...${NORMAL}"
-
-# Fetch salts
-SALTS=$(curl -s https://api.wordpress.org/secret-key/1.1/salt/)
-
-# Use sed to replace the placeholder with the salts
-sed -i "/# REPLACE_WITH_SALTS/c\\$SALTS" .env
+echo -e "To generate WordPress salts, please visit the following link:\n"
+echo -e "\033[4;34mhttps://roots.io/salts.html\033[0m\n"
+echo -e "Copy and paste the generated salts into your .env file."
 
 echo -e "${GREEN}Setup completed successfully!${NORMAL}"
