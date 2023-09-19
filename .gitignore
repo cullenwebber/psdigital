@@ -23,7 +23,6 @@ wp-content/*
 !wp-content/themes/startdigital/*
 
 wp-content/plugins/*
-!wp-content/plugins/plugins.zip
 
 # ENV
 !.env.sample
