@@ -1,5 +1,8 @@
 <?php
 
+use Timber\Site;
+use Timber\Timber;
+
 /**
  * Timber starter-theme
  * https://github.com/timber/starter-theme
@@ -17,7 +20,7 @@
 $composer_autoload = __DIR__ . '/vendor/autoload.php';
 if (file_exists($composer_autoload)) {
 	require_once $composer_autoload;
-	$timber = new Timber\Timber();
+	Timber::init();
 }
 
 include 'php/tiny-mce-extend.php';
@@ -73,17 +76,10 @@ if (!class_exists('Timber')) {
 Timber::$dirname = array('templates', 'views');
 
 /**
- * By default, Timber does NOT autoescape values. Want to enable Twig's autoescape?
- * No prob! Just set this value to true
- */
-Timber::$autoescape = false;
-
-
-/**
  * We're going to configure our theme inside of a subclass of Timber\Site
  * You can move this to its own file and include here via php's include("MySite.php")
  */
-class StartDigital extends Timber\Site
+class StartDigital extends Site
 {
 	/** Add timber support. */
 	public function __construct()
@@ -122,15 +118,8 @@ class StartDigital extends Timber\Site
 	 */
 	public function add_to_context($context)
 	{
-		if (function_exists('get_fields')) {
-			$context['options'] = get_fields('options');
-		}
-		// Default menu
-		$context['menu']  = new Timber\Menu();
-
-		// Other menu's - pass the slug to the Menu(). Eg.
-		// $context['footer_menu'] = new Timber\Menu('footer_menu');
-
+		$context['options'] = get_fields('options');
+		$context['menu']  = Timber::get_menu();
 		$context['site']  = $this;
 
 		return $context;
