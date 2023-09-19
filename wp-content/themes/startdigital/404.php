@@ -1,4 +1,6 @@
 <?php
+
+
 /**
  * The template for displaying 404 pages (Not Found)
  *
@@ -9,5 +11,7 @@
  * @since    Timber 0.1
  */
 
+use Timber\Timber;
+
 $context = Timber::context();
-Timber::render( '404.twig', $context );
+Timber::render('404.twig', $context);
