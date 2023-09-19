@@ -182,4 +182,16 @@ function disable_embeds_filter_oembed_response_data_( $data ) {
     return $data;
 }
 
+// ADD CUSTOM LOGO TO ADMIN LOGIN SCREEN
+
+function custom_login_logo()
+{
+    echo '<style type="text/css">
+        body.login div#login h1 a {
+            background-image: url(' . get_theme_file_uri('static/start-admin.png') . ');
+        }
+    </style>';
+}
+add_action('login_enqueue_scripts', 'custom_login_logo');
+
 new StartDigital();
