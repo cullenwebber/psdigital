@@ -1,0 +1,31 @@
+{% if href %}
+	<a class="button group" href="{{ href }}" target="{{ target ?? "_blank" }}">
+		{{ title }}
+		<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 17.21 13.27" class="w-5 h-5 -translate-x-1 group-hover:translate-x-0 transition-transform duration-100">
+			<g data-name="Group 24">
+				<g fill="none" stroke="#703824" stroke-linecap="round" stroke-width="1.5" data-name="Group 20">
+					<g data-name="Group 19">
+						<path d="m10.544 1.061 5.605 5.528" data-name="Path 27"/>
+						<path d="m10.628 12.21 5.521-5.62" data-name="Path 28"/>
+					</g>
+					<path d="m.751 6.616 14.517-.026" data-name="Line 1"/>
+				</g>
+			</g>
+		</svg>
+	</a>
+{% else %}
+	<button class="button group">
+		{{ title }}
+		<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 17.21 13.27" class="w-5 h-5 -translate-x-1 group-hover:translate-x-0 transition-transform duration-100">
+			<g data-name="Group 24">
+				<g fill="none" stroke="#703824" stroke-linecap="round" stroke-width="1.5" data-name="Group 20">
+					<g data-name="Group 19">
+						<path d="m10.544 1.061 5.605 5.528" data-name="Path 27"/>
+						<path d="m10.628 12.21 5.521-5.62" data-name="Path 28"/>
+					</g>
+					<path d="m.751 6.616 14.517-.026" data-name="Line 1"/>
+				</g>
+			</g>
+		</svg>
+	</button>
+{% endif %}

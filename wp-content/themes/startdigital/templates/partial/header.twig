@@ -1,0 +1,10 @@
+<header class="transition-all duration-300 fixed w-screen top-0 left-0 bg-white z-50 py-4">
+	<div data-navigation class="container z-20 w-full flex items-center justify-between transition-all duration-300">
+		<a href="{{ site.url }}" rel="home">{% include 'icons/logo.twig' %}</a>
+		<nav id="nav-main" role="navigation" class="max-lg:h-6">
+			{% include 'menu.twig' with {
+				items: menu.get_items
+			} %}
+		</nav>
+	</div>
+</header>

@@ -1,0 +1,29 @@
+{# Use our custom function if possible, otherwise use the internal WP one #}
+{% if fn('function_exists', 'get_attachment_id') %}
+	{% set image_id = fn('get_attachment_id', image) %}
+{% else %}
+	{% set image_id = fn('attachment_url_to_postid', image) %}
+{% endif %}
+
+{% set image_size = "full" %}
+{% set lazy = lazy_load ?? true %}
+
+{% if image_id %}
+	{% set image_srcset = fn('wp_get_attachment_image_srcset', image_id, image_size) %}
+	{% set image_sizes = "(max-width: 767px) 100vw, (max-width: 1024px) 50vw, 50vw" %}
+	{# Adjust this to match your layout breakpoints and sizes #}
+	{% set bg_position_desktop = fn('get_post_meta', image_id)['bg_pos_desktop'][0] %}
+	{% set bg_position_mobile = fn('get_post_meta', image_id)['bg_pos_mobile'][0] %}
+{% endif %}
+
+{% if bg_position_desktop %}
+	{% set style = "style='object-position: #{bg_position_desktop}; #{style}'" %}
+{% endif %}
+
+{% if bg_position_mobile %}
+	{% set style_mobile = "<style>@media screen and (max-width: 767px) { [data-img='#{image_id}'] { object-position: #{bg_position_mobile} !important; } }</style>" %}
+{% endif %}
+
+{{ style_mobile|raw }}
+
+<img data-img="{{ image_id }}" {{ attributes }} {{ style }} loading="{{ lazy ?? "lazy" }}" width="100%" class="{{ class }} {{ child_class }}" srcset="{{ image_srcset ?? image }}" sizes="{{ image_sizes }}" alt="{{ alt ?? "" }}">

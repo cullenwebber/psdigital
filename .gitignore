@@ -20,7 +20,7 @@ wp-content/*
 # Allow our custom theme and specific plugin file
 !wp-content/themes/index.php
 !wp-content/themes/startdigital
-!wp-content/themes/startdigital/*
+!wp-content/themes/startdigital/**
 
 wp-content/plugins/*
 !wp-content/plugins/readme.md

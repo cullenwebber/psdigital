@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!-- [if lt IE 9]><html class="no-js no-svg ie lt-ie9 lt-ie8 lt-ie7" {{ site.language_attributes }}> <![endif] -->
+<!-- [if IE 9]><html class="no-js no-svg ie ie9 lt-ie9 lt-ie8" {{ site.language_attributes }}> <![endif] -->
+<!-- [if gt IE 9]><! -->
+	<html
+	class="no-js no-svg" {{ site.language_attributes }}> <!-- <![endif] -->
+	{% block html_head_container %}
+		{% include 'html-header.twig' %}
+	{% endblock %}
+	<body class="{{ body_class }}" data-template="base.twig" class="min-h-screen">
+		<a class="skip-link screen-reader-text" href="#content">{{ _e('Skip to content') }}</a>
+		{% block header %}
+			{% include 'partial/header.twig' %}
+		{% endblock %}
+		<main id="content">
+			{% block content %}
+				<div class="container">
+					Sorry, no content
+				</div>
+			{% endblock %}
+		</main>
+		{% block footer %}
+			{% include 'footer.twig' %}
+
+			{{ function('wp_footer') }}
+		{% endblock %}
+
+		{# Extend this to add custom scripts to just one page/block #}
+		{% block scripts %}{% endblock %}
+	</body>
+</html>
