@@ -43,7 +43,6 @@ rm -rf wp-content/plugins
 # Restore themes and plugins directories
 echo -e "${CYAN}Restoring themes and plugins directories...${NORMAL}"
 [ -d wp-content/themes_bk ] && mv wp-content/themes_bk wp-content/themes
-mkdir wp-content/plugins
 [ -d wp-content/plugins_bk ] && mv wp-content/plugins_bk/* wp-content/plugins/ && rmdir wp-content/plugins_bk
 echo -e "${GREEN}Themes and plugins restored${NORMAL}"
 
