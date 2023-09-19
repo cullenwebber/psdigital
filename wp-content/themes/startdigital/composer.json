@@ -1,13 +1,13 @@
 {
-  "name": "upstatement/timber-starter-theme",
-  "description": "Starter theme to build a Timber theme",
-  "type":"wordpress-theme",
-  "minimum-stability" : "stable",
+  "name": "startdigital/boilerroom",
+  "description": "StarterKit for building Start Digital websites",
+  "type": "wordpress-theme",
+  "minimum-stability": "stable",
   "authors": [
     {
-      "email": "jared@upstatement.com",
-      "name": "jarednova"
-    }  
+      "email": "joe@startdigital.com.au",
+      "name": "itsmejgrant"
+    }
   ],
   "repositories": [
     {
@@ -16,7 +16,7 @@
     }
   ],
   "require": {
-	  "timber/timber": "^1.19"
+    "timber/timber": "2.0.0-rc.1"
   },
   "config": {
     "allow-plugins": {
