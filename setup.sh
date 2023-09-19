@@ -77,19 +77,7 @@ cp .env.sample .env
 # Fetch and populate WordPress salts in the .env file
 echo -e "${CYAN}Fetching and populating WordPress salts in .env file...${NORMAL}"
 
-# Fetch and populate WordPress salts in the .env file
-echo -e "${CYAN}Fetching and populating WordPress salts in .env file...${NORMAL}"
-
-TEMP_FILE=$(mktemp)
 SALTS=$(curl -s https://api.wordpress.org/secret-key/1.1/salt/)
-
-awk -v salts="$SALTS" '
-BEGIN { print_s = 1 }
-/# BEGIN WordPress Salts/ { print_s = 0; print; print salts }
-/# END WordPress Salts/ { print_s = 1 }
-print_s { print }
-' .env > "$TEMP_FILE"
-
-mv "$TEMP_FILE" .env
+awk -v salts="$SALTS" '1;/# REPLACE_WITH_SALTS/ {print salts; next}' .env > .env.tmp && mv .env.tmp .env
 
 echo -e "${GREEN}Setup completed successfully!${NORMAL}"
