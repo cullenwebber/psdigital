@@ -42,8 +42,8 @@ rm -rf wp-content/plugins
 
 # Restore themes and plugins directories
 echo -e "${CYAN}Restoring themes and plugins directories...${NORMAL}"
-[ -d wp-content/themes_bk ] && mv wp-content/themes_bk wp-content/themes
-[ -d wp-content/plugins_bk ] && mv wp-content/plugins_bk/* wp-content/plugins/ && rmdir wp-content/plugins_bk
+[ -d wp-content/themes_bk ] && mv wp-content/themes_bk wp-content/themes > /dev/null 2>&1
+[ -d wp-content/plugins_bk ] && mv wp-content/plugins_bk/* wp-content/plugins/ && rmdir wp-content/plugins_bk > /dev/null 2>&1
 echo -e "${GREEN}Themes and plugins restored${NORMAL}"
 
 # Remove all default plugins (excluding plugins.zip)
