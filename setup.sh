@@ -76,10 +76,13 @@ cp .env.sample .env
 # Fetch and populate WordPress salts in the .env file
 echo -e "${CYAN}Fetching and populating WordPress salts in .env file...${NORMAL}"
 
+# Fetch and populate WordPress salts in the .env file
+echo -e "${CYAN}Fetching and populating WordPress salts in .env file...${NORMAL}"
+
 SALTS=$(curl -s https://api.wordpress.org/secret-key/1.1/salt/)
 echo "$SALTS" | while IFS= read -r line; do
     KEY=$(echo $line | grep -o "'.*'" | head -1 | sed "s/'//g")
-    VALUE=$(echo $line | grep -o "'.*'" | tail -1 | sed "s/'//g" | sed -e 's|[&]|\\&|g' -e 's|/|\\/|g')
+    VALUE=$(echo $line | grep -o "'.*'" | tail -1 | sed "s/'//g" | sed -e 's|[&]|\\&|g' -e 's|/|\\/|g' -e 's|\[|\\[|g' -e 's|\]|\\]|g' -e 's|\*|\\*|g' -e 's|\.|\\.|g')
     sed -i '' "s|put_your_$KEY|$VALUE|g" .env
 done
 
