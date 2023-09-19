@@ -39,4 +39,5 @@ jobs:
           server: ftp.perth.agency
           username: perthage
           password: ${{ secrets.DEV_FTP_PASS }}
-          server-dir: h2ex/wp-content/themes
+          server-dir: SITE_NAME/wp-content/themes/
+          protocol: ftps
