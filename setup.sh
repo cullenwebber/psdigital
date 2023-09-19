@@ -23,7 +23,7 @@ if [ ! -f wp-config.php ]; then
     wp config create --dbname=$site_name --dbuser=root --dbpass='' --dbhost='localhost' --skip-check > /dev/null 2>&1
     echo -e "${GREEN}WordPress configured${NORMAL}"
 else
-    echo -e "${CYAN}wp-config.php already exists. Skipping configuration...${NORMAL}"
+    echo -e "${YELLOW}wp-config.php already exists. Skipping configuration...${NORMAL}"
 fi
 
 # Check if database exists
