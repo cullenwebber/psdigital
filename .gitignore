@@ -23,6 +23,7 @@ wp-content/*
 !wp-content/themes/startdigital/**
 
 wp-content/plugins/*
+wp-content/plugins/plugins.zip
 !wp-content/plugins/readme.md
 
 # ENV
