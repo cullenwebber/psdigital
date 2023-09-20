@@ -7,10 +7,25 @@ YELLOW="\033[1;33m"
 
 site_name=$(basename "$(pwd)")
 
+# Backup the existing plugins directory
+if [ -d wp-content/plugins ]; then
+    echo -e "${CYAN}Backing up plugins directory...${NORMAL}"
+    mv wp-content/plugins wp-content/plugins_backup
+    echo -e "${GREEN}Backup completed${NORMAL}"
+fi
+
 # Download WordPress
 echo -e "${CYAN}Downloading WordPress...${NORMAL}"
 wp core download > /dev/null 2>&1
 echo -e "${GREEN}Finished downloading WordPress...${NORMAL}"
+
+# Restore the plugins directory from the backup
+if [ -d wp-content/plugins_backup ]; then
+    echo -e "${CYAN}Restoring plugins directory from backup...${NORMAL}"
+    rm -rf wp-content/plugins
+    mv wp-content/plugins_backup wp-content/plugins
+    echo -e "${GREEN}Plugins directory restored${NORMAL}"
+fi
 
 # Check if wp-config.php exists
 if [ ! -f wp-config.php ]; then
