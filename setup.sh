@@ -1,5 +1,4 @@
 #!/bin/bash
-#!/bin/bash
 
 GREEN="\033[1;32m"
 NORMAL="\033[0m"
@@ -52,7 +51,7 @@ find wp-content/plugins/ ! -name 'plugins.zip' -type f -exec rm -f {} +
 
 # Extract plugins.zip
 echo -e "${CYAN}Extracting plugins.zip...${NORMAL}"
-unzip wp-content/plugins/plugins.zip -d wp-content/plugins/
+unzip wp-content/plugins/plugins.zip > /dev/null 2>&1 -d wp-content/plugins/
 echo -e "${GREEN}Extracted plugins.zip${NORMAL}"
 
 # Delete plugins.zip after extraction
