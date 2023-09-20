@@ -12,11 +12,6 @@ echo -e "${CYAN}Downloading WordPress...${NORMAL}"
 wp core download > /dev/null 2>&1
 echo -e "${GREEN}Finished downloading WordPress...${NORMAL}"
 
-# Backup the current themes and plugins directories
-echo -e "${CYAN}Backing up themes and plugins directories...${NORMAL}"
-[ -d wp-content/themes ] && mv wp-content/themes wp-content/themes_bk
-[ -d wp-content/plugins ] && mv wp-content/plugins wp-content/plugins_bk
-
 # Check if wp-config.php exists
 if [ ! -f wp-config.php ]; then
     echo -e "${CYAN}Setting up WordPress configuration...${NORMAL}"
@@ -35,24 +30,18 @@ else
     echo -e "${YELLOW}Database '$site_name' already exists. Skipping creation...${NORMAL}"
 fi
 
-# Remove default themes and plugins
-echo -e "${CYAN}Removing default themes and plugins...${NORMAL}"
-rm -rf wp-content/themes
-rm -rf wp-content/plugins
-
-# Restore themes and plugins directories
-echo -e "${CYAN}Restoring themes and plugins directories...${NORMAL}"
-[ -d wp-content/themes_bk ] && mv wp-content/themes_bk wp-content/themes
-# Ensure the plugins directory exists before moving the contents from the backup
-mkdir -p wp-content/plugins
-[ -d wp-content/plugins_bk ] && mv wp-content/plugins_bk/* wp-content/plugins/
-rmdir wp-content/plugins_bk 2>/dev/null
-
-echo -e "${GREEN}Themes and plugins restored${NORMAL}"
-
 # Remove all default plugins (excluding plugins.zip)
 echo -e "${CYAN}Cleaning up default plugins...${NORMAL}"
 find wp-content/plugins/ ! -name 'plugins.zip' -type f -exec rm -f {} +
+
+# Extract plugins.zip
+echo -e "${CYAN}Extracting plugins.zip...${NORMAL}"
+unzip wp-content/plugins/plugins.zip -d wp-content/plugins/
+echo -e "${GREEN}Extracted plugins.zip${NORMAL}"
+
+# Delete plugins.zip after extraction
+rm -f wp-content/plugins/plugins.zip
+echo -e "${GREEN}Deleted plugins.zip${NORMAL}"
 
 # Check if startdigital theme directory exists
 if [ -d wp-content/themes/startdigital ]; then
