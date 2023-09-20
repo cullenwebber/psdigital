@@ -27,24 +27,6 @@ if [ -d wp-content_backup ]; then
     echo -e "${GREEN}wp-content directory restored${NORMAL}"
 fi
 
-# Check if wp-config.php exists
-if [ ! -f wp-config.php ]; then
-    echo -e "${CYAN}Setting up WordPress configuration...${NORMAL}"
-    wp config create --dbname=$site_name --dbuser=root --dbpass='' --dbhost='localhost' --skip-check > /dev/null 2>&1
-    echo -e "${GREEN}WordPress configured${NORMAL}"
-else
-    echo -e "${YELLOW}wp-config.php already exists. Skipping configuration...${NORMAL}"
-fi
-
-# Check if database exists
-if ! wp db check --quiet; then
-    echo -e "${CYAN}Creating our database...${NORMAL}"
-    wp db create > /dev/null 2>&1
-    echo -e "${GREEN}Database created${NORMAL}"
-else
-    echo -e "${YELLOW}Database '$site_name' already exists. Skipping creation...${NORMAL}"
-fi
-
 # Remove all default plugins (excluding plugins.zip)
 echo -e "${CYAN}Cleaning up default plugins...${NORMAL}"
 find wp-content/plugins/ ! -name 'plugins.zip' -type f -exec rm -f {} +
@@ -80,6 +62,19 @@ fi
 # Copy .env.sample to .env
 echo -e "${CYAN}Copying .env.sample to .env...${NORMAL}"
 cp .env.sample .env
+
+# Set the database name in the .env file to the site_name
+echo "DB_NAME=$site_name" >> .env
+
+# Activate the startdigital theme
+echo -e "${CYAN}Activating startdigital theme...${NORMAL}"
+wp theme activate startdigital
+echo -e "${GREEN}startdigital theme activated${NORMAL}"
+
+# Activate all plugins
+echo -e "${CYAN}Activating all plugins...${NORMAL}"
+wp plugin activate --all
+echo -e "${GREEN}All plugins activated${NORMAL}"
 
 echo -e "To generate WordPress salts, please visit the following link:\n"
 echo -e "\033[4;34mhttps://roots.io/salts.html\033[0m\n"
