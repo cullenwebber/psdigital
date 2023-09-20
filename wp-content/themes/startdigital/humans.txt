@@ -1,10 +1,3 @@
-## Team
+Developed (and most likely designed) by the fantastic folks at Start Digital!
 
-Your name or company
-http://yoursite.org
-@you_on_twitter
-
-
-## Site
-
-Software: Built with [Timber](http://upstatement.com/timber) by Upstatement
+https://startdigital.com.au

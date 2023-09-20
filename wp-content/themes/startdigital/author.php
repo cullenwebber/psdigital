@@ -21,4 +21,4 @@ if (isset($wp_query->query_vars['author'])) {
 	$context['author'] = Timber::get_user($wp_query->query_vars['author']);
 }
 
-Timber::render('author.twig', $context);
+Timber::render(array('author.twig', 'archive.twig'), $context);

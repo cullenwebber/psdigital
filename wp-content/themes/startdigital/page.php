@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying all pages.
  *
@@ -21,17 +22,15 @@
  * @since    Timber 0.1
  */
 
-$context = Timber::context();
+use Timber\Timber;
 
-$timber_post     = new Timber\Post();
-$context['post'] = $timber_post;
-if (function_exists('get_fields')) {
-    $context['fields'] = get_fields();
-}
-$templates = array( 'page-' . $timber_post->post_name . '.twig', 'page.twig' );
+$context = Timber::context();
+$post = Timber::get_post();
+$context['post'] = $post;
+$templates = array("page-$post->slug.twig", 'page.twig');
 
 if (is_front_page()) {
     array_unshift($templates, 'front-page.twig');
 }
 
-Timber::render($templates , $context );
+Timber::render($templates, $context);
