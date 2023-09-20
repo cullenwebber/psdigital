@@ -21,4 +21,4 @@ $context = Timber::context();
 $context['post'] = Timber::get_post();
 $context['posts'] = Timber::get_posts();
 
-Timber::render('index.twig', $context);
+Timber::render('archive.twig', $context);
