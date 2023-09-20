@@ -1,7 +1,8 @@
 {
     "name": "startdigital/boilerroom",
     "require": {
-        "vlucas/phpdotenv": "^5.5"
+        "vlucas/phpdotenv": "^5.5",
+        "roots/wp-password-bcrypt": "^1.1"
     },
     "scripts": {
         "pre-install-cmd": [
