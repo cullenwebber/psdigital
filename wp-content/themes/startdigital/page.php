@@ -24,10 +24,12 @@
 
 use Timber\Timber;
 
+global $post;
+
 $context = Timber::context();
-$post = Timber::get_post();
-$context['post'] = $post;
-$templates = array("page-$post->slug.twig", 'page.twig');
+$timberPost = Timber::get_post($post->ID);
+$context['post'] = $timberPost;
+$templates = array("page-$timberPost->slug.twig", 'page.twig');
 
 if (is_front_page()) {
     array_unshift($templates, 'front-page.twig');
