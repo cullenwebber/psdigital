@@ -64,7 +64,9 @@ echo -e "${CYAN}Copying .env.sample to .env...${NORMAL}"
 cp .env.sample .env
 
 # Set the database name in the .env file to the site_name
-echo "DB_NAME=$site_name" >> .env
+sed -i "s/^DB_NAME=.*/DB_NAME=$site_name/" .env
+sed -i "s/^DB_USER=.*/DB_USER=root/" .env
+sed -i "s/^DB_PASSWORD=.*/DB_PASSWORD=/" .env
 
 # Activate the startdigital theme
 echo -e "${CYAN}Activating startdigital theme...${NORMAL}"
