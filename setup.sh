@@ -63,21 +63,6 @@ fi
 echo -e "${CYAN}Copying .env.sample to .env...${NORMAL}"
 cp .env.sample .env
 
-# Set the database name in the .env file to the site_name
-sed -i "s/^DB_NAME=.*/DB_NAME=$site_name/" .env
-sed -i "s/^DB_USER=.*/DB_USER=root/" .env
-sed -i "s/^DB_PASSWORD=.*/DB_PASSWORD=/" .env
-
-# Activate the startdigital theme
-echo -e "${CYAN}Activating startdigital theme...${NORMAL}"
-wp theme activate startdigital
-echo -e "${GREEN}startdigital theme activated${NORMAL}"
-
-# Activate all plugins
-echo -e "${CYAN}Activating all plugins...${NORMAL}"
-wp plugin activate --all
-echo -e "${GREEN}All plugins activated${NORMAL}"
-
 echo -e "To generate WordPress salts, please visit the following link:\n"
 echo -e "\033[4;34mhttps://roots.io/salts.html\033[0m\n"
 echo -e "Copy and paste the generated salts into your .env file."
