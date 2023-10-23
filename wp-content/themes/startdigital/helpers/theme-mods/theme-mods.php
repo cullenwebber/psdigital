@@ -43,7 +43,8 @@ add_theme_support('soil', [
 /**
  * Remove items from admin bar
  */
-add_action('admin_bar_menu', function (WP_Admin_Bar $menu) {
+function removeItemsFromAdminBar(WP_Admin_Bar $menu)
+{
     $menu->remove_node('comments'); // Comments
     $menu->remove_node('customize'); // Customize
     $menu->remove_node('dashboard'); // Dashboard
@@ -56,14 +57,17 @@ add_action('admin_bar_menu', function (WP_Admin_Bar $menu) {
     $menu->remove_node('view'); // View
     $menu->remove_node('widgets'); // Widgets
     $menu->remove_node('wp-logo'); // WordPress Logo
-}, 999);
+}
+add_action('admin_bar_menu', 'removeItemsFromAdminBar', 999);
 
 /**
  * Remove items from dashboard
  */
-add_action('wp_dashboard_setup', function () {
+function removeItemsFromDashboard()
+{
     remove_meta_box('dashboard_activity', 'dashboard', 'normal'); // Activity
     remove_meta_box('dashboard_site_health', 'dashboard', 'normal'); // Site Health Status
     remove_meta_box('dashboard_primary', 'dashboard', 'side'); // WordPress Events and News
     remove_meta_box('dashboard_quick_press', 'dashboard', 'side'); // Quick Draft
-});
+}
+add_action('wp_dashboard_setup', 'removeItemsFromDashboard');
