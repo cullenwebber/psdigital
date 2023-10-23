@@ -22,5 +22,8 @@
     "allow-plugins": {
       "composer/installers": true
     }
+  },
+  "require-dev": {
+    "symfony/var-dumper": "^6.3"
   }
 }
