@@ -157,42 +157,4 @@ class StartDigital extends Site
 	}
 }
 
-// REMOVE AUTHOR FROM POST SOCIAL EMBEDS
-
-add_filter('oembed_response_data', 'disable_embeds_filter_oembed_response_data_');
-function disable_embeds_filter_oembed_response_data_($data)
-{
-	unset($data['author_url']);
-	unset($data['author_name']);
-	return $data;
-}
-
-// ADD CUSTOM LOGO TO ADMIN LOGIN SCREEN
-
-function custom_login_logo()
-{
-	echo '<style type="text/css">
-        body.login div#login h1 a {
-            background-image: url(' . get_theme_file_uri('static/start-admin.png') . ');
-        }
-    </style>';
-}
-add_action('login_enqueue_scripts', 'custom_login_logo');
-
-/**
- * Enable features from Soil when plugin is activated
- * @link https://roots.io/plugins/soil/
- */
-add_theme_support('soil', [
-	'clean-up',
-	'disable-rest-api',
-	'disable-asset-versioning',
-	'disable-trackbacks',
-	'google-analytics' => 'UA-XXXXX-Y',
-	'js-to-footer',
-	'nav-walker',
-	'nice-search',
-	'relative-urls'
-]);
-
 new StartDigital();
