@@ -71,3 +71,21 @@ function removeItemsFromDashboard()
     remove_meta_box('dashboard_quick_press', 'dashboard', 'side'); // Quick Draft
 }
 add_action('wp_dashboard_setup', 'removeItemsFromDashboard');
+
+/**
+ * Use the Favicon as the login screen logo
+ */
+function faviconAsLoginLogo()
+{
+    $favicon = get_site_icon_url();
+
+    echo "
+        <style type='text/css'>
+            body.login div#login h1 a {
+                background-image: url('$favicon');
+                pointer-events: none;
+            }
+        </style>
+    ";
+}
+add_action('login_enqueue_scripts', 'faviconAsLoginLogo');
