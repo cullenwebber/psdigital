@@ -44,3 +44,9 @@ main section {
 /* main > section:first-of-type {
 	@apply pt-0 lg:pt-0 xl:pt-0 2xl:pt-0;
 } */
+
+/* REMOVE LOOM EXTENSION PADDING */
+
+section#shadow-host-companion {
+	@apply !py-0;
+}
