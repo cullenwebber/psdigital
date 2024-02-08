@@ -83,11 +83,17 @@ add_action('login_enqueue_scripts', 'faviconAsLoginLogo');
  */
 function initializeSiteCustomizations()
 {
+    if (get_option('site_customizations_activated')) {
+        return;
+    }
+
     createSuperAdminRole();
     assignSuperAdminRoleToUser();
     removeThemeAndPluginEditCapabilities();
+
+    update_option('site_customizations_activated', true);
 }
-register_activation_hook(__FILE__, 'initializeSiteCustomizations');
+add_action('admin_init', 'initializeSiteCustomizations');
 
 /**
  * Create a Super Admin role
