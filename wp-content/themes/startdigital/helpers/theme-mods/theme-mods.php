@@ -77,6 +77,19 @@ function faviconAsLoginLogo()
 add_action('login_enqueue_scripts', 'faviconAsLoginLogo');
 
 /**
+ * Initial setup for custom roles and capabilities on plugin activation.
+ *
+ * @return void
+ */
+function initializeSiteCustomizations()
+{
+    createSuperAdminRole();
+    assignSuperAdminRoleToUser();
+    removeThemeAndPluginEditCapabilities();
+}
+register_activation_hook(__FILE__, 'initializeSiteCustomizations');
+
+/**
  * Create a Super Admin role
  *
  * @return void
@@ -90,7 +103,6 @@ function createSuperAdminRole()
     $capabilities = get_role('administrator')->capabilities;
     add_role('super_admin', 'Super Admin', $capabilities);
 }
-add_action('admin_init', 'createSuperAdminRole');
 
 /**
  * Assign the Super Admin role to the user with the username 'startdig'
@@ -113,7 +125,6 @@ function assignSuperAdminRoleToUser()
 
     $user->set_role('super_admin');
 }
-add_action('admin_init', 'assignSuperAdminRoleToUser');
 
 /**
  * Remove ability to edit themes and plugins from all roles except 'super_admin'
@@ -139,7 +150,6 @@ function removeThemeAndPluginEditCapabilities()
         $role->remove_cap('delete_plugins');
     }
 }
-add_action('init', 'removeThemeAndPluginEditCapabilities');
 
 /**
  * Add GTM to the header
