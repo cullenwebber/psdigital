@@ -116,6 +116,11 @@ function assignSuperAdminRoleToUser()
 }
 add_action('admin_init', 'assignSuperAdminRoleToUser');
 
+/**
+ * Remove ability to edit themes and plugins from all roles except 'super_admin'
+ *
+ * @return void
+ */
 function removeThemeAndPluginEditCapabilities()
 {
     global $wp_roles;
@@ -123,13 +128,11 @@ function removeThemeAndPluginEditCapabilities()
 
     $roles = $wp_roles->get_names();
 
-    // Iterate through each role
-    foreach ($roles as $role => $display_name) {
+    foreach ($roles as $role => $r) {
         if ($role === 'super_admin') continue;
 
         $role = get_role($role);
 
-        // Remove the capabilities from roles that are not 'super_admin'
         $role->remove_cap('edit_themes');
         $role->remove_cap('install_plugins');
         $role->remove_cap('edit_plugins');
