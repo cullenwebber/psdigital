@@ -12,19 +12,6 @@ function disableEmbedsFilter($data)
 add_filter('oembed_response_data', 'disableEmbedsFilter');
 
 /**
- * Custom logo to login screen
- */
-function customLoginLogo()
-{
-    echo '<style type="text/css">
-        body.login div#login h1 a {
-            background-image: url(' . get_theme_file_uri('static/start-admin.png') . ');
-        }
-    </style>';
-}
-add_action('login_enqueue_scripts', 'customLoginLogo');
-
-/**
  * Enable features from Soil when plugin is activated
  * @link https://roots.io/plugins/soil/
  */
@@ -89,3 +76,65 @@ function faviconAsLoginLogo()
     ";
 }
 add_action('login_enqueue_scripts', 'faviconAsLoginLogo');
+
+/**
+ * Create a Super Admin role
+ *
+ * @return void
+ */
+function createSuperAdminRole()
+{
+    if (!is_null(get_role('super_admin'))) {
+        return;
+    }
+
+    $capabilities = get_role('administrator')->capabilities;
+    add_role('super_admin', 'Super Admin', $capabilities);
+}
+add_action('admin_init', 'createSuperAdminRole');
+
+/**
+ * Assign the Super Admin role to the user with the username 'startdig'
+ *
+ * @return void
+ */
+function assignSuperAdminRoleToUser()
+{
+    $userId = username_exists('startdig');
+
+    if (!$userId) {
+        return;
+    }
+
+    $user = new WP_User($userId);
+
+    if (in_array('super_admin', $user->roles)) {
+        return;
+    }
+
+    $user->set_role('super_admin');
+}
+add_action('admin_init', 'assignSuperAdminRoleToUser');
+
+function removeThemeAndPluginEditCapabilities()
+{
+    global $wp_roles;
+    if (!isset($wp_roles)) $wp_roles = new WP_Roles();
+
+    $roles = $wp_roles->get_names();
+
+    // Iterate through each role
+    foreach ($roles as $role => $display_name) {
+        if ($role === 'super_admin') continue;
+
+        $role = get_role($role);
+
+        // Remove the capabilities from roles that are not 'super_admin'
+        $role->remove_cap('edit_themes');
+        $role->remove_cap('install_plugins');
+        $role->remove_cap('edit_plugins');
+        $role->remove_cap('update_plugins');
+        $role->remove_cap('delete_plugins');
+    }
+}
+add_action('init', 'removeThemeAndPluginEditCapabilities');

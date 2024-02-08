@@ -85,7 +85,9 @@ $table_prefix = $_ENV['TABLE_PREFIX'];
  *
  * @link https://wordpress.org/support/article/debugging-in-wordpress/
  */
-define('WP_DEBUG', $_ENV['WP_DEBUG']);
+define('WP_DEBUG', filter_var($_ENV['WP_DEBUG'], FILTER_VALIDATE_BOOLEAN));
+define('WP_DEBUG_DISPLAY', filter_var($_ENV['WP_DEBUG_DISPLAY'], FILTER_VALIDATE_BOOLEAN));
+define('WP_DEBUG_LOG', filter_var($_ENV['WP_DEBUG_LOG'], FILTER_VALIDATE_BOOLEAN));
 
 
 /* Add any custom values between this line and the "stop editing" line. */
