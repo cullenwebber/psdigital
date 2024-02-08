@@ -1,0 +1,45 @@
+{
+    "key": "group_65c473190b416",
+    "title": "Site Settings",
+    "fields": [
+        {
+            "key": "field_65c4731941c1a",
+            "label": "Google Analytics Code",
+            "name": "google_analytics_code",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "If using Google Analytics instead of GTM.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "UA-XXXXX-Y",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1707373398
+}

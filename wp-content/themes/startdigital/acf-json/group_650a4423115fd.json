@@ -1,6 +1,6 @@
 {
     "key": "group_650a4423115fd",
-    "title": "Page Buidler",
+    "title": "Page Builder",
     "fields": [
         {
             "key": "field_650a442376588",
@@ -50,5 +50,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1695171655
+    "modified": 1707373332
 }
