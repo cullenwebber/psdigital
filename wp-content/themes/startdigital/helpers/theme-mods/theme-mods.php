@@ -20,7 +20,6 @@ add_theme_support('soil', [
     'disable-rest-api',
     'disable-asset-versioning',
     'disable-trackbacks',
-    'google-analytics' => get_field('google_analytics_code', 'option'),
     'js-to-footer',
     'nav-walker',
     'nice-search',
@@ -141,3 +140,49 @@ function removeThemeAndPluginEditCapabilities()
     }
 }
 add_action('init', 'removeThemeAndPluginEditCapabilities');
+
+/**
+ * Add GTM to the header
+ */
+function addGtmToHead()
+{
+    $id = get_field('google_tag_manager_id');
+
+    if (!$id) {
+        return;
+    }
+
+    return <<<EOD
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer', $id);</script>
+        <!-- End Google Tag Manager -->
+        EOD;
+}
+add_action('wp_head', 'addGtmToHead');
+
+/**
+ * Add Google Analytics to the header
+ */
+function addGoogleAnalyticsToHead()
+{
+    $id = get_field('google_analytics_id');
+
+    if (!$id) {
+        return;
+    }
+
+    return <<<EOD
+        <script async src="https://www.googletagmanager.com/gtag/js?id=$id"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', $id);
+        </script>
+    EOD;
+}
+add_action('wp_head', 'addGoogleAnalyticsToHead');

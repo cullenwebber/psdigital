@@ -3,12 +3,29 @@
     "title": "Site Settings",
     "fields": [
         {
+            "key": "field_65c475b2219d4",
+            "label": "Analytics",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
             "key": "field_65c4731941c1a",
-            "label": "Google Analytics Code",
-            "name": "google_analytics_code",
+            "label": "Google Analytics ID",
+            "name": "google_analytics_id",
             "aria-label": "",
             "type": "text",
-            "instructions": "If using Google Analytics instead of GTM.",
+            "instructions": "GT4 ID",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -18,7 +35,27 @@
             },
             "default_value": "",
             "maxlength": "",
-            "placeholder": "UA-XXXXX-Y",
+            "placeholder": "AW-XXXXXXX",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_65c47606219d5",
+            "label": "Google Tag Manager ID",
+            "name": "google_tag_manager_id",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "GTM ID",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "GTM-XXXXXXX",
             "prepend": "",
             "append": ""
         }
@@ -26,9 +63,9 @@
     "location": [
         [
             {
-                "param": "post_type",
+                "param": "options_page",
                 "operator": "==",
-                "value": "post"
+                "value": "site-settings"
             }
         ]
     ],
@@ -41,5 +78,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1707373398
+    "modified": 1707374107
 }
