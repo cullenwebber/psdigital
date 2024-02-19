@@ -96,66 +96,40 @@ function initializeSiteCustomizations()
 add_action('admin_init', 'initializeSiteCustomizations');
 
 /**
- * Create a Super Admin role
+ * Check user capabilities and update a custom user meta to reflect their allowed status
  *
+ * @param $user_login
+ * @param $user
  * @return void
  */
-function createSuperAdminRole()
+function checkUserCapabilities($user_login, $user)
 {
-    if (!is_null(get_role('super_admin'))) {
-        return;
-    }
+    $allowedUsers = ['startdig'];
+    $isAllowed = in_array($user_login, $allowedUsers);
 
-    $capabilities = get_role('administrator')->capabilities;
-    add_role('super_admin', 'Super Admin', $capabilities);
+    update_user_meta($user->ID, 'is_allowed_admin_capabilities', $isAllowed);
 }
+add_action('wp_login', 'checkUserCapabilities', 10, 2);
 
 /**
- * Assign the Super Admin role to the user with the username 'startdig'
- *
- * @return void
+ * Filter user capabilities to remove certain capabilities for users not allowed
  */
-function assignSuperAdminRoleToUser()
+function filterUserCapabilities($capabilities, $cap, $args, $user)
 {
-    $userId = username_exists('startdig');
+    $isAllowed = get_user_meta($user->ID, 'is_allowed_admin_capabilities', true);
 
-    if (!$userId) {
-        return;
+    if (!$isAllowed) {
+        unset($capabilities['edit_themes']);
+        unset($capabilities['install_plugins']);
+        unset($capabilities['edit_plugins']);
+        unset($capabilities['update_plugins']);
+        unset($capabilities['delete_plugins']);
+        unset($capabilities['activate_plugins']);
     }
 
-    $user = new WP_User($userId);
-
-    if (in_array('super_admin', $user->roles)) {
-        return;
-    }
-
-    $user->set_role('super_admin');
+    return $capabilities;
 }
-
-/**
- * Remove ability to edit themes and plugins from all roles except 'super_admin'
- *
- * @return void
- */
-function removeThemeAndPluginEditCapabilities()
-{
-    global $wp_roles;
-    if (!isset($wp_roles)) $wp_roles = new WP_Roles();
-
-    $roles = $wp_roles->get_names();
-
-    foreach ($roles as $role => $r) {
-        if ($role === 'super_admin') continue;
-
-        $role = get_role($role);
-
-        $role->remove_cap('edit_themes');
-        $role->remove_cap('install_plugins');
-        $role->remove_cap('edit_plugins');
-        $role->remove_cap('update_plugins');
-        $role->remove_cap('delete_plugins');
-    }
-}
+add_filter('user_has_cap', 'filterUserCapabilities', 10, 4);
 
 /**
  * Add GTM to the header
