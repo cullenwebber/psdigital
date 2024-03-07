@@ -7,6 +7,12 @@ YELLOW="\033[1;33m"
 
 site_name=$(basename "$(pwd)")
 
+# Check if WordPress is already installed
+if [ -d wp-admin ]; then
+    echo -e "${YELLOW}WordPress is already installed. Aborting setup.${NORMAL}"
+    exit 1
+fi
+
 # Backup the entire wp-content directory
 if [ -d wp-content ]; then
     echo -e "${CYAN}Backing up wp-content directory...${NORMAL}"
