@@ -77,61 +77,6 @@ function faviconAsLoginLogo()
 add_action('login_enqueue_scripts', 'faviconAsLoginLogo');
 
 /**
- * Initial setup for custom roles and capabilities on plugin activation.
- *
- * @return void
- */
-function initializeSiteCustomizations()
-{
-    if (get_option('site_customizations_activated')) {
-        return;
-    }
-
-    createSuperAdminRole();
-    assignSuperAdminRoleToUser();
-    removeThemeAndPluginEditCapabilities();
-
-    update_option('site_customizations_activated', true);
-}
-add_action('admin_init', 'initializeSiteCustomizations');
-
-/**
- * Check user capabilities and update a custom user meta to reflect their allowed status
- *
- * @param $user_login
- * @param $user
- * @return void
- */
-function checkUserCapabilities($user_login, $user)
-{
-    $allowedUsers = ['startdig'];
-    $isAllowed = in_array($user_login, $allowedUsers);
-
-    update_user_meta($user->ID, 'is_allowed_admin_capabilities', $isAllowed);
-}
-add_action('wp_login', 'checkUserCapabilities', 10, 2);
-
-/**
- * Filter user capabilities to remove certain capabilities for users not allowed
- */
-function filterUserCapabilities($capabilities, $cap, $args, $user)
-{
-    $isAllowed = get_user_meta($user->ID, 'is_allowed_admin_capabilities', true);
-
-    if (!$isAllowed) {
-        unset($capabilities['edit_themes']);
-        unset($capabilities['install_plugins']);
-        unset($capabilities['edit_plugins']);
-        unset($capabilities['update_plugins']);
-        unset($capabilities['delete_plugins']);
-        unset($capabilities['activate_plugins']);
-    }
-
-    return $capabilities;
-}
-add_filter('user_has_cap', 'filterUserCapabilities', 10, 4);
-
-/**
  * Add GTM to the header
  */
 function addGtmToHead()
