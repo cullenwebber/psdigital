@@ -17,7 +17,6 @@ add_filter('oembed_response_data', 'disableEmbedsFilter');
  */
 add_theme_support('soil', [
     'clean-up',
-    'disable-rest-api',
     'disable-asset-versioning',
     'disable-trackbacks',
     'js-to-footer',
