@@ -9,8 +9,12 @@
 
 @layer components {
 	.container {
-		@apply max-w-[1600px] w-[calc(100%-2rem)] mx-auto;
+		@apply max-w-[1600px] w-full px-6 md:px-8 mx-auto;
 	}
+}
+
+header.scrolling {
+	@apply shadow-sm;
 }
 
 [data-menu] {
@@ -21,32 +25,37 @@
 	@apply translate-x-0;
 }
 
-main section {
-	@apply relative py-10 lg:py-20 2xl:py-32;
+main {
+	section {
+		@apply relative py-10 lg:py-20 3xl:py-32;
+	}
 }
 
 .rounded-top {
-	@apply rounded-t-3xl lg:rounded-t-[100px] 2xl:rounded-t-[200px];
+	@apply rounded-t-3xl lg:rounded-t-[100px] 3xl:rounded-t-[200px];
 }
 
 .rounded-bottom {
-	@apply rounded-b-3xl lg:rounded-b-[100px] 2xl:rounded-b-[200px];
+	@apply rounded-b-3xl lg:rounded-b-[100px] 3xl:rounded-b-[200px];
 }
 
 .section-padding {
-	@apply relative py-10 lg:py-20 2xl:py-32;
+	@apply relative py-10 lg:py-20 3xl:py-32;
+}
+
+.section-padding-top {
+	@apply relative pt-10 lg:pt-20 3xl:pt-32;
+}
+
+.section-padding-bottom {
+	@apply relative pb-10 lg:pb-20 3xl:pb-32;
 }
 
 .remove-section-padding {
 	@apply !py-0;
 }
 
-/* main > section:first-of-type {
-	@apply pt-0 lg:pt-0 xl:pt-0 2xl:pt-0;
-} */
-
 /* REMOVE LOOM EXTENSION PADDING */
-
 section#shadow-host-companion {
 	@apply !py-0;
 }

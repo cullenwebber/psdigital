@@ -1,0 +1,14 @@
+<header class="fixed top-0 bg-white z-50 py-4 w-full">
+	<div data-navigation class="container relative w-full">
+		<div class="flex items-center justify-between">
+			<a href="{{ site.url }}" rel="home">{% include 'icons/logo.twig' %}</a>
+			<button data-toggle-menu class="lg:hidden">{{ include('templates/icons/hamburger.twig') }}</button>
+		</div>
+		{% if menu %}
+			<nav class="navigation">
+				{% include 'partial/desktop-menu.twig' %}
+				{% include 'partial/mobile-menu.twig' %}
+			</nav>
+		{% endif %}
+	</div>
+</header>
