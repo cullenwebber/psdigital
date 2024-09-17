@@ -1,44 +1,32 @@
-# This is a basic workflow to help you get started with Actions
-
-name: Publish Website
-
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [main]
   pull_request:
-    branches: [main]
+      branches: [main]
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+name: 🚀 Deploy website on push
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  web-deploy:
+    name: 🎉 Deploy
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: 🚚 Get latest code
-        uses: actions/checkout@v2
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v4
 
-      - name: 🔨 Build Project
-        run: |
-          composer install --no-scripts
-          cd wp-content/themes/startdigital
-          npm install
-          npm run build
-          composer install
+    - name: 🔨 Build Project
+      run: |
+        composer install --no-scripts
+        cd wp-content/themes/startdigital
+        npm install
+        npm run build
+        composer install
 
-      - name: 📂 Sync files
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
-        with:
-          server: ftp.perth.agency
-          username: perthage
-          password: ${{ secrets.DEV_FTP_PASS }}
-          server-dir: SITE_NAME/wp-content/themes/
-          protocol: ftps
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ftp.perth.agency
+        username: perthage
+        password: ${{ secrets.DEV_FTP_PASS }}
+        server-dir: SITENAME/
+        protocol: ftps
