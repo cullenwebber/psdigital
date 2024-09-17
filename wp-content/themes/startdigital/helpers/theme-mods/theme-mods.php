@@ -80,6 +80,10 @@ add_action('login_enqueue_scripts', 'faviconAsLoginLogo');
  */
 function addGtmToHead()
 {
+    if(!function_exists('get_field')){
+        return;
+    }
+
     $id = get_field('google_tag_manager_id');
 
     if (!$id) {
@@ -103,6 +107,10 @@ add_action('wp_head', 'addGtmToHead');
  */
 function addGoogleAnalyticsToHead()
 {
+    if(!function_exists('get_field')){
+       return;
+    }
+
     $id = get_field('google_analytics_id');
 
     if (!$id) {

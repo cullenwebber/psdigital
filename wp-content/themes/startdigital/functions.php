@@ -118,7 +118,9 @@ class StartDigital extends Site
 	 */
 	public function add_to_context($context)
 	{
-		$context['options'] = get_fields('options');
+		if(function_exists('get_fields')){
+			$context['options'] = get_fields('options');
+		}
 		$context['menu']  = Timber::get_menu();
 		$context['site']  = $this;
 
