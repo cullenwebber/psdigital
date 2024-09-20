@@ -13,7 +13,12 @@ export default function initInfiniteScroll() {
 
 	const viewportNode = emblaNode.querySelector('.embla__viewport')
 
-	const options = { loop: true }
+	const options = {
+		loop: true,
+		skipSnaps: true,
+		dragFree: true,
+	}
+
 	EmblaCarousel(viewportNode, options, [
 		AutoScroll({
 			stopOnInteraction: false,
