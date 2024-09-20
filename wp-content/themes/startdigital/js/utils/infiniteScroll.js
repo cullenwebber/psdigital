@@ -6,11 +6,12 @@ import AutoScroll from 'embla-carousel-auto-scroll'
 
 export default function initInfiniteScroll() {
 	const emblaNode = document.querySelector('.embla')
-	const viewportNode = emblaNode.querySelector('.embla__viewport')
 
 	if (!emblaNode) {
 		return
 	}
+
+	const viewportNode = emblaNode.querySelector('.embla__viewport')
 
 	const options = { loop: true }
 	EmblaCarousel(viewportNode, options, [
