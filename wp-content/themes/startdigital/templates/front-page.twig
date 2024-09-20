@@ -1,9 +1,30 @@
-{% extends "page.twig" %}
+{% extends 'page.twig' %}
 
 {% block content %}
+	<section class="relative !pt-24 sm:!pt-32 3xl:!pt-44 bg-black text-white">
+		<div class="container">
+			<div class="block-content">
+				<h1>
+					Heading 1
+				</h1>
+				<h2>
+					Heading 2
+				</h2>
+				<h3>
+					Heading 3
+				</h3>
+				<h4>
+					Heading 4
+				</h4>
+				<h5>
+					Heading 5
+				</h5>
+				<h6>
+					Heading 6
+				</h6>
+			</div>
+		</div>
+	</section>
 
-	<div class="h-[90vh] grid place-content-center">Homepage</div>
-
-	{% include "partial/scrolling-text.twig" %}
-
+	{% include 'partial/infinite-scroll.twig' %}
 {% endblock %}

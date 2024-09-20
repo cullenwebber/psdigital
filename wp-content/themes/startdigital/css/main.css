@@ -5,7 +5,7 @@
 @import './typography.css';
 @import './forms.css';
 @import './buttons.css';
-@import 'swiper/swiper-bundle.css';
+@import './sliders.css';
 
 @layer components {
 	.container {

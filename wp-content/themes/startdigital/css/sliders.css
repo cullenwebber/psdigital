@@ -1,0 +1,15 @@
+@import 'swiper/swiper-bundle.css';
+
+.embla {
+	@apply overflow-hidden;
+}
+.embla__container {
+	@apply flex cursor-grab;
+}
+.embla__slide {
+    @apply flex-[0_0_20%] min-w-0 h-20;
+
+    .embla__content {
+        @apply flex h-full w-full items-center justify-center;
+    }
+}
