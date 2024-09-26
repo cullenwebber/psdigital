@@ -8,9 +8,7 @@ export default function initMenus() {
 	function toggleMenu() {
 		const menuButtons = document.querySelectorAll('[data-toggle-menu]')
 		const mainElement = document.querySelector('main')
-		const staggerContainers = document.querySelectorAll(
-			'[data-animate-stagger-menu]'
-		)
+		const staggerContainers = document.querySelectorAll('[data-stagger-items]')
 
 		menuButtons.forEach((btn) => {
 			btn.addEventListener('click', () => {
