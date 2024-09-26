@@ -22,7 +22,7 @@ export default function initMenus() {
 						gsap.from(elementsStagger, {
 							y: 20,
 							opacity: 0,
-							delay: 0.5,
+							delay: 0.25,
 							stagger: 0.1,
 						})
 					})
