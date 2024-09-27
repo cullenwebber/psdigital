@@ -6,7 +6,8 @@ All styling is done using TailwindCSS.
 ## Getting started
 
 1. Run 'npx create-boilerroom-app <project-name>'
-2. Continue with step 3. onwards below
+2. Visit your site in the browser and complete the installation steps.
+3. Start the development server by navigating to the `wp-content/themes/startdigital` theme and running `npm run dev`.
    
 OR
 
