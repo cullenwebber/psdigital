@@ -62,10 +62,10 @@
 	}
 
 	.embla__slide {
-		@apply flex-[0_0_var(--infinite-slide-width)] min-w-0 h-20 pl-[var(--slide-spacing)];
+		@apply flex-[0_0_var(--infinite-slide-width)] min-w-0 h-20 pl-[var(--infinite-slide-spacing)];
 
 		.embla__content {
-			@apply flex h-full w-full items-center justify-center;
+			@apply flex h-full w-full items-center justify-center bg-slate-200;
 		}
 	}
 }
