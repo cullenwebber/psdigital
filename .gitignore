@@ -3,6 +3,7 @@
 
 # Don't ignore the .gitignore file itself
 !.gitignore
+!.github/workflows/deploy.yaml
 !README.md
 !composer.json
 !composer.lock
