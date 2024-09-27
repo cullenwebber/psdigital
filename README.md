@@ -5,6 +5,11 @@ All styling is done using TailwindCSS.
 
 ## Getting started
 
+1. Run 'npx create-boilerroom-app <project-name>'
+2. Continue with step 3. onwards below
+   
+OR
+
 1. Clone this theme into your project folder and rename it `git clone https://github.com/StartDigitalAU/boilerroom yourprojectname`.
 2. Navigate into the project root and run `composer install`.
 3. Create a new database and name it the same as your project. [TablePlus is a great free tool database management tool if you don't have one yet.](https://tableplus.com/).
