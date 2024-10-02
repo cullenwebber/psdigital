@@ -4,7 +4,7 @@
 import EmblaCarousel from 'embla-carousel'
 import AutoScroll from 'embla-carousel-auto-scroll'
 import { addPrevNextBtnsClickHandlers } from './arrowButtons'
-import { addDotBtnsAndClickHandlers } from './DotButton'
+import { addDotBtnsAndClickHandlers } from './dotButtons'
 
 export default function initSliders() {
 	initDefaultSliders()
