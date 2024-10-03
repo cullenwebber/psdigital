@@ -2,8 +2,8 @@
 <!-- [if lt IE 9]><html class="no-js no-svg ie lt-ie9 lt-ie8 lt-ie7" {{ site.language_attributes }}> <![endif] -->
 <!-- [if IE 9]><html class="no-js no-svg ie ie9 lt-ie9 lt-ie8" {{ site.language_attributes }}> <![endif] -->
 <!-- [if gt IE 9]><! -->
-	<html
-	class="no-js no-svg" {{ site.language_attributes }}> <!-- <![endif] -->
+<html class="no-js no-svg" {{ site.language_attributes }}>
+	<!-- <![endif] -->
 	{% block html_head_container %}
 		{% include 'html-header.twig' %}
 	{% endblock %}
@@ -17,9 +17,11 @@
 
 		<main id="page-content">
 			{% block content %}
-				<div class="container">
-					Sorry, no content
-				</div>
+				<section class="relative">
+					<div class="container">
+						<h2>Content coming soon...</h2>
+					</div>
+				</section>
 			{% endblock %}
 		</main>
 		{% block footer %}
@@ -29,6 +31,7 @@
 		{% endblock %}
 
 		{# Extend this to add custom scripts to just one page/block #}
-		{% block scripts %}{% endblock %}
+		{% block scripts %}
+		{% endblock %}
 	</body>
 </html>

@@ -55,6 +55,10 @@ main {
 	@apply !py-0;
 }
 
+.banner {
+	@apply relative !pt-24 sm:!pt-44 3xl:!pt-52;
+}
+
 /* REMOVE LOOM EXTENSION PADDING */
 section#shadow-host-companion {
 	@apply !py-0;
