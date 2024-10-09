@@ -64,3 +64,7 @@ h6,
 .block-content ol li {
 	@apply list-decimal;
 }
+
+.supertitle {
+	@apply text-base uppercase;
+}
