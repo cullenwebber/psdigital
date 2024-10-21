@@ -13,7 +13,7 @@ export default function initMenus() {
 		menuButtons.forEach((btn) => {
 			btn.addEventListener('click', () => {
 				document.body.classList.toggle('menuIsOpen')
-				document.body.classList.toggle('overflow-hidden')
+				document.documentElement.classList.toggle('overflow-hidden')
 
 				if (document.body.classList.contains('menuIsOpen')) {
 					staggerContainers.forEach((stagger) => {
