@@ -3,27 +3,6 @@
     "title": "Site Settings",
     "fields": [
         {
-            "key": "field_67317a7bce1c1",
-            "label": "Default Forms Recipient Email",
-            "name": "default_forms_recipient_email",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
             "key": "field_67076ee277cc2",
             "label": "Company Details",
             "name": "",
@@ -384,6 +363,45 @@
             "placeholder": "GTM-XXXXXXX",
             "prepend": "",
             "append": ""
+        },
+        {
+            "key": "field_67317c953c93b",
+            "label": "Forms",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_67317a7bce1c1",
+            "label": "Default Forms Recipient Email",
+            "name": "default_forms_recipient_email",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
@@ -411,5 +429,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1731296036
+    "modified": 1731296426
 }
