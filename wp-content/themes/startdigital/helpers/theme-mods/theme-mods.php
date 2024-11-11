@@ -132,8 +132,11 @@ add_action('wp_head', 'addGoogleAnalyticsToHead');
 /**
  * Change default email recipient on Gravity Forms
  */
-function custom_global_notification_email($notification, $form, $entry) {
-    $notification['to'] = get_field('default_forms_recipient_email', 'options');
+function custom_conditional_notification_email($notification, $form, $entry) {
+    if ($notification['to'] === '{admin_email}') {
+        $notification['to'] = get_field('default_forms_recipient_email', 'options');
+    }
+
     return $notification;
 }
-add_filter('gform_notification', 'custom_global_notification_email', 10, 3);
+add_filter('gform_notification', 'custom_conditional_notification_email', 10, 3);
