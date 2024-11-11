@@ -128,3 +128,12 @@ function addGoogleAnalyticsToHead()
     EOD;
 }
 add_action('wp_head', 'addGoogleAnalyticsToHead');
+
+/**
+ * Change default email recipient on Gravity Forms
+ */
+function custom_global_notification_email($notification, $form, $entry) {
+    $notification['to'] = get_field('default_forms_recipient_email', 'options');
+    return $notification;
+}
+add_filter('gform_notification', 'custom_global_notification_email', 10, 3);
