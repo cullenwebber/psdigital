@@ -134,7 +134,9 @@ add_action('wp_head', 'addGoogleAnalyticsToHead');
  */
 function custom_conditional_notification_email($notification, $form, $entry) {
     if ($notification['to'] === '{admin_email}') {
-        $notification['to'] = get_field('default_forms_recipient_email', 'options');
+        if(get_field('default_forms_recipient_email', 'options')){
+            $notification['to'] = get_field('default_forms_recipient_email', 'options');
+        }
     }
 
     return $notification;
