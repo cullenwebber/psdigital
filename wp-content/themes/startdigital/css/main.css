@@ -1,11 +1,12 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
-@import './accordion.css';
 @import './typography.css';
-@import './forms.css';
+@import './animations.css';
 @import './buttons.css';
 @import './sliders.css';
+@import './accordion.css';
+@import './forms.css';
 
 @layer components {
 	.container {
