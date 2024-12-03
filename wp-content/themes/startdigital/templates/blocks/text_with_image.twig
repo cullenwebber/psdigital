@@ -5,10 +5,10 @@
 				{{ block.content }}
 			</div>
 			<div class="relative rounded-section overflow-hidden aspect-16/9 lg:aspect-4/3 w-full h-full {{
-				block.image_on_left == true
-					? 'lg:order-1'
-				}}">
-				{% include 'partial/image.twig' with {
+									block.image_on_left == true
+										? 'lg:order-1'
+									}}">
+				{% include 'partials/image.twig' with {
 					image: get_image(block.image),
 					class: 'absolute top-0 left-0 w-full h-full object-cover object-center pointer-events-none',
 					alt: block.image.alt

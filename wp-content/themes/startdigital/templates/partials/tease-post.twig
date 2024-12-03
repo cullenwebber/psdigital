@@ -6,6 +6,6 @@
 	<p>{{ post.excerpt }}</p>
 
 	{% if post.thumbnail %}
-		{% include 'partial/image.twig' with { image: get_image(post.thumbnail).src, alt: post.thumbnail.alt } %}
+		{% include 'partials/image.twig' with { image: get_image(post.thumbnail).src, alt: post.thumbnail.alt } %}
 	{% endif %}
 </article>
