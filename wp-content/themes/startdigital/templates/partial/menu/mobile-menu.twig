@@ -1,5 +1,4 @@
-<ul data-menu
-	class="bg-white flex flex-col gap-6 p-12 z-30 fixed top-0 right-0 w-full h-screen max-w-lg transform transition duration-300 ease lg:hidden">
+<ul data-menu class="bg-white flex flex-col gap-6 p-12 z-30 fixed top-0 right-0 w-full h-screen max-w-lg transform transition duration-300 ease lg:hidden">
 	<button data-toggle-menu class="lg:hidden">{{ include('templates/icons/cross.twig') }}</button>
 	<div data-stagger-items class="mt-5 flex-grow flex flex-col">
 		{% for item in menu.get_items %}
@@ -7,7 +6,7 @@
 				<div class="flex items-center justify-between">
 					<a href="{{ item.url }}" class="text-xl py-4">{{ item }}</a>
 					{% if item.children %}
-						<button data-toggle-mobile-sub-menu>{{ include('templates/icons/chevron.twig') }}</button>
+						<button data-toggle-mobile-sub-menu>Icon</button>
 					{% endif %}
 				</div>
 				<!-- Expandable link section, show/hide based on state. -->
@@ -16,7 +15,7 @@
 						{% for item in item.children %}
 							<li>
 								<a href="{{ item.url }}" class="group w-full flex items-center gap-3 pr-2 py-1">
-									{% include 'icons/arrow-right-small.twig' %}
+									Icon
 									{{ item }}
 								</a>
 							</li>
