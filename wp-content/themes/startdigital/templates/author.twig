@@ -12,22 +12,22 @@
 				<div>
 					<h1 class="text-3xl font-bold capitalize mb-2">{{ author.name }}</h1>
 					{% if author.bio %}
-						<p class="text-gray-600">{{ author.bio }}</p>
+						<p class="opacity-90">{{ author.bio }}</p>
 					{% endif %}
 				</div>
 			</div>
 
 			{# Posts List #}
 			{% if posts %}
-				<div class="bg-white rounded-lg shadow-sm border border-gray-200">
-					<h2 class="text-xl font-semibold p-4 border-b border-gray-200">
+				<div class="bg-white rounded-lg shadow-sm border">
+					<h2 class="text-xl font-semibold p-4 border-b">
 						Latest Posts
 					</h2>
 					<ul class="divide-y divide-gray-200">
 						{% for post in posts %}
 							<li>
-								<a href="{{ post.link }}" class="block p-4 hover:bg-gray-50 transition-colors duration-150">
-									<span class="text-gray-900 hover:text-blue-600">
+								<a href="{{ post.link }}" class="block p-4 transition-colors duration-150">
+									<span>
 										{{ post.title }}
 									</span>
 								</a>
