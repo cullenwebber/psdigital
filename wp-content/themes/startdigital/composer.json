@@ -16,7 +16,8 @@
     }
   ],
   "require": {
-    "timber/timber": "2.0.0-rc.1"
+    "timber/timber": "2.0.0-rc.1",
+    "thestart/startle": "*"
   },
   "config": {
     "allow-plugins": {
