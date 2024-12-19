@@ -5,8 +5,12 @@
   "minimum-stability": "stable",
   "authors": [
     {
-      "email": "joe@startdigital.com.au",
-      "name": "itsmejgrant"
+      "email": "jmgrant1995@gmail.com",
+      "name": "Joe Grant"
+    },
+    {
+      "email": "hello@tomdotcom.au",
+      "name": "Tom Brennan"
     }
   ],
   "repositories": [
