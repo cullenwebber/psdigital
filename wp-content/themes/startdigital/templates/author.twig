@@ -1,7 +1,41 @@
 {% extends "base.twig" %}
 
 {% block content %}
-	{% for post in posts %}
-		{% include ["teases/tease-"~post.post_type~".twig", "teases/tease.twig"] %}
-	{% endfor %}
+	<div class="container mx-auto px-4 py-24 max-w-4xl">
+		<div
+			class="space-y-8">
+			{# Author Header #}
+			<div class="flex items-center space-x-6">
+				{% if author.avatar %}
+					<img src="{{ author.avatar }}" alt="{{ author.name }}" class="w-16 h-16 rounded-full object-cover">
+				{% endif %}
+				<div>
+					<h1 class="text-3xl font-bold capitalize mb-2">{{ author.name }}</h1>
+					{% if author.bio %}
+						<p class="text-gray-600">{{ author.bio }}</p>
+					{% endif %}
+				</div>
+			</div>
+
+			{# Posts List #}
+			{% if posts %}
+				<div class="bg-white rounded-lg shadow-sm border border-gray-200">
+					<h2 class="text-xl font-semibold p-4 border-b border-gray-200">
+						Latest Posts
+					</h2>
+					<ul class="divide-y divide-gray-200">
+						{% for post in posts %}
+							<li>
+								<a href="{{ post.link }}" class="block p-4 hover:bg-gray-50 transition-colors duration-150">
+									<span class="text-gray-900 hover:text-blue-600">
+										{{ post.title }}
+									</span>
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			{% endif %}
+		</div>
+	</div>
 {% endblock %}
