@@ -12,10 +12,10 @@ export default function initMenus() {
 
 		menuButtons.forEach((btn) => {
 			btn.addEventListener('click', () => {
-				document.body.classList.toggle('menuIsOpen')
+				document.body.classList.toggle('menu-open')
 				document.documentElement.classList.toggle('overflow-hidden')
 
-				if (document.body.classList.contains('menuIsOpen')) {
+				if (document.body.classList.contains('menu-open')) {
 					staggerContainers.forEach((stagger) => {
 						const elementsStagger = gsap.utils.toArray(stagger.children)
 
@@ -31,16 +31,13 @@ export default function initMenus() {
 		})
 
 		mainElement.addEventListener('click', () => {
-			if (document.body.classList.contains('menuIsOpen')) {
+			if (document.body.classList.contains('menu-open')) {
 				closeMenu()
 			}
 		})
 
 		document.addEventListener('keydown', (e) => {
-			if (
-				e.key === 'Escape' &&
-				document.body.classList.contains('menuIsOpen')
-			) {
+			if (e.key === 'Escape' && document.body.classList.contains('menu-open')) {
 				closeMenu()
 			}
 		})
@@ -67,6 +64,6 @@ export default function initMenus() {
 }
 
 export function closeMenu() {
-	document.body.classList.remove('menuIsOpen')
+	document.body.classList.remove('menu-open')
 	document.documentElement.classList.remove('overflow-hidden')
 }

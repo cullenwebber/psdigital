@@ -2,11 +2,15 @@
 
 html,
 body {
-	@apply font-body;
+	@apply font-body scroll-smooth;
 }
 
 body {
 	@apply leading-relaxed 3xl:text-lg 3xl:leading-normal;
+}
+
+strong {
+	@apply font-bold;
 }
 
 h1,
@@ -51,19 +55,31 @@ h6,
 /* List styles inside WYSIWYG editors */
 .block-content {
 	@apply flex flex-col gap-4 md:gap-6;
+
+	ul {
+		@apply ml-4;
+
+		li {
+			@apply list-disc;
+		}
+	}
+
+	ol {
+		@apply ml-4;
+
+		li {
+			@apply list-decimal;
+		}
+	}
+
+	p {
+		a:not(.button, .is-button){
+			@apply font-bold underline;
+		}
+	}
 }
 
-.block-content :is(ol, ul) {
-	@apply ml-4;
-}
 
-.block-content ul li {
-	@apply list-disc;
-}
-
-.block-content ol li {
-	@apply list-decimal;
-}
 
 .supertitle {
 	@apply text-base uppercase;
