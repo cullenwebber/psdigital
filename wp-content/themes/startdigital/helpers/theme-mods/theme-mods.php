@@ -142,3 +142,27 @@ function custom_conditional_notification_email($notification, $form, $entry) {
     return $notification;
 }
 add_filter('gform_notification', 'custom_conditional_notification_email', 10, 3);
+
+/**
+ * Add rewrite rule for single posts
+ */
+function add_posts_prefix_to_blog_posts() {
+    add_rewrite_rule(
+        '^posts/([^/]+)/?$',
+        'index.php?name=$matches[1]',
+        'top'
+    );
+}
+add_action('init', 'add_posts_prefix_to_blog_posts');
+
+
+/**
+ * // Only modify permalinks for 'post' post type
+ */
+function filter_post_permalink($permalink, $post) {
+    if ($post->post_type === 'post') {
+        return home_url('/posts/' . $post->post_name);
+    }
+    return $permalink;
+}
+add_filter('post_link', 'filter_post_permalink', 10, 2);
