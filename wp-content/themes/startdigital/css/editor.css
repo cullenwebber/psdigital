@@ -1,3 +1,5 @@
+@config '../tailwind.config.cjs';
+
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 @import './typography.css';
