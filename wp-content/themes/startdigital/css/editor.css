@@ -1,9 +1,9 @@
-@import 'tailwindcss/utilities' layer(utilities);
+@import 'tailwindcss';
 @import './typography.css' layer(utilities);
 @import './buttons.css' layer(utilities);
 
 body {
-	@apply font-sans;
+	@apply font-body;
 }
 
 h1,

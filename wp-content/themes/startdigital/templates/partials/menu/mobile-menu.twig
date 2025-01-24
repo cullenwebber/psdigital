@@ -1,5 +1,5 @@
-<ul data-menu class="bg-white flex flex-col gap-6 p-12 z-30 fixed top-0 right-0 w-full h-screen max-w-lg transform transition duration-300 ease lg:hidden">
-	<button data-toggle-menu class="lg:hidden">{{ include('templates/icons/cross.twig') }}</button>
+<ul data-menu class="bg-white flex flex-col gap-6 p-12 z-30 fixed top-0 right-0 w-full h-screen max-w-lg transform transition duration-300 ease laptop:hidden">
+	<button data-toggle-menu class="laptop:hidden">{{ include('templates/icons/cross.twig') }}</button>
 	<div data-stagger-items class="mt-5 grow flex flex-col">
 		{% for item in menu.get_items %}
 			<div data-mobile-menu-item class="space-y-1">
