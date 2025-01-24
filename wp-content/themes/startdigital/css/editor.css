@@ -1,9 +1,6 @@
-@config '../tailwind.config.cjs';
-
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
-@import './typography.css';
-@import './buttons.css';
+@import 'tailwindcss/utilities' layer(utilities);
+@import './typography.css' layer(utilities);
+@import './buttons.css' layer(utilities);
 
 body {
 	@apply font-sans;
@@ -21,5 +18,5 @@ h5,
 .is-h5,
 h6,
 .is-h6 {
-	@apply !leading-none;
+	@apply leading-none!;
 }
