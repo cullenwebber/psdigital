@@ -1,12 +1,12 @@
 <section class="relative">
 	<div class="container">
-		<div class="grid lg:grid-cols-2 gap-10 lg:gap-20">
-			<div class="block-content {{ block.image_on_left == true ? 'lg:order-2' }}">
+		<div class="grid laptop:grid-cols-2 gap-10 laptop:gap-20">
+			<div class="block-content {{ block.image_on_left == true ? 'laptop:order-2' }}">
 				{{ block.content }}
 			</div>
-			<div class="relative rounded-section overflow-hidden aspect-16/9 lg:aspect-4/3 w-full h-full {{
+			<div class="relative rounded-section overflow-hidden aspect-16/9 laptop:aspect-4/3 w-full h-full {{
 									block.image_on_left == true
-										? 'lg:order-1'
+										? 'laptop:order-1'
 									}}">
 				{% include 'partials/image.twig' with {
 					image: get_image(block.image),
