@@ -32,7 +32,7 @@
 	}
 
 	.embla__button {
-		@apply bg-slate-200! inline-flex items-center justify-center rounded-full size-12 relative cursor-pointer appearance-none bg-transparent touch-manipulation border-0 p-0 m-0;
+		@apply !bg-slate-200 inline-flex items-center justify-center rounded-full size-12 relative cursor-pointer appearance-none bg-transparent touch-manipulation border-0 p-0 m-0;
 
 		&:disabled {
 			@apply opacity-30;
