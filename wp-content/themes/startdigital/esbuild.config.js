@@ -1,11 +1,11 @@
-import esbuildServe from 'esbuild-serve'
+import esbuildServe from "esbuild-serve";
 
 esbuildServe(
-	{
-		logLevel: 'info',
-		entryPoints: ['js/index.js'],
-		bundle: true,
-		outfile: 'static/site.js',
-	},
-	{ root: 'templates' }
-)
+  {
+    logLevel: "info",
+    entryPoints: ["js/index.js"],
+    bundle: true,
+    outfile: "static/site.js",
+  },
+  { root: "templates" }
+);

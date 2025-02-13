@@ -1,9 +1,10 @@
-@import 'tailwindcss';
-@import './typography.css' layer(utilities);
-@import './buttons.css' layer(utilities);
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import './typography.css';
+@import './buttons.css';
 
 body {
-	@apply font-body;
+	@apply font-sans;
 }
 
 h1,
@@ -18,5 +19,5 @@ h5,
 .is-h5,
 h6,
 .is-h6 {
-	@apply leading-none!;
+	@apply !leading-none;
 }
