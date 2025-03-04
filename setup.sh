@@ -33,6 +33,24 @@ if [ -d wp-content_backup ]; then
     echo -e "${GREEN}wp-content directory restored${NORMAL}"
 fi
 
+# Delete the plugins folder
+echo -e "${CYAN}Deleting the plugins folder...${NORMAL}"
+rm -rf wp-content/plugins/
+if [ $? -eq 0 ]; then
+    echo -e "${GREEN}Deleted the plugins folder successfully.${NORMAL}"
+else
+    echo -e "${YELLOW}Failed to delete the plugins folder.${NORMAL}"
+fi
+
+# Recreate the plugins folder
+echo -e "${CYAN}Recreating the plugins folder...${NORMAL}"
+mkdir wp-content/plugins/
+if [ $? -eq 0 ]; then
+    echo -e "${GREEN}Recreated the plugins folder successfully.${NORMAL}"
+else
+    echo -e "${YELLOW}Failed to recreate the plugins folder.${NORMAL}"
+fi
+
 # Check if startdigital theme directory exists
 if [ -d wp-content/themes/startdigital ]; then
     echo -e "${CYAN}Navigating to the startdigital theme directory...${NORMAL}"
