@@ -51,23 +51,23 @@ else
     echo -e "${YELLOW}Failed to recreate the plugins folder.${NORMAL}"
 fi
 
-# Check if startdigital theme directory exists
-if [ -d wp-content/themes/startdigital ]; then
-    echo -e "${CYAN}Navigating to the startdigital theme directory...${NORMAL}"
-    cd wp-content/themes/startdigital
+# Check if psdigital theme directory exists
+if [ -d wp-content/themes/psdigital ]; then
+    echo -e "${CYAN}Navigating to the psdigital theme directory...${NORMAL}"
+    cd wp-content/themes/psdigital
 
-    echo -e "${CYAN}Running composer install in startdigital theme directory...${NORMAL}"
+    echo -e "${CYAN}Running composer install in psdigital theme directory...${NORMAL}"
     composer install > /dev/null 2>&1
     echo -e "${GREEN}Composer installed${NORMAL}"
 
-    echo -e "${CYAN}Running npm install in startdigital theme directory...${NORMAL}"
+    echo -e "${CYAN}Running npm install in psdigital theme directory...${NORMAL}"
     npm install > /dev/null 2>&1
     echo -e "${GREEN}Npm installed${NORMAL}"
 
     # Navigate back to the root directory
     cd ../../../
 else
-    echo -e "${YELLOW}startdigital theme directory not found. Skipping...${NORMAL}"
+    echo -e "${YELLOW}psdigital theme directory not found. Skipping...${NORMAL}"
 fi
 
 # Copy .env.sample to .env

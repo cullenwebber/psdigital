@@ -91,14 +91,6 @@ class StartDigital extends Site
 		add_action('wp_enqueue_scripts', array($this, 'register_assets'));
 		parent::__construct();
 	}
-	/** This is where you can register custom post types. */
-	public function register_post_types()
-	{
-	}
-	/** This is where you can register custom taxonomies. */
-	public function register_taxonomies()
-	{
-	}
 
 	/** This is where you can register custom CSS & JS files. */
 	public function register_assets()
@@ -118,10 +110,10 @@ class StartDigital extends Site
 	 */
 	public function add_to_context($context)
 	{
-		if(function_exists('get_fields')){
+		if (function_exists('get_fields')) {
 			$context['options'] = get_fields('options');
 		}
-		$context['menu']  = Timber::get_menu();
+		$context['menu']  = Timber::get_menu('menu');
 		$context['site']  = $this;
 
 		return $context;
