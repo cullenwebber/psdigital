@@ -1,0 +1,22 @@
+<article class="flex flex-col">
+    <div class="relative">
+        <img src="{{ get_image(team_member.thumbnail).src }}" alt="{{ team_member.thumbnail.alt }}" class="w-full aspect-[0.76] object-contain object-bottom relative z-10" />
+        <div class="absolute bottom-0 left-0 w-full h-3/4 rounded-t-2xl bg-light-green flex items-center">
+            {% include "icons/team-bg.twig" with { class: "w-full" } %}
+        </div>
+    </div>
+    <div class="bg-cream p-6 pb-4 rounded-b-2xl relative flex flex-col gap-12 z-20 text-black">
+        {% include "icons/team-shape.twig" with { class: "absolute bottom-[calc(100%-1.5px)] left-0 w-[250px]" } %}
+        <h3 class="flex flex-col text-2xl -mt-11 relative z-20">
+            <span class="font-fraunces">
+                {{ team_member.title|split(' ')|first|capitalize }}
+            </span>
+            <span class="">
+                {{ team_member.title|split(' ')|slice(1, team_member.title|split(' ')|length)|join(' ') }}
+            </span>
+        </h3>
+        <span>
+            {{ team_member.job_title }}
+        </span>
+    </div>
+</article>

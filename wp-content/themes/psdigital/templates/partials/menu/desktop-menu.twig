@@ -1,19 +1,12 @@
-<ul class="relative z-10 items-center hidden lg:flex">
+<ul	class="relative z-10 items-center hidden lg:flex">
 	{% for item in menu.get_items %}
-		<li class="{{ item.classes|join(' ') }} relative flex items-center gap-1 group px-6 py-8">
-			<a target="{{ item.target }}" href="{{ item.link }}" class="border-b-2 border-transparent transition-all duration-200 ease">
+		<li	class="{{ item.classes|join(' ') }} relative flex items-center gap-2 group px-6 py-4 text-white group top-menu-item">
+			<a	target="{{ item.target }}"	href="{{ item.link }}"	class="capitalize text-lg">
 				{{ item.title }}
 			</a>
 			{% if item.children %}
-				<ul class="flex overflow-hidden border-x border-b border-black border-opacity-25 rounded-b-xl flex-col gap-4 h-fit absolute bottom-0 right-0 w-[150%] bg-white z-10 text-black translate-y-full opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-200">
-					{% for item in item.children %}
-						<li>
-							<a href="{{ item.url }}" target="{{ item.target }}" class="flex hover:bg-slate-200 duration-150 px-4 py-3">
-								{{ item.title }}
-							</a>
-						</li>
-					{% endfor %}
-				</ul>
+				{% include "icons/down.twig" with { class: "size-3 group-hover:rotate-180 duration-300 ease-fancy" } %}
+				{% include "partials/menu/desktop-dropdown.twig" %}
 			{% endif %}
 		</li>
 	{% endfor %}

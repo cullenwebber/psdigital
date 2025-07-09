@@ -16,7 +16,7 @@
 
 header {
 	&.header-scrolling {
-		@apply bg-slate-100;
+		@apply bg-dark-blue py-4 backdrop-blur-lg;
 	}
 }
 
@@ -67,4 +67,10 @@ main {
 /* REMOVE LOOM EXTENSION PADDING */
 section#shadow-host-companion {
 	@apply !py-0;
+}
+
+#about-video {
+	mask: url('data:image/svg+xml,<svg width="100%" height="100%" viewBox="0 0 660 372" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M660 356C660 364.837 652.837 372 644 372H16C7.16343 372 0 364.837 0 356V117.684C0 113.441 1.68571 109.371 4.68629 106.37L106.37 4.6863C109.371 1.68571 113.441 0 117.684 0H644C652.837 0 660 7.16344 660 16V356Z" fill="black"/></svg>');
+	mask-repeat: no-repeat;
+	mask-position: center;
 }

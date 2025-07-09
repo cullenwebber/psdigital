@@ -1,0 +1,14 @@
+<a href="{{ link }}" target="{{ target }}" class="text-dark-blue border-pale-green border bg-pale-green flex flex-row gap-8 p-1 pl-8 items-center rounded-[12px] text-lg relative group overflow-hidden w-fit button {{ class }}">
+    <div class="bg-pale-green flex flex-col items-center justify-center size-11 rounded-lg z-10 ease-fancy duration-300 -translate-x-12 group-hover:translate-x-0 absolute top-1 left-1 arrow-container-secondary">
+        {% include "icons/button-arrow.twig" with { class: "size-4 text-dark-blue arrow-second"  } %}
+    </div>
+    <span class="relative z-10 ease-fancy duration-300 group-hover:translate-x-12 group-hover:text-pale-green title-container">
+        {{ title|title }}
+    </span>
+
+    <div class=" flex flex-col items-center justify-center size-11 rounded-lg relative z-10 ease-fancy duration-300 translate-x-0 group-hover:translate-x-11">
+        {% include "icons/button-arrow.twig" with { class: "size-4 text-pale-green arrow-lead"  } %}
+    </div>
+
+    <div class="bg-dark-blue flex flex-col items-center justify-center size-11 rounded-lg absolute right-1 top-1 ease-fancy duration-300 group-hover:right-0 group-hover:top-0 group-hover:w-full group-hover:h-full group-hover:rounded-[11px] arrow-container"></div>
+</a>

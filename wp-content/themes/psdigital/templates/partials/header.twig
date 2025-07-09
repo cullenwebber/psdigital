@@ -1,12 +1,23 @@
-<header class="fixed top-0 bg-yellow-100 z-50 w-full max-sm:py-2 max-lg:py-3 duration-300">
-	<div data-navigation class="container relative w-full flex items-center justify-between">
-		<a href="{{ site.url }}" rel="home">{% include 'icons/logo.twig' %}</a>
-		<button data-toggle-menu class="lg:hidden ml-auto">{{ include('templates/icons/hamburger.twig') }}</button>
-		{% if menu %}
-			<nav class="navigation">
-				{% include 'partials/menu/desktop-menu.twig' %}
-				{% include 'partials/menu/mobile-menu.twig' %}
-			</nav>
-		{% endif %}
+<header	class="fixed top-0 bg-gradient-to-b from-dark-blue to-dark-blue/0 z-50 w-full py-8">
+	<div	data-navigation	class="container relative w-full flex items-center justify-between">
+		<a	href="{{ site.url }}"	rel="home">
+			{% include 'icons/logo.twig' with { class: "size-8" } %}
+		</a>
+		<div	class="flex gap-8 items-center">
+			<button	data-toggle-menu	class="lg:hidden ml-auto">
+				{% include "icons/hamburger.twig" %}
+			</button>
+
+			{% if menu %}
+				<nav	class="navigation">
+					{% include 'partials/menu/desktop-menu.twig' %}
+					{% include 'partials/menu/mobile-menu.twig' %}
+				</nav>
+			{% endif %}
+
+			{% if options.company_details.phone %}
+				{% include "partials/buttons/header-button.twig" with { link: 'tel:' ~ options.company_details.phone, title: options.company_details.phone } %}
+			{% endif %}
+		</div>
 	</div>
 </header>

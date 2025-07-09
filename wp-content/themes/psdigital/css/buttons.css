@@ -1,9 +1,29 @@
 .button,
 .is-button {
-	@apply text-base border rounded-full py-2 px-6 flex items-center gap-4 w-fit duration-150;
+	&.green-button {
+		@apply bg-green text-white border-green;
 
-	&:hover {
-		@apply bg-white text-black;
+		.arrow-lead {
+			@apply text-green;
+		}
+
+		.arrow-second {
+			@apply text-white;
+		}
+
+		.arrow-container-secondary {
+			@apply bg-green;
+		}
+
+		.arrow-container {
+			@apply bg-white;
+		}
+
+		&:hover {
+			.title-container {
+				@apply text-green;
+			}
+		}
 	}
 
 	&:active {

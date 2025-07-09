@@ -1,0 +1,28 @@
+<section class="relative overflow-hidden">
+    <div class="bg-dark-blue h-1/2 w-full absolute top-0 left-0"></div>
+    {% include "icons/team-section-shape.twig" with { class: "max-w-[550px] absolute left-0 top-[calc(50%-2px)] w-full" } %}
+    <div class="container grid grid-cols-5 relative z-20">
+        <div class="col-span-2 flex flex-col pt-[25%] text-white *:!leading-none">
+            {{ post.team.content }}
+        </div>
+        <div class="col-span-3 team-swiper flex flex-col gap-8">
+            <div class="swiper !overflow-visible w-full">
+                <div class="swiper-wrapper">
+                    {% for team_member in fn('get_team_posts') %}
+                        <div class="swiper-slide">
+                            {% include "partials/teases/team-tease.twig" %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="flex flex-row gap-4 self-end text-white">
+                <button class="prev bg-dark-blue size-12 rounded-lg flex justify-center items-center border-dark-blue border duration-300 hover:bg-white ease-fancy hover:text-dark-blue active:scale-90">
+                    {% include "icons/prev-arrow.twig" with { class: "size-4" } %}
+                </button>
+                <button class="next bg-dark-blue size-12 rounded-lg flex justify-center items-center border-dark-blue border duration-300 hover:bg-white ease-fancy hover:text-dark-blue active:scale-90">
+                    {% include "icons/next-arrow.twig" with { class: "size-4" } %}
+                </button>
+            </div>
+        </div>
+    </div>
+</section>

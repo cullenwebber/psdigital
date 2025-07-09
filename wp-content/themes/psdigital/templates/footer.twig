@@ -1,14 +1,80 @@
-<footer class="bg-black text-white">
-	<div class="container py-12">
-		Footer
-	</div>
-	<div class="bg-white text-black py-4">
-		<div class="container text-xs flex gap-2 md:items-center max-md:flex-col md:justify-between">
-			<span>
-				&copy;
-				{{ 'now'|date('Y') }}
-				Start Digital. All Rights Reserved.</span>
-        <a href="https://startdigital.com.au" target="_blank">Site by Start</a>
+<footer	class="bg-green text-white relative z-40">
+	{% include "icons/footer-section-shape.twig" with { class: "max-w-[550px] absolute left-0 bottom-[calc(100%-2px)] w-full" } %}
+	<div	class="container pt-32 pb-12 flex flex-col gap-40">
+		<div	class="flex flex-row justify-between items-end gap-12">
+			<h5	class="is-h1 flex flex-col !leading-none">
+				<span	class="font-fraunces text-pale-green">
+					choose
+				</span>
+				extraordinary
+			</h5>
+			{% include "icons/footer-icon.twig" with { class: "max-w-[325px]" } %}
+		</div>
+		<div	class="flex flex-row gap-24 relative z-10">
+			<div	class="flex flex-col gap-4 no-space w-3/4">
+				{{ options.form_content }}
+				<div	class="flex flex-row gap-3 mt-4 text-white">
+					<a	href="{{ options.social_media.facebook }}"	class="hover:text-pale-green hover:scale-95 duration-300 ease-fancy">
+						{% include "icons/facebook.twig" with { class: 'size-10' } %}
+					</a>
+					<a	href="{{ options.social_media.instagram }}"	class="hover:text-pale-green hover:scale-95 duration-300 ease-fancy">
+						{% include "icons/instagram.twig" with { class: 'size-10' } %}
+					</a>
+					<a	href="{{ options.social_media.linkedin }}"	class="hover:text-pale-green hover:scale-95 duration-300 ease-fancy">
+						{% include "icons/linkedin.twig" with { class: 'size-10' } %}
+					</a>
+				</div>
+			</div>
+			<div	class="flex w-full">
+				{% apply shortcodes %}
+				[gravityform id="1" title="false" ajax="true"]
+				{% endapply %}
+			</div>
+		</div>
+		<div	class="grid grid-cols-2 gap-24">
+			<div	class="flex flex-col gap-20 relative z-10">
+				<div	class="flex flex-col gap-8">
+					{% include "icons/logo.twig" with { class: "w-1/2 max-w-[150px]" } %}
+					<div	class="flex flex-col gap-4">
+						{{ options.footer.content }}
+					</div>
+				</div>
+
+				<div	class="grid grid-cols-2 gap-16">
+					{% for address in options.company_details.addresses %}
+						<div	class="flex flex-col gap-5">
+							<h6	class="font-fraunces text-pale-green">
+								{{ address.title }}
+							</h6>
+							<div	class="flex flex-col gap-4 no-space">
+								{{ address.content }}
+							</div>
+							<a	href="tel:{{ address.number }}">
+								{{ address.number }}
+							</a>
+						</div>
+					{% endfor %}
+				</div>
+				<div	class="flex flex-row gap-6 items-center text-sm">
+					<span>
+						&copy;
+						{{ 'now'|date('Y') }}
+						PS Digital.
+					</span>
+					<div	class="bg-pale-green size-1 rounded-full"></div>
+					<a	href="/terms-condition">
+						Terms of Service
+					</a>
+					<div	class="bg-pale-green size-1 rounded-full"></div>
+					<a	href="/privacy">
+						Privacy Policy
+					</a>
+				</div>
+			</div>
+			<div	class="pointer-events-none"></div>
+			<div	id="footer-container"	class="bottom-0 right-0 absolute w-1/2 h-lvh">
+				{% include "icons/footer-svgs.twig" %}
+			</div>
 		</div>
 	</div>
 </footer>

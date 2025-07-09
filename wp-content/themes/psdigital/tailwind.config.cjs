@@ -10,15 +10,21 @@ module.exports = {
 				'1/1': '1/1',
 			},
 			colors: {
-				white: '#FFFFFF',
-				black: '#000000',
-				// brand:
-				// brandLight:
-				// brandDark:
+				white: '#FBFBFB',
+				black: '#121212',
+				'dark-blue': '#12448F',
+				green: '#009E61',
+				'light-green': '#04D081',
+				'pale-green': '#B4FFB0',
+				cream: '#F5F6ED',
 			},
 			fontFamily: {
-				heading: ['Roboto', 'sans-serif'],
-				body: ['Inter', 'sans-serif'],
+				heading: ['Questrial', 'sans-serif'],
+				fraunces: ['Fraunces', 'sans-serif'],
+				body: ['Questrial', 'sans-serif'],
+			},
+			transitionTimingFunction: {
+				fancy: 'cubic-bezier(0.76, 0, 0.24, 1)',
 			},
 			screens: {
 				sm: '640px',

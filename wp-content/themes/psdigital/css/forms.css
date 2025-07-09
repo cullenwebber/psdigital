@@ -1,1 +1,71 @@
-/* Form styles go here */
+.gform_wrapper {
+	@apply w-full;
+}
+
+.gform_fields {
+	@apply grid grid-cols-2 gap-4;
+
+	.gfield--width-full {
+		@apply col-span-full;
+	}
+
+	.gfield--width-half {
+		@apply col-span-1;
+	}
+
+	input,
+	select,
+	textarea {
+		@apply w-full py-3 bg-transparent border-b border-white text-white bg-green !ring-0 !outline-none;
+
+		&::placeholder {
+			@apply text-pale-green/50;
+		}
+
+		&:focus {
+			@apply border-b-pale-green;
+		}
+	}
+
+	.gfield_required {
+		@apply hidden;
+	}
+
+	label {
+		@apply text-white text-sm;
+	}
+}
+
+.gform_button {
+	&::before {
+		@apply content-[''] flex flex-col items-center justify-center size-11 rounded-lg absolute left-1 top-1 z-10 ease-fancy duration-300 -translate-x-12 bg-green bg-no-repeat bg-center;
+		background-image: url('data:image/svg+xml,<svg width="16px" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.5303 6.53033C16.8232 6.23744 16.8232 5.76256 16.5303 5.46967L11.7574 0.696699C11.4645 0.403806 10.9896 0.403806 10.6967 0.696699C10.4038 0.989593 10.4038 1.46447 10.6967 1.75736L14.9393 6L10.6967 10.2426C10.4038 10.5355 10.4038 11.0104 10.6967 11.3033C10.9896 11.5962 11.4645 11.5962 11.7574 11.3033L16.5303 6.53033ZM0 6L0 6.75L16 6.75L16 6L16 5.25L0 5.25L0 6Z" fill="white" /></svg>');
+	}
+	@apply text-green border-white border bg-white flex flex-row gap-8 p-1 pl-8 items-center rounded-[12px] text-lg relative overflow-hidden w-fit mt-4 ease-fancy duration-300;
+
+	&::after {
+		@apply content-[''] flex flex-col items-center justify-center size-11 rounded-lg relative z-10 ease-fancy duration-300 translate-x-0 bg-green bg-no-repeat bg-center;
+		background-image: url('data:image/svg+xml,<svg width="16px" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.5303 6.53033C16.8232 6.23744 16.8232 5.76256 16.5303 5.46967L11.7574 0.696699C11.4645 0.403806 10.9896 0.403806 10.6967 0.696699C10.4038 0.989593 10.4038 1.46447 10.6967 1.75736L14.9393 6L10.6967 10.2426C10.4038 10.5355 10.4038 11.0104 10.6967 11.3033C10.9896 11.5962 11.4645 11.5962 11.7574 11.3033L16.5303 6.53033ZM0 6L0 6.75L16 6.75L16 6L16 5.25L0 5.25L0 6Z" fill="white" /></svg>');
+	}
+
+	&:hover {
+		&::before {
+			@apply translate-x-0;
+		}
+
+		&::after {
+			@apply translate-x-12;
+		}
+
+		@apply pl-16 gap-0;
+	}
+}
+
+.gform_submission_error,
+.gform_confirmation_message {
+	@apply is-h5 text-pale-green mb-4;
+}
+
+.gfield_validation_message {
+	@apply text-sm text-pale-green mt-1;
+}

@@ -1,0 +1,20 @@
+<section id="fold" class="bg-dark-blue !pt-0">
+    <div class="container flex flex-col gap-16">
+        <div class="flex flex-row justify-between items-end gap-12">
+            {% include "icons/about-icon.twig" with { class: "max-w-[325px] mb-16" } %}
+            <div class="text-white block-content">
+                {{ post.about.heading }}
+            </div>
+        </div>
+        <div class="flex flex-row justify-between gap-24">
+            <div class="relative flex w-full">
+                <video id="about-video" src="{{ post.about.video.url }}" class="w-full h-full object-cover" playsinline autoplay muted loop></video>
+            </div>
+            <div class="block-content text-white flex w-full">
+                {{ post.about.content }}
+
+                {% include "partials/buttons/button.twig" with { title: post.about.link.title, link: post.about.link.link, target: post.about.link.target, class: 'mt-4' } %}
+            </div>
+        </div>
+    </div>
+</section>

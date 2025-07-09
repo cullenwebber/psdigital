@@ -152,3 +152,19 @@ class StartDigital extends Site
 }
 
 new StartDigital();
+
+require_once __DIR__ . '/php/get-posts.php';
+require_once __DIR__ . '/php/gravity-form.php';
+
+// Staging site media uploads
+add_filter('upload_dir', function ($dirs) {
+	$override_hosts = ['psdigital.test'];
+
+	if (in_array($_SERVER['HTTP_HOST'], $override_hosts, true)) {
+		// Override the base URL and the per-size URLs
+		$dirs['baseurl'] = 'https://psdigital.com.au/cullensversion/wp-content/uploads';
+		$dirs['url']     = $dirs['baseurl'] . $dirs['subdir'];
+	}
+
+	return $dirs;
+});
