@@ -1,5 +1,5 @@
 <section class="">
-    <div class="container flex items-center gap-8 lg:gap-16 max-lg:flex-col xl:gap-32 {{ block.image_left ? 'flex-row' : 'flex-row-reverse' }}">
+    <div data-stagger="up" class="container flex items-center gap-8 lg:gap-16 max-lg:flex-col xl:gap-32 {{ block.image_left ? 'flex-row' : 'flex-row-reverse' }}">
         <div class="h-[400px] sm:h-[500px] lg:h-[750px] flex w-full">
             <img src="{{ get_image(block.image).src }}" alt="{{ block.image.alt }}" class="h-full w-full object-cover rounded-2xl" />
         </div>

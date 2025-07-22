@@ -42,7 +42,7 @@ export default function animateOnScroll() {
 		const staggerType = stagger.getAttribute('data-stagger')
 
 		const directionMap = {
-			up: { y: 20 },
+			up: { y: 32 },
 			down: { y: -20 },
 			left: { x: 20 },
 			right: { x: -20 },
@@ -60,6 +60,8 @@ export default function animateOnScroll() {
 			autoAlpha: 0,
 			delay: 0.2,
 			stagger: 0.15,
+			duration: 0.5,
+			ease: 'power2.out',
 			...staggerDirection,
 		})
 	})

@@ -1,12 +1,12 @@
 <section id="fold" class="bg-dark-blue !pt-6 -mt-px">
     <div class="container flex flex-col gap-8 lg:gap-16">
-        <div class="flex flex-col lg:flex-row justify-between lg:items-end gap-4">
+        <div data-stagger="up" class="flex flex-col lg:flex-row justify-between lg:items-end gap-4">
             {% include "icons/about-icon.twig" with { class: "max-w-[160px] lg:max-w-[240px] xl:max-w-[325px] lg:mb-[92px]" } %}
             <div class="text-white block-content">
                 {{ post.about.heading }}
             </div>
         </div>
-        <div class="flex flex-col lg:flex-row justify-between gap-8 lg:gap-24">
+        <div data-stagger="up" class="flex flex-col lg:flex-row justify-between gap-8 lg:gap-24">
             <div class="relative flex w-full">
                 <video id="about-video" src="{{ post.about.video.url }}" class="w-full h-full object-cover" playsinline autoplay muted loop></video>
             </div>

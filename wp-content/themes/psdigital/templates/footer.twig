@@ -26,9 +26,8 @@
 				</div>
 			</div>
 			<div	class="flex w-full">
-				{% apply shortcodes %}
-				[gravityform id="1" title="false" ajax="true"]
-				{% endapply %}
+				{{ function('do_shortcode', '[gravityform id="1" title="false" ajax="true"]') }}
+
 			</div>
 		</div>
 		<div	class="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-24">
