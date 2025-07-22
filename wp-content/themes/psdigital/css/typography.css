@@ -1,13 +1,13 @@
-@font-face {
+/* @font-face {
 	font-family: 'Fraunces';
-	src: url('/wp-content/themes/psdigital/static/fonts/Fraunces-Italic.ttf')
-		format('truetype');
+	src: url('https://psdigital.com.au/cullensversion/wp-content/themes/psdigital/static/fonts/Fraunces-Italic.woff2');
 }
 @font-face {
 	font-family: 'Questrial';
-	src: url('/wp-content/themes/psdigital/static/fonts/Questrial-Regular.ttf')
-		format('truetype');
-}
+	src: url('https://psdigital.com.au/cullensversion/wp-content/themes/psdigital/static/fonts/Questrial-Regular.woff2');
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz@1,9..144&family=Questrial&display=swap');
 
 html,
 body {

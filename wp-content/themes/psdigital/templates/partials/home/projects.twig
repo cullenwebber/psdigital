@@ -8,7 +8,7 @@
                 {{ post.projects.content }}
             </div>
         </div>
-        <div class="grid grid-cols-2 gap-4 project-grid">
+        <div class="grid grid-cols-2 gap-4">
             {% for project in fn('get_featured_projects') %}
                 <a parallax-effect href="{{ project.link }}" class="h-[450px] sm:h-[650px] xl:h-[800px] 2xl:h-[900px] rounded-3xl w-full relative overflow-hidden p-4 sm:p-6 flex flex-col justify-end group {{ loop.index % 3 == 0 ? 'col-span-2' : 'max-lg:col-span-2' }}">
                     <div class="relative z-20 flex flex-col gap-1 pb-4">
