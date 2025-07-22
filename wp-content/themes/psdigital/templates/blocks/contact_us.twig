@@ -1,0 +1,27 @@
+<section class="text-black">
+    <div class="container flex items-center gap-8 lg:gap-16 max-lg:flex-col xl:gap-32 flex-row-reverse">
+        <div class="h-[400px] sm:h-[500px] lg:h-[750px] flex w-full">
+            <img src="{{ get_image(block.image).src }}" alt="{{ block.image.alt }}" class="h-full w-full object-cover rounded-2xl" />
+        </div>
+        <div class="flex flex-col gap-16">
+            <div class="block-content no-heading-space w-full">
+                {{ block.content }}
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-16">
+                {% for address in options.company_details.addresses %}
+                    <div class="flex flex-col gap-5">
+                        <h6 class="font-fraunces text-green">
+                            {{ address.title }}
+                        </h6>
+                        <div class="flex flex-col gap-4 no-space">
+                            {{ address.content }}
+                        </div>
+                        <a href="tel:{{ address.number }}">
+                            {{ address.number }}
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>

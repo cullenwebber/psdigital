@@ -1,21 +1,29 @@
-<ul data-menu class="bg-white flex flex-col gap-6 p-12 z-30 fixed top-0 right-0 w-full h-screen max-w-lg transform transition duration-300 ease lg:hidden">
-	<button data-toggle-menu class="lg:hidden">{{ include('templates/icons/cross.twig') }}</button>
-	<div data-stagger-items class="mt-5 flex-grow flex flex-col">
+<ul	data-menu	class="bg-green text-pale-green flex flex-col gap-6 p-6 pb-16 pl-8 fixed top-0 right-0 w-full h-screen max-w-lg transform transition duration-500 ease-fancy lg:hidden z-[999]">
+	<div	class="flex flex-row justify-between">
+		{% include "icons/logo.twig" with { class: "size-8" } %}
+		<button	data-toggle-menu	class="lg:hidden ml-auto">
+			{% include "icons/cross.twig" with { class: 'text-white size-10' } %}
+		</button>
+	</div>
+	<div	data-stagger-items	class="mt-4 flex-grow flex flex-col gap-1">
 		{% for item in menu.get_items %}
-			<div data-mobile-menu-item class="space-y-1">
-				<div class="flex items-center justify-between">
-					<a href="{{ item.url }}" class="text-xl py-4">{{ item }}</a>
+			<div	data-mobile-menu-item	class="text-2xl flex flex-col items-start">
+				<li	class="flex gap-4 {{ item.class|join(' ') }} justify-start relative underline-hover font-fraunces w-fit">
+					<a	href="{{ item.url }}"	class="py-3">
+						{{ item }}
+					</a>
 					{% if item.children %}
-						<button data-toggle-mobile-sub-menu>Icon</button>
+						<button	data-toggle-mobile-sub-menu>
+							{% include "icons/chev-down.twig" with { class: 'size-5 text-white translate-y-0.5' } %}
+						</button>
 					{% endif %}
-				</div>
+				</li>
 				<!-- Expandable link section, show/hide based on state. -->
 				{% if item.children %}
-					<ul data-mobile-sub-menu class="space-y-1 hidden mt-5">
+					<ul	data-mobile-sub-menu	class="hidden ">
 						{% for item in item.children %}
-							<li>
-								<a href="{{ item.url }}" class="group w-full flex items-center gap-3 pr-2 py-1">
-									Icon
+							<li	class="{{ item.class|join(' ') }} w-fit text-white text-base">
+								<a	href="{{ item.url }}"	class="group w-full flex items-center gap-4 pl-4 py-3">
 									{{ item }}
 								</a>
 							</li>

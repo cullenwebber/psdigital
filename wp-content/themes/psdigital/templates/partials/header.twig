@@ -1,23 +1,23 @@
-<header	class="fixed top-0 bg-gradient-to-b from-dark-blue to-dark-blue/0 z-50 w-full py-8">
+<header	class="fixed top-0 bg-gradient-to-b from-dark-blue to-dark-blue/0 z-50 w-full py-5 lg:py-8">
 	<div	data-navigation	class="container relative w-full flex items-center justify-between">
 		<a	href="{{ site.url }}"	rel="home">
 			{% include 'icons/logo.twig' with { class: "size-8" } %}
 		</a>
 		<div	class="flex gap-8 items-center">
-			<button	data-toggle-menu	class="lg:hidden ml-auto">
-				{% include "icons/hamburger.twig" %}
+			<button	data-toggle-menu	class="lg:hidden">
+				{% include "icons/hamburger.twig" with { class: 'text-white size-10' } %}
 			</button>
 
 			{% if menu %}
-				<nav	class="navigation">
+				<nav	class="navigation max-lg:hidden">
 					{% include 'partials/menu/desktop-menu.twig' %}
-					{% include 'partials/menu/mobile-menu.twig' %}
 				</nav>
 			{% endif %}
 
 			{% if options.company_details.phone %}
-				{% include "partials/buttons/header-button.twig" with { link: 'tel:' ~ options.company_details.phone, title: options.company_details.phone } %}
+				{% include "partials/buttons/header-button.twig" with { link: 'tel:' ~ options.company_details.phone, title: options.company_details.phone, class: "max-xl:hidden" } %}
 			{% endif %}
 		</div>
 	</div>
 </header>
+{% include 'partials/menu/mobile-menu.twig' %}

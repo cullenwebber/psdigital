@@ -1,7 +1,7 @@
 <ul	class="relative z-10 items-center hidden lg:flex">
 	{% for item in menu.get_items %}
 		<li	class="{{ item.classes|join(' ') }} relative flex items-center gap-2 group px-6 py-4 text-white group top-menu-item">
-			<a	target="{{ item.target }}"	href="{{ item.link }}"	class="capitalize text-lg">
+			<a	target="{{ item.target }}"	href="{{ item.link }}"	class="capitalize xl:text-lg">
 				{{ item.title }}
 			</a>
 			{% if item.children %}

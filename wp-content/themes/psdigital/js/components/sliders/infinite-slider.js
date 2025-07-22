@@ -15,7 +15,7 @@ export default function infiniteScroller() {
 		const innerScroller = cont.querySelectorAll('[data-infinite-inner]')
 
 		const tl_marquee = gsap.timeline({ repeat: -1 }).to(innerScroller, {
-			duration: 15,
+			duration: cont.dataset?.infiniteScroll || 15,
 			xPercent: -100,
 			ease: 'linear',
 		})

@@ -32,7 +32,7 @@ body.menu-open {
 
 main {
 	section {
-		@apply relative py-10 lg:py-20 3xl:py-32;
+		@apply relative py-16 lg:py-20 3xl:py-32;
 	}
 }
 
@@ -73,4 +73,8 @@ section#shadow-host-companion {
 	mask: url('data:image/svg+xml,<svg width="100%" height="100%" viewBox="0 0 660 372" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M660 356C660 364.837 652.837 372 644 372H16C7.16343 372 0 364.837 0 356V117.684C0 113.441 1.68571 109.371 4.68629 106.37L106.37 4.6863C109.371 1.68571 113.441 0 117.684 0H644C652.837 0 660 7.16344 660 16V356Z" fill="black"/></svg>');
 	mask-repeat: no-repeat;
 	mask-position: center;
+}
+
+main [data-block]:last-of-type section {
+	@apply !pb-44 sm:!pb-60 md:!pb-80;
 }

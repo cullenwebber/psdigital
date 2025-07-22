@@ -4,8 +4,17 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger.js'
 gsap.registerPlugin(ScrollTrigger)
 
 export default function initFooterPhysics() {
+	const width = window.innerWidth
+	let scale
+
+	if (width >= 640) {
+		scale = 0.000575 * width
+	} else {
+		scale = 0.000875 * width
+	}
+
 	const physics = new SVGPhysics('#footer-container', '#footer-container', {
-		scale: 0.000575 * innerWidth,
+		scale: scale,
 		debug: {
 			devMode: false,
 			showBoundingBoxes: false,

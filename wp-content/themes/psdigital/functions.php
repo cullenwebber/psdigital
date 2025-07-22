@@ -98,10 +98,13 @@ class StartDigital extends Site
 		$style_version = filemtime(get_stylesheet_directory() . '/static/style.css') ?: '';
 		$script_version = filemtime(get_stylesheet_directory() . '/static/site.js') ?: '';
 
-		wp_enqueue_style('startdigital', get_stylesheet_directory_uri() . '/static/style.css', false, $style_version);
-		wp_enqueue_script('startdigital', get_stylesheet_directory_uri() . '/static/site.js', false, $script_version);
+		wp_enqueue_style('psdigital', get_stylesheet_directory_uri() . '/static/style.css', false, $style_version);
+		wp_enqueue_script('psdigital', get_stylesheet_directory_uri() . '/static/site.js', false, $script_version);
 
-		// wp_enqueue_style('adobe-fonts', 'https://use.typekit.net/PASTE_PROJECT_ID_HERE.css');
+		wp_localize_script('psdigital', 'project_ajax', array(
+			'ajax_url' => admin_url('admin-ajax.php'),
+			'nonce' => wp_create_nonce('load_projects_nonce')
+		));
 	}
 
 	/** This is where you add some context
@@ -154,6 +157,7 @@ class StartDigital extends Site
 new StartDigital();
 
 require_once __DIR__ . '/php/get-posts.php';
+require_once __DIR__ . '/php/ajax-projects.php';
 require_once __DIR__ . '/php/gravity-form.php';
 
 // Staging site media uploads

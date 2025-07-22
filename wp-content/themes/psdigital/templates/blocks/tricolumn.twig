@@ -1,0 +1,24 @@
+<section class="bg-light-blue">
+    <div class="container flex flex-col gap-8 lg:gap-12 xl:gap-20">
+        <div class="block-content text-dark-blue xl:max-w-[700px]">
+            {{ block.heading }}
+        </div>
+        <div class="block-content text-black max-w-[1000px] self-end">
+            {{ block.content }}
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:mt-12 pt-8">
+            {% for item in block.column %}
+                <div class="relative h-[450px] sm:h-[550px] 2xl:h-[650px] rounded-3xl flex flex-col justify-end overflow-hidden p-6 pb-8 sm:p-8 sm:pb-10 text-white">
+                    <div class="block-content relative z-20">
+                        {{ item.content }}
+                    </div>
+                    <div class="absolute inset-0 w-full h-full bg-gradient-to-t from-dark-blue to-dark-blue/60 z-10"></div>
+                    <img src="{{ get_image(item.image) }}" alt="{{ item.image.alt }}" class="w-full h-full object-cover absolute inset-0" />
+                </div>
+            {% endfor %}
+        </div>
+        {% if block.link %}
+            {% include "partials/buttons/button.twig" with { title: block.link.title, link: block.link.link, target: block.link.target, class: 'mt-4 blue-button md:self-center' } %}
+        {% endif %}
+    </div>
+</section>

@@ -1,0 +1,13 @@
+<section class="">
+    <div class="container flex items-center gap-8 lg:gap-16 max-lg:flex-col xl:gap-32 {{ block.image_left ? 'flex-row' : 'flex-row-reverse' }}">
+        <div class="h-[400px] sm:h-[500px] lg:h-[750px] flex w-full">
+            <img src="{{ get_image(block.image).src }}" alt="{{ block.image.alt }}" class="h-full w-full object-cover rounded-2xl" />
+        </div>
+        <div class="block-content no-heading-space w-full">
+            {{ block.content }}
+            {% if block.link %}
+                {% include "partials/buttons/button.twig" with { title: block.link.title, link: block.link, target: block.link.target, class: 'mt-4 green-button' } %}
+            {% endif %}
+        </div>
+    </div>
+</section>

@@ -1,4 +1,4 @@
-import initMenus from './components/menus'
+import { initMobileMenu } from './components/menus'
 import initAccordions from './components/accordions'
 import animateOnScroll from './utils/animate-on-scroll'
 import initRemoveLinks from './utils/removeLink'
@@ -11,16 +11,18 @@ import parallaxEffect from './utils/parallax-images'
 import createGradient from './components/gradient'
 import initFooterPhysics from './components/footer-physics'
 import { createTestimonialSwiper } from './components/sliders/testimonial-slider'
+import initProjectAjax from './components/ajax-projects'
 
 document.addEventListener('DOMContentLoaded', () => {
 	animateOnScroll()
-	initMenus()
+	initMobileMenu()
 	initAccordions()
 	initRemoveLinks()
 	initHeaderOnScroll()
 	initSmoothScrolling()
 	infiniteScroller()
 	initSwipers()
+	initProjectAjax()
 	serviceScroll()
 	parallaxEffect()
 	createGradient()

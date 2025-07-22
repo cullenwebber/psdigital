@@ -4,11 +4,11 @@
     'from-black via-black/35 to-black/35'
 ] %}
 
-<div class="service-fullwidth w-full h-full absolute p-8 pb-12 z-10 flex flex-col justify-between gap-8 overflow-hidden rounded-3xl">
-    <div class="relative z-30 flex flex-col items-end gap-20">
-        <div data-infinite-scroll class="flex flex-row relative w-full z-30">
+<div class="service-fullwidth w-full h-full absolute sm:p-8 p-4 pb-8 sm:pb-12 z-10 flex flex-col justify-between gap-8 overflow-hidden rounded-3xl">
+    <div class="relative z-30 flex flex-col sm:items-end gap-12 sm:gap-20">
+        <div data-infinite-scroll class="flex flex-row relative w-full z-30 max-sm:pt-4">
             {% for _ in 1..8 %}
-                <div data-infinite-inner class="flex flex-row items-end gap-[2.5vw] pr-[2.5vw] will-change-transform text-white *:text-[12vw] *:whitespace-nowrap *:shrink-0 *:!leading-[0.8]">
+                <div data-infinite-inner class="flex flex-row items-end gap-[2.5vw] pr-[2.5vw] will-change-transform text-white *:text-[20vw] sm:*:text-[12vw] *:whitespace-nowrap *:shrink-0 *:!leading-[0.8]">
                     {{ service.title|lower }}
                 </div>
             {% endfor %}
@@ -17,16 +17,16 @@
             {{ service.content }}
         </div>
     </div>
-    <div class="flex flex-row gap-8 relative z-20 justify-between w-full">
+    <div class="flex flex-col lg:flex-row gap-1 lg:gap-8 relative z-20 justify-between w-full">
         {% for sub_service in service.sub_service %}
             <a href="{{ sub_service.service_link.link }}" class="w-full flex flex-row items-center justify-between gap-4 text-white py-2 border-b border-white group relative">
-                <div class=" flex flex-col items-center justify-center size-8 rounded-lg z-10 ease-fancy duration-300 scale-0 group-hover:scale-100 bg-white absolute left-0 top-2">
+                <div class=" flex flex-col items-center justify-center size-8 rounded-lg z-10 ease-fancy duration-300 scale-0 group-hover:scale-100 bg-white absolute left-0 top-2 shrink-0">
                     {% include "icons/button-arrow.twig" with { class: "size-3 text-black arrow-lead"  } %}
                 </div>
-                <div class="ease-fancy duration-300 group-hover:translate-x-12">
+                <div class="ease-fancy duration-300 group-hover:translate-x-12 leading-tight">
                     {{ sub_service.service_link.title }}
                 </div>
-                <div class=" flex flex-col items-center justify-center size-8 rounded-lg relative z-10 ease-fancy duration-300 group-hover:scale-0 bg-white">
+                <div class=" flex flex-col items-center justify-center size-8 rounded-lg relative z-10 ease-fancy duration-300 group-hover:scale-0 bg-white shrink-0">
                     {% include "icons/button-arrow.twig" with { class: "size-3 text-black arrow-lead"  } %}
                 </div>
             </a>

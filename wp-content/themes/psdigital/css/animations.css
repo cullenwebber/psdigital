@@ -20,3 +20,9 @@
 #footer-container svg {
 	@apply hidden;
 }
+
+.project-grid:has(a:hover) a:not(:hover) {
+	.btn-title {
+		@apply translate-y-24;
+	}
+}

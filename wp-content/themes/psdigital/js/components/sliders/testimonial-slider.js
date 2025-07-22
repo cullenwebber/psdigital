@@ -6,19 +6,17 @@ import { gsap } from 'gsap'
  * @param {Object} options - Configuration options
  */
 export function createTestimonialSwiper(
-	containerSelector = '#testimonials-home',
+	containerSelector = '#testimonials-home-inner',
 	options = {}
 ) {
 	// Early returns for missing elements
 	const container = document.querySelector(containerSelector)
 	if (!container) {
-		console.warn(`Testimonial container "${containerSelector}" not found`)
-		return null
+		return
 	}
 
 	const testimonials = container.querySelectorAll('[data-testimonial]')
 	if (testimonials.length === 0) {
-		console.warn('No testimonials found with [data-testimonial] attribute')
 		return null
 	}
 
@@ -28,7 +26,6 @@ export function createTestimonialSwiper(
 
 	// Early return if navigation buttons are missing
 	if (!prevButtons || !nextButtons) {
-		console.warn('Navigation buttons (.prev, .next) not found')
 		return null
 	}
 
@@ -58,9 +55,7 @@ export function createTestimonialSwiper(
 			title: testimonial.querySelector('[data-testimonial-title]'),
 			jobTitle: testimonial.querySelector('[data-testimonial-job-title]'),
 			logo: testimonial.querySelector('[data-testimonial-logo]'),
-			separator:
-				testimonial.querySelector('.w-\\[1px\\]') ||
-				testimonial.querySelector('[class*="w-[1px]"]'),
+			separator: testimonial.querySelector('.seperator'),
 			buttons: testimonial.querySelectorAll('.btn-wrapper'),
 		}
 	}
@@ -425,14 +420,12 @@ export function createTestimonialSwiper(
 	const handleNext = (e) => {
 		e.preventDefault()
 		e.stopPropagation()
-		console.log('Next button clicked, current index:', currentIndex)
 		nextTestimonial()
 	}
 
 	const handlePrev = (e) => {
 		e.preventDefault()
-		e.stopPropagation()
-		console.log('Prev button clicked, current index:', currentIndex)
+
 		prevTestimonial()
 	}
 

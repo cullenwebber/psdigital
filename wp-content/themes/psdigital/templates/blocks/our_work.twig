@@ -1,0 +1,17 @@
+<section class="bg-white text-black">
+    <div class="container flex flex-col gap-12">
+        <div class="flex flex-row flex-wrap gap-2">
+            <button data-category="all" class="bg-light-blue py-2 px-6 rounded-md text-dark-blue flex-shrink-0 duration-300 ease-fancy hover:bg-dark-blue hover:text-light-blue active [&.active]:bg-dark-blue [&.active]:text-light-blue">
+                Show all
+            </button>
+            {% for category in fn('get_project_categories') %}
+                <button data-category="{{ category.slug ?? category.title|lower|replace({' ': '-'}) }}" class="bg-light-blue py-2 px-6 rounded-md text-dark-blue flex-shrink-0 duration-300 ease-fancy hover:bg-dark-blue hover:text-light-blue [&.active]:bg-dark-blue [&.active]:text-light-blue">
+                    {{ category.title }}
+                </button>
+            {% endfor %}
+        </div>
+        <div class="grid grid-cols-2 gap-4 project-grid">
+            {% include "partials/projects/project-block.twig" with { projects: fn('get_projects', 6) } %}
+        </div>
+    </div>
+</section>

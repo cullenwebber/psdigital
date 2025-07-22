@@ -1,15 +1,23 @@
-<section class="bg-white max-sm:pt-8 max-lg:pt-20">
+<div class="bg-white relative !pt-4 !pb-12">
+    <div class="container relative z-10">
+        <div parallax-effect class="aspect-video rounded-2xl overflow-hidden">
+            <img src="{{ get_image(block.image).src }}" alt="{{ block.image.alt }}" class="w-full h-full object-cover" />
+        </div>
+    </div>
+    <div class="absolute bottom-0 left-0 w-full h-1/2 bg-light-blue"></div>
+</div>
+<section class="bg-light-blue max-sm:pt-8 max-lg:pt-20">
     <div class="container flex flex-col gap-12 lg:gap-20">
         <div class="flex flex-col xl:flex-row lg:items-end gap-8 lg:gap-12">
             <div class="block-content text-dark-blue w-full">
-                {{ post.projects.heading }}
+                {{ block.heading }}
             </div>
             <div class="block-content lg:w-1/2 max-xl:items-end">
-                {{ post.projects.content }}
+                {{ block.content }}
             </div>
         </div>
-        <div class="grid grid-cols-2 gap-4 project-grid">
-            {% for project in fn('get_featured_projects') %}
+        <div class="grid grid-cols-2 gap-4">
+            {% for project in fn('get_projects', 2) %}
                 <a parallax-effect href="{{ project.link }}" class="h-[450px] sm:h-[650px] xl:h-[800px] 2xl:h-[900px] rounded-3xl w-full relative overflow-hidden p-4 sm:p-6 flex flex-col justify-end group {{ loop.index % 3 == 0 ? 'col-span-2' : 'max-lg:col-span-2' }}">
                     <div class="relative z-20 flex flex-col gap-1 pb-4">
                         {% for category in project.categories %}
@@ -34,6 +42,5 @@
                 </a>
             {% endfor %}
         </div>
-        {% include "partials/buttons/button.twig" with { title: 'More Projects', link: '/our-work', class: 'self-center green-button max-lg:mb-4' } %}
     </div>
 </section>

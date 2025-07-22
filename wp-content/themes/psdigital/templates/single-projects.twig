@@ -1,0 +1,10 @@
+{% extends 'base.twig' %}
+
+{% block content %}
+    {% include "partials/banners/project-banner.twig" %}
+    {% for block in post.meta('page_builder') %}
+        <div data-block="{{ block.acf_fc_layout }}" class="bg-white">
+            {{ include('blocks/' ~ block.acf_fc_layout ~ '.twig', ignore_missing = true) }}
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -1,10 +1,10 @@
-<section>
+<section class="max-lg:!pb-20">
     <div class="container">
-        <div class="flex flex-col gap-20">
+        <div class="flex flex-col gap-12 lg:gap-20">
             <div class="text-black block-content max-w-[1400px]">
                 {{ post.services.heading }}
             </div>
-            <div class="block-content text-xl w-1/2 self-end">
+            <div class="block-content is-larger-paragraph lg:w-1/2 lg:self-end">
                 {{ post.services.content }}
                 {% if post.services.link %}
                     {% include "partials/buttons/button.twig" with { title: post.services.link.title, link: post.services.link.link, target: post.services.link.target, class: 'mt-4 green-button' } %}

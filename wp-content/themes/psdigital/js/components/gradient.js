@@ -796,7 +796,6 @@ class Gradient {
 export default function createGradient() {
 	const container = document.querySelector('#testimonials-home')
 	if (!container) {
-		console.error('Container not found')
 		return
 	}
 
@@ -806,33 +805,12 @@ export default function createGradient() {
 	canvas.style.width = '100%'
 	canvas.style.height = '100%'
 	canvas.style.position = 'absolute'
-	canvas.style.bottom = '100%'
+	canvas.style.bottom = '0'
 	canvas.style.left = '0'
-	canvas.style.zIndex = '-1'
 
 	container.appendChild(canvas)
 
 	// Initialize gradient
 	const gradient = new Gradient()
 	gradient.initGradient('#gradient-canvas')
-
-	let tl = gsap.timeline({
-		scrollTrigger: {
-			trigger: canvas,
-			start: 'top top',
-			end: '+=200%',
-			pin: true,
-		},
-	})
-
-	// Return cleanup function
-	return () => {
-		if (canvas && canvas.parentNode) {
-			canvas.parentNode.removeChild(canvas)
-		}
-		if (gradient.minigl) {
-			gradient.pause()
-			window.removeEventListener('resize', gradient.resize)
-		}
-	}
 }

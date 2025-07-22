@@ -1,0 +1,30 @@
+<section class="relative !py-0 bg-white">
+    <div parallax-effect class="relative overflow-hidden min-h-lvh flex flex-col gap-4 justify-end">
+        <div class="pt-36 pb-12 container flex flex-col gap-8 justify-end relative z-20">
+            <h1 class="text-pale-green font-fraunces is-h4">
+                {{ post.title|lower }}
+            </h1>
+            <div class="block-content no-space text-white !gap-0 max-w-[1200px]">
+                {{ post.heading }}
+            </div>
+            <div class="block-content text-white max-w-[500px]">
+                {{ post.intro }}
+            </div>
+            <div class="flex flex-row flex-wrap sm:justify-end gap-2 w-full text-pale-green pt-8">
+                {% for term in post.terms('category') %}
+                    <span class="rounded-full border border-pale-green py-1 px-4">
+                        {{ term.title }}
+                    </span>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="absolute inset-0 w-full h-full bg-gradient-to-t from-dark-blue to-dark-blue/60 z-10"></div>
+        <img src="{{ get_image(post.thumbnail).src }}" alt="{{ post.thumbnail.alt }}" class="w-full object-cover h-full absolute inset-0" />
+    </div>
+    <div class="container flex flex-row">
+        <div class="block-content text-white w-[100px] lg:w-[300px] bg-dark-blue pb-6 relative h-[80px] lg:h-[200px]">
+            <div class="bg-dark-blue h-[calc(100%+1px)] w-screen absolute -top-px right-[calc(100%-1px)]"></div>
+            {% include "icons/banner-shape.twig" with { class: ' h-[calc(100%+1px)] text-dark-blue absolute -top-px left-[calc(100%-1px)]' } %}
+        </div>
+    </div>
+</section>

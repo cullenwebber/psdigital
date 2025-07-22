@@ -29,4 +29,30 @@
 	&:active {
 		@apply scale-95 duration-150;
 	}
+
+	&.blue-button {
+		@apply bg-dark-blue text-white border-dark-blue;
+
+		.arrow-lead {
+			@apply text-dark-blue;
+		}
+
+		.arrow-second {
+			@apply text-white;
+		}
+
+		.arrow-container-secondary {
+			@apply bg-dark-blue;
+		}
+
+		.arrow-container {
+			@apply bg-white;
+		}
+
+		&:hover {
+			.title-container {
+				@apply text-dark-blue;
+			}
+		}
+	}
 }

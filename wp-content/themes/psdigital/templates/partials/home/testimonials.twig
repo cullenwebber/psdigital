@@ -1,57 +1,58 @@
 {% set testimonials = fn('get_testimonials') %}
 
 <section id="testimonials-home" class="relative !p-0 min-h-lvh overflow-hidden">
-    <div class="container relative h-lvh w-full">
-        {% for testimonial in testimonials %}
-
-            <div data-testimonial class="flex flex-row gap-12 absolute top-1/2 -translate-y-1/2 left-0">
-                {% include "icons/quote.twig" with { class: 'size-10 shrink-0 btn-wrapper' } %}
-                <div class="flex flex-col gap-12 w-full">
-                    <div data-testimonial-content class="block-content no-space is-h4 text-white">
-                        {{ testimonial.content }}
+    <div class="container relative h-lvh w-full z-10">
+        <div id="testimonials-home-inner" class="relative h-full w-full">
+            {% for testimonial in testimonials %}
+                <div data-testimonial class="flex flex-col lg:flex-row gap-6 lg:gap-12 absolute top-1/2 -translate-y-1/2 left-0">
+                    {% include "icons/quote.twig" with { class: 'size-8 2xl:size-10 shrink-0 btn-wrapper' } %}
+                    <div class="flex flex-col gap-6 sm:gap-12 w-full">
+                        <div data-testimonial-content class="block-content no-space max-sm:text-base is-h4 text-white">
+                            {{ testimonial.content }}
+                        </div>
+                        <div data-testimonial-services class="flex flex-row gap-2 flex-wrap">
+                            {% for service in testimonial.services %}
+                                <span class="bg-pale-green rounded-lg py-1.5 px-4 text-dark-blue">
+                                    {{ service.title }}
+                                </span>
+                            {% endfor %}
+                        </div>
                     </div>
-                    <div data-testimonial-services class="flex flex-row gap-2 flex-wrap">
-                        {% for service in testimonial.services %}
-                            <span class="bg-pale-green rounded-lg py-1.5 px-4 text-dark-blue">
-                                {{ service.title }}
-                            </span>
-                        {% endfor %}
+                    <div class="seperator max-lg:h-px w-full  lg:w-px flex bg-white"></div>
+                    <div class="flex flex-row lg:flex-col justify-between gap-8 w-full lg:w-[40%]">
+                        <div class="flex flex-col gap-8">
+                            <img data-testimonial-logo src="{{ get_image(testimonial.logo).src }}" alt="{{ testimonial.logo.alt }}" class="max-h-[60px] max-w-[200px] lg:max-h-[80px] lg:max-w-[300px] w-full object-contain object-left" />
+                            <div class="flex flex-col gap-2">
+                                <h5 data-testimonial-title class="text-pale-green">
+                                    {{ testimonial.title }}
+                                </h5>
+                                <span data-testimonial-job-title class="text-white">
+                                    {{ testimonial.job_title }}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="flex flex-row gap-4 text-dark-blue">
+                            <div class="btn-wrapper">
+                                <button class="prev bg-pale-green size-12 rounded-lg flex justify-center items-center border-pale-green border duration-300 hover:bg-transparent ease-fancy hover:text-pale-green active:scale-90">
+                                    {% include "icons/prev-arrow.twig" with { class: "size-4" } %}
+                                </button>
+                            </div>
+                            <div class="btn-wrapper">
+                                <button class="next bg-pale-green size-12 rounded-lg flex justify-center items-center border-pale-green border duration-300 hover:bg-transparent ease-fancy hover:text-pale-green active:scale-90">
+                                    {% include "icons/next-arrow.twig" with { class: "size-4" } %}
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="w-[1px] flex bg-white"></div>
-                <div class="flex flex-col justify-between gap-8 w-[40%]">
-                    <div class="flex flex-col gap-8">
-                        <img data-testimonial-logo src="{{ get_image(testimonial.logo).src }}" alt="{{ testimonial.logo.alt }}" class="max-h-[80px] max-w-[300px] w-full object-contain object-left" />
-                        <div class="flex flex-col gap-2">
-                            <h5 data-testimonial-title class="text-pale-green">
-                                {{ testimonial.title }}
-                            </h5>
-                            <span data-testimonial-job-title class="text-white">
-                                {{ testimonial.job_title }}
-                            </span>
-                        </div>
-                    </div>
-                    <div class="flex flex-row gap-4 text-dark-blue">
-                        <div class="btn-wrapper">
-                            <button class="prev bg-pale-green size-12 rounded-lg flex justify-center items-center border-pale-green border duration-300 hover:bg-transparent ease-fancy hover:text-pale-green active:scale-90">
-                                {% include "icons/prev-arrow.twig" with { class: "size-4" } %}
-                            </button>
-                        </div>
-                        <div class="btn-wrapper">
-                            <button class="next bg-pale-green size-12 rounded-lg flex justify-center items-center border-pale-green border duration-300 hover:bg-transparent ease-fancy hover:text-pale-green active:scale-90">
-                                {% include "icons/next-arrow.twig" with { class: "size-4" } %}
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
-    <div data-infinite-scroll class="flex flex-row w-full z-30 relative py-16">
+    <div data-infinite-scroll="60" class="flex flex-row w-full z-30 relative py-6 sm:py-12 lg:py-16">
         {% for _ in 1..2 %}
             <div data-infinite-inner class="flex flex-row items-center gap-12 will-change-transform text-white *:whitespace-nowrap *:shrink-0 pl-8">
                 {% for testimonial in testimonials %}
-                    <img src="{{ get_image(testimonial.logo).src }}" alt="{{ testimonial.logo.alt }}" class="h-[100px] w-[350px] object-contain object-center" />
+                    <img src="{{ get_image(testimonial.logo).src }}" alt="{{ testimonial.logo.alt }}" class="h-[40px] w-[180px] sm:h-[60px] lg:h-[100px] sm:w-[250px] lg:w-[350px] object-contain object-center" />
                 {% endfor %}
             </div>
         {% endfor %}

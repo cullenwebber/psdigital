@@ -1,0 +1,24 @@
+{% for project in projects %}
+    <a parallax-effect href="{{ project.link }}" class="h-[450px] sm:h-[650px] xl:h-[800px] 2xl:h-[900px] rounded-3xl w-full relative overflow-hidden p-4 sm:p-6 flex flex-col justify-end group {{ loop.index % 3 == 0 ? 'col-span-2' : 'max-lg:col-span-2' }}">
+        <div class="relative z-20 flex flex-col gap-1 pb-4">
+            {% for category in project.categories %}
+                <div style="--delay: {{ (project.categories|length - loop.index) * 25 }}ms; --initial-y: {{ loop.index * 100 }}%; --rotate: {{ loop.index * 5 }}deg;" class="py-2 px-4 rounded-lg delay-[--delay] bg-black text-white text-xl w-fit opacity-0 rotate-[--rotate] translate-y-[--initial-y] group-hover:rotate-0 group-hover:translate-y-0 group-hover:opacity-100 ease-fancy duration-[400ms]">
+                    {{ category.title }}
+                </div>
+
+            {% endfor %}
+        </div>
+        <div class="btn-title duration-300 ease-fancy relative z-30 bg-white p-2 pl-6 flex flex-row gap-4 items-center rounded-xl w-fit text-black overflow-hidden">
+            <div class=" flex flex-col items-center justify-center size-9 sm:size-12 rounded-lg z-10 ease-fancy duration-300 -translate-x-14 group-hover:translate-x-0 bg-green absolute top-2 left-2">
+                {% include "icons/button-arrow.twig" with { class: "size-4 sm:size-5 text-white arrow-lead"  } %}
+            </div>
+            <h4 class="ease-fancy duration-300 group-hover:translate-x-12">
+                {{ project.title }}
+            </h4>
+            <div class=" flex flex-col items-center justify-center size-9 sm:size-12 rounded-lg relative z-10 ease-fancy duration-300 translate-x-0 group-hover:translate-x-14 bg-green">
+                {% include "icons/button-arrow.twig" with { class: "size-4 sm:size-5 text-white arrow-lead"  } %}
+            </div>
+        </div>
+        <img src="{{ get_image(project.thumbnail).src }}" alt="{{ project.thumbnail.alt }}" class="w-full h-full object-cover absolute top-0 left-0" />
+    </a>
+{% endfor %}

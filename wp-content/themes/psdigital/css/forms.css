@@ -10,7 +10,7 @@
 	}
 
 	.gfield--width-half {
-		@apply col-span-1;
+		@apply col-span-full sm:col-span-1;
 	}
 
 	input,

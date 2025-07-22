@@ -31,27 +31,27 @@ h3,
 h4,
 h5,
 h6 {
-	@apply font-heading;
+	@apply font-heading !leading-[1.2];
 }
 
 h1,
 .is-h1 {
-	@apply text-5xl md:text-6xl lg:text-9xl;
+	@apply text-5xl sm:text-7xl lg:text-8xl xl:text-9xl !leading-[1.1];
 }
 
 h2,
 .is-h2 {
-	@apply text-4xl md:text-5xl lg:text-[70px];
+	@apply text-[28px] sm:text-4xl md:text-[42px] lg:text-[52px] xl:text-[64px] 2xl:text-[70px];
 }
 
 h3,
 .is-h3 {
-	@apply !leading-tight text-4xl md:text-5xl xl:text-6xl 3xl:text-7xl;
+	@apply !leading-tight text-[28px] sm:text-2xl md:text-5xl xl:text-6xl 3xl:text-7xl;
 }
 
 h4,
 .is-h4 {
-	@apply !leading-tight text-2xl md:text-3xl lg:text-[36px];
+	@apply !leading-tight text-xl lg:text-[28px] 3xl:text-[36px];
 }
 
 h5,
@@ -89,12 +89,13 @@ h6,
 			@apply underline;
 		}
 
-		@apply indent-16;
+		@apply indent-8 sm:indent-16;
 	}
-
-	h2,
-	.is-h2 {
-		@apply indent-32;
+	&:not(.no-heading-space) {
+		h2,
+		.is-h2 {
+			@apply indent-12 md:indent-32;
+		}
 	}
 }
 
@@ -107,5 +108,5 @@ h6,
 }
 
 .is-larger-paragraph {
-	@apply text-xl;
+	@apply text-base md:text-lg xl:text-xl;
 }
