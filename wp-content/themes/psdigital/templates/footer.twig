@@ -1,19 +1,18 @@
-<footer	class="bg-green text-white relative z-40">
-	{% include "icons/footer-section-shape.twig" with { class: "max-w-[200px] sm:max-w-[350px] lg:max-w-[550px] absolute left-0 bottom-[calc(100%-2px)] w-full" } %}
+<footer	class="bg-white text-black relative z-40">
+	{% include "icons/footer-section-shape.twig" with { class: "max-w-[200px] sm:max-w-[350px] lg:max-w-[550px] absolute left-0 bottom-[calc(100%-2px)] w-full text-white" } %}
 	<div	class="container pt-16 lg:pt-32 pb-12 flex flex-col gap-20 sm:gap-24 lg:gap-40">
-		<div	class="flex flex-col sm:flex-row justify-between sm:items-end gap-12">
-			<h5	class="is-h1 flex flex-col !leading-none">
-				<span	class="font-fraunces text-pale-green">
-					choose
-				</span>
-				extraordinary
-			</h5>
-			{% include "icons/footer-icon.twig" with { class: "max-sm:hidden max-w-[160px] lg:max-w-[325px]" } %}
-		</div>
 		<div	class="flex flex-col lg:flex-row gap-20 lg:gap-24 relative z-10">
 			<div	class="flex flex-col gap-4 no-space lg:w-3/4">
+				<div	class="flex flex-col sm:flex-row justify-between sm:items-end gap-12">
+					<h5	class="is-h1 lg:!text-6xl xl:!text-8xl flex flex-col !leading-none">
+						<span	class="font-fraunces text-green">
+							choose
+						</span>
+						extraordinary
+					</h5>
+				</div>
 				{{ options.form_content }}
-				<div	class="flex flex-row gap-3 mt-4 text-white">
+				<div	class="flex flex-row gap-3 mt-4 text-green">
 					<a	href="{{ options.social_media.facebook }}"	class="hover:text-pale-green hover:scale-95 duration-300 ease-fancy">
 						{% include "icons/facebook.twig" with { class: 'size-10' } %}
 					</a>
@@ -30,10 +29,10 @@
 
 			</div>
 		</div>
-		<div	class="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-24">
+		<div	class="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-24 bg-dark-blue rounded-3xl p-4 sm:p-8 pt-8 max-sm:pb-8 sm:pt-16 text-white relative">
 			<div	class="flex flex-col gap-12 sm:gap-20 relative z-10">
 				<div	class="flex flex-col gap-8">
-					{% include "icons/logo.twig" with { class: "w-[100px] sm:w-1/2 max-w-[150px]" } %}
+					{% include "icons/logo.twig" with { class: "w-[80px] sm:w-1/2 max-w-[110px]" } %}
 					<div	class="flex flex-col gap-4">
 						{{ options.footer.content }}
 					</div>
@@ -58,7 +57,7 @@
 					<span>
 						&copy;
 						{{ 'now'|date('Y') }}
-						PS Digital.
+						PS Digital Pty Ltd.
 					</span>
 					<div	class="bg-pale-green size-1 rounded-full max-sm:hidden"></div>
 					<a	href="/terms-condition">
@@ -71,7 +70,7 @@
 				</div>
 			</div>
 			<div	class="pointer-events-none max-lg:hidden"></div>
-			<div	id="footer-container"	class="bottom-0 right-0 absolute w-full lg:w-1/2 h-lvh">
+			<div	id="footer-container"	class="bottom-0 right-0 absolute w-full lg:w-1/2 h-full">
 				{% include "icons/footer-svgs.twig" %}
 			</div>
 		</div>
