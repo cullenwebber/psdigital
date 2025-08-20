@@ -1,8 +1,19 @@
 {% set testimonials = fn('get_testimonials') %}
 
 <section id="testimonials-home" class="relative !p-0 min-h-lvh overflow-hidden -mt-[50lvh]">
-    <div id="testimonials-home-trigger" class="h-[300lvh] flex flex-col justify-end">
+    <div id="testimonials-home-trigger" class="h-[400lvh] flex flex-col justify-end">
         <div id="testimonials-home-canvas-container" class="absolute top-0 left-0 w-full h-lvh"></div>
+        <div id="infinite-image-slider" class="min-h-lvh w-full flex items-center overflow-hidden">
+            <div class="w-full flex items-center">
+                {% for image in post.team_images %}
+                    <div data-infinite-images class="w-[90vw] md:w-[50vw] lg:w-[25vw] aspect-[4/5] relative shrink-0 {{ loop.index % 2 ? 'mt-12 sm:mt-24' : 'mb-12 sm:mb-24' }}">
+                        <div class="relative w-[calc(100%-1rem)] h-full rounded-2xl overflow-hidden">
+                            <img src="{{ get_image(image).src }}" alt="{{ image.alt }}" class="absolute inset-0 w-full h-full object-cover" />
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
         <div class="container relative h-lvh w-full z-10">
             <div id="testimonials-home-inner" class="relative h-full w-full">
                 {% for testimonial in testimonials %}

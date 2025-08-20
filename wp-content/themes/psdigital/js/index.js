@@ -13,6 +13,7 @@ import initFooterPhysics from './components/footer-physics'
 import { createTestimonialSwiper } from './components/sliders/testimonial-slider'
 import initProjectAjax from './components/ajax-projects'
 import initStripeGradient from './components/three/stripe-gradient'
+import infiniteImageSlider from './components/infinite-slider'
 
 document.addEventListener('DOMContentLoaded', () => {
 	animateOnScroll()
@@ -26,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	initProjectAjax()
 	serviceScroll()
 	parallaxEffect()
+	infiniteImageSlider()
 	// createGradient()
 	initStripeGradient()
 	initFooterPhysics()

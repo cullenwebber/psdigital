@@ -60,7 +60,9 @@
                     "max_size": "",
                     "mime_types": "",
                     "allow_in_bindings": 0,
-                    "preview_size": "medium"
+                    "preview_size": "medium",
+                    "uploader": "",
+                    "acfe_thumbnail": 0
                 },
                 {
                     "key": "field_686a4acda5e5a",
@@ -83,7 +85,12 @@
                     "media_upload": 1,
                     "delay": 0
                 }
-            ]
+            ],
+            "acfe_seamless_style": 0,
+            "acfe_group_modal": 0,
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large"
         },
         {
             "key": "field_686a4d5b1a497",
@@ -159,7 +166,8 @@
                     "min_size": "",
                     "max_size": "",
                     "mime_types": "",
-                    "allow_in_bindings": 0
+                    "allow_in_bindings": 0,
+                    "uploader": ""
                 },
                 {
                     "key": "field_686a4d7b1a49a",
@@ -199,7 +207,12 @@
                     "return_format": "array",
                     "allow_in_bindings": 0
                 }
-            ]
+            ],
+            "acfe_seamless_style": 0,
+            "acfe_group_modal": 0,
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large"
         },
         {
             "key": "field_686a90137a0ae",
@@ -256,7 +269,12 @@
                     "media_upload": 1,
                     "delay": 0
                 }
-            ]
+            ],
+            "acfe_seamless_style": 0,
+            "acfe_group_modal": 0,
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large"
         },
         {
             "key": "field_686b9a6300483",
@@ -442,6 +460,8 @@
                             "mime_types": "",
                             "allow_in_bindings": 0,
                             "preview_size": "medium",
+                            "uploader": "",
+                            "acfe_thumbnail": 0,
                             "parent_repeater": "field_686b9aa800487"
                         },
                         {
@@ -484,11 +504,18 @@
                                     "parent_repeater": "field_686b9ae00048b"
                                 }
                             ],
+                            "acfe_repeater_stylised_button": 0,
                             "parent_repeater": "field_686b9aa800487"
                         }
-                    ]
+                    ],
+                    "acfe_repeater_stylised_button": 0
                 }
-            ]
+            ],
+            "acfe_seamless_style": 0,
+            "acfe_group_modal": 0,
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large"
         },
         {
             "key": "field_686bc98d8bba6",
@@ -593,9 +620,63 @@
                     "allow_in_bindings": 0,
                     "bidirectional": 0,
                     "ui": 1,
-                    "bidirectional_target": []
+                    "bidirectional_target": [],
+                    "save_custom": 0,
+                    "save_post_type": "",
+                    "save_post_status": ""
                 }
-            ]
+            ],
+            "acfe_seamless_style": 0,
+            "acfe_group_modal": 0,
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large"
+        },
+        {
+            "key": "field_68a5e8ffcacc4",
+            "label": "Team Images",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_68a5e912cacc5",
+            "label": "Team Images",
+            "name": "team_images",
+            "aria-label": "",
+            "type": "gallery",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min": "",
+            "max": "",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "insert": "append",
+            "preview_size": "medium"
         }
     ],
     "location": [
@@ -619,5 +700,12 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1751895717
+    "acfe_display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1755703579
 }
