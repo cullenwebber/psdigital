@@ -4,6 +4,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 export default function initFooterPhysics() {
+	const footerContainer = document.querySelector('#footer-container')
+
+	if (!footerContainer) return
+
 	const width = window.innerWidth
 	let scale
 

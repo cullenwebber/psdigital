@@ -11,8 +11,10 @@
 		"browser-sync": "cross-env NODE_ENV=development browser-sync start --proxy \"psdigital.test\" --host=\"psdigital.test\" --no-inject-changes --files=\"./\""
 	},
 	"dependencies": {
+		"@dimforge/rapier3d-compat": "^0.18.2",
 		"autoprefixer": "^10.4.17",
 		"browser-sync": "^2.29.3",
+		"cannon-es": "^0.20.0",
 		"concurrently": "^7.6.0",
 		"cross-env": "^7.0.3",
 		"embla-carousel": "^8.3.0",

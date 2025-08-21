@@ -172,3 +172,11 @@ add_filter('upload_dir', function ($dirs) {
 
 	return $dirs;
 });
+
+function allow_glb_upload($mimes)
+{
+	$mimes['glb'] = 'model/gltf-binary';
+	$mimes['gltf'] = 'model/gltf+json';
+	return $mimes;
+}
+add_filter('upload_mimes', 'allow_glb_upload');

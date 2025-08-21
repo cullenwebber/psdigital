@@ -1,5 +1,5 @@
 {% set testimonials = fn('get_testimonials') %}
-
+<div data-logo-glb="{{ post.logo }}" class="sr-only"></div>
 <section id="testimonials-home" class="relative !p-0 min-h-lvh overflow-hidden -mt-[50lvh]">
     <div id="testimonials-home-trigger" class="h-[400lvh] flex flex-col justify-end">
         <div id="testimonials-home-canvas-container" class="absolute top-0 left-0 w-full h-lvh"></div>
@@ -63,12 +63,13 @@
         </div>
         <div data-infinite-scroll="60" class="flex flex-row w-full z-30 relative py-6 sm:py-12 lg:py-16">
             {% for _ in 1..2 %}
-                <div data-infinite-inner class="flex flex-row items-center gap-12 will-change-transform text-white *:whitespace-nowrap *:shrink-0 pl-8">
+                <div data-infinite-inner class="flex flex-row items-center gap-12 will-change-transform text-white *:whitespace-nowrap *:shrink-0 shrink-0s pl-8">
                     {% for testimonial in testimonials %}
                         <img src="{{ get_image(testimonial.logo).src }}" alt="{{ testimonial.logo.alt }}" class="h-[40px] w-[180px] sm:h-[60px] lg:h-[100px] sm:w-[250px] lg:w-[350px] object-contain object-center" />
                     {% endfor %}
                 </div>
             {% endfor %}
         </div>
+        <div class="h-[10lvh]"></div>
     </div>
 </section>

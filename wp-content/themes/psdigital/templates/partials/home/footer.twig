@@ -1,0 +1,89 @@
+<footer class="text-white relative z-40">
+    <div class="container pt-16 lg:pt-32 pb-12 flex flex-col gap-20 sm:gap-24 lg:gap-40">
+        <div class="flex flex-col lg:flex-row gap-20 lg:gap-24 relative z-10">
+            <div class="flex flex-col gap-4 no-space lg:w-3/4 pt-8">
+                <div class="flex flex-col sm:flex-row justify-between sm:items-end gap-12">
+                    <h5 class="is-h1 lg:!text-6xl xl:!text-8xl flex flex-col !leading-none">
+                        <span class="font-fraunces text-pale-green">
+                            choose
+                        </span>
+                        extraordinary
+                    </h5>
+                </div>
+                {{ options.form_content }}
+                <div class="flex flex-row gap-3 mt-4 text-white">
+                    <a href="{{ options.social_media.facebook }}" class="hover:text-black hover:scale-95 duration-300 ease-fancy">
+                        {% include "icons/facebook.twig" with { class: 'size-10' } %}
+                    </a>
+                    <a href="{{ options.social_media.instagram }}" class="hover:text-black hover:scale-95 duration-300 ease-fancy">
+                        {% include "icons/instagram.twig" with { class: 'size-10' } %}
+                    </a>
+                    <a href="{{ options.social_media.linkedin }}" class="hover:text-black hover:scale-95 duration-300 ease-fancy">
+                        {% include "icons/linkedin.twig" with { class: 'size-10' } %}
+                    </a>
+                </div>
+            </div>
+            <div class="w-full bg-black/25 backdrop-blur-xl rounded-3xl p-6 sm:p-12 flex flex-col gap-6">
+                <h5 class="is-h4 flex flex-col !leading-none text-pale-green">
+
+                    Let's get in touch!
+                </h5>
+                {{ function('do_shortcode', '[gravityform id="1" title="false" ajax="true"]') }}
+
+            </div>
+        </div>
+        <div id="footer-panel" class="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-24 pb-8 text-white relative">
+            <div class="flex flex-col gap-12 sm:gap-20 relative z-10">
+                <div class="flex flex-col gap-8">
+                    {% include "icons/logo.twig" with { class: "w-[80px] sm:w-1/2 max-w-[110px] text-pale-green" } %}
+                    <div class="flex flex-col gap-4">
+                        {{ options.footer.content }}
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-12">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-16">
+                        {% for address in options.company_details.addresses %}
+                            <div class="flex flex-col gap-5 items-start">
+                                <h6 class="font-fraunces text-pale-green">
+                                    {{ address.title }}
+                                </h6>
+                                <div class="flex flex-col gap-4 no-space">
+                                    {{ address.content }}
+                                </div>
+                                <a href="tel:{{ address.number }}">
+                                    {{ address.number }}
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="block-content text-white !text-sm no-space max-w-[550px]">
+                        {{ options.footer.acknowledgement }}
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-3 sm:gap-6 sm:items-center text-sm">
+                        <span>
+                            &copy;
+                            {{ 'now'|date('Y') }}
+                            PS Digital Pty Ltd.
+                        </span>
+                        <div class="bg-pale-green size-1 rounded-full max-sm:hidden"></div>
+                        <a class="duration-300 hover:text-pale-green" href="/terms-condition">
+                            Terms of Service
+                        </a>
+                        <div class="bg-pale-green size-1 rounded-full max-sm:hidden"></div>
+                        <a class="duration-300 hover:text-pale-green" href="/privacy">
+                            Privacy Policy
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="pointer-events-none max-lg:hidden"></div>
+            <div id="footer-svgs-container" class="bottom-0 right-0 absolute w-full lg:w-1/2 h-full hidden">
+                {% include "icons/footer-svgs.twig" %}
+            </div>
+            <a class="absolute bottom-4 right-4 bg-white rounded-xl p-4 z-10 duration-300 ease-fancy hover:bg-pale-green" href="https://www.google.com/partners/agency?id=7767028036">
+                {% include "icons/google-partner.twig" with { class: 'size-12 md:size-16 text-dark-blue' } %}
+            </a>
+        </div>
+    </div>
+</footer>
