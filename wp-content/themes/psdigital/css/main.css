@@ -74,7 +74,3 @@ section#shadow-host-companion {
 	mask-repeat: no-repeat;
 	mask-position: center;
 }
-
-main [data-block]:last-of-type section {
-	@apply !pb-44 sm:!pb-60 md:!pb-80;
-}

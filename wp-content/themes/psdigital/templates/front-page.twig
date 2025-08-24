@@ -6,10 +6,11 @@
     {% include "partials/home/team.twig" %}
     {% include "partials/home/services.twig" %}
     {% include "partials/home/projects.twig" %}
-    <div class=""></div>
-    {% include "partials/home/testimonials.twig" %}
 {% endblock %}
 {% block footer %}
-    {% include "partials/home/footer.twig" %}
-    {{ function('wp_footer') }}
+    <div class="">
+        {% include "partials/home/testimonials.twig" %}
+        {% include "partials/home/footer.twig" %}
+        {{ function('wp_footer') }}
+    </div>
 {% endblock %}

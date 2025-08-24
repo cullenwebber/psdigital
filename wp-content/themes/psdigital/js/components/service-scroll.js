@@ -25,7 +25,7 @@ export default function serviceScroll() {
 		tl.fromTo(
 			service,
 			{
-				y: window.innerHeight + 16,
+				y: '100lvh',
 			},
 			{
 				y: 0,

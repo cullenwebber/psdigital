@@ -26,3 +26,21 @@
 		@apply translate-y-24;
 	}
 }
+
+#video-overlay.active {
+	pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+	#close-video {
+		top: 1rem;
+		right: 1rem;
+		width: 2.5rem;
+		height: 2.5rem;
+	}
+
+	#close-video svg {
+		width: 1.25rem;
+		height: 1.25rem;
+	}
+}

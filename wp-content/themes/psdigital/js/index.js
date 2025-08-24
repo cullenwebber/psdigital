@@ -8,16 +8,17 @@ import initSmoothScrolling from './utils/lenis-init'
 import initSwipers from './components/sliders/swiper'
 import serviceScroll from './components/service-scroll'
 import parallaxEffect from './utils/parallax-images'
-import createGradient from './components/gradient'
 import initFooterPhysics from './components/footer-physics'
 import { createTestimonialSwiper } from './components/sliders/testimonial-slider'
 import initProjectAjax from './components/ajax-projects'
 import initStripeGradient from './components/three/stripe-gradient'
 import infiniteImageSlider from './components/infinite-slider'
+import initVideoOverlay from './components/video-fullscreen'
 
 document.addEventListener('DOMContentLoaded', () => {
 	animateOnScroll()
 	initMobileMenu()
+	initVideoOverlay()
 	initAccordions()
 	initRemoveLinks()
 	initHeaderOnScroll()
@@ -28,8 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	serviceScroll()
 	parallaxEffect()
 	infiniteImageSlider()
-	// createGradient()
+	createTestimonialSwiper()
 	initStripeGradient()
 	initFooterPhysics()
-	createTestimonialSwiper()
 })
